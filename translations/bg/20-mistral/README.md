@@ -1,49 +1,42 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "4bd0fafda5d66cd9d60f1ebc7820415e",
-  "translation_date": "2025-07-09T19:03:56+00:00",
-  "source_file": "20-mistral/README.md",
-  "language_code": "bg"
-}
--->
-# Работа с Mistral модели
+# Работа с модели Mistral 
 
-## Въведение
+## Въведение 
 
-В този урок ще разгледаме:  
-- Различните Mistral модели  
-- Разбиране на приложенията и сценариите за всеки модел  
-- Примери с код, които показват уникалните характеристики на всеки модел.
+Този урок ще покрие: 
+- Разглеждане на различните модели Mistral 
+- Разбиране на употребите и сценариите за всеки модел 
+- Изследване на примерен код, който показва уникалните характеристики на всеки модел. 
 
-## Mistral модели
+## Моделите Mistral 
 
-В този урок ще разгледаме 3 различни Mistral модела:  
-**Mistral Large**, **Mistral Small** и **Mistral Nemo**.
+В този урок ще разгледаме 3 различни модела Mistral: 
+**Mistral Large**, **Mistral Small** и **Mistral Nemo**. 
 
-Всеки от тези модели е достъпен безплатно в Github Model marketplace. Кодът в този тетрадка ще използва тези модели за изпълнение. Повече информация за използването на Github Models за [прототипиране с AI модели](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst).
+Всеки от тези модели е наличен безплатно в [Microsoft Foundry Models](https://ai.azure.com/catalog/models?WT.mc_id=academic-105485-koreyst). Кодът в този бележник ще използва тези модели за изпълнение на кода.
+
+> **Забележка:** GitHub Models се прекратява в края на юли 2026 г. Ето повече подробности за използването на [Microsoft Foundry Models](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/overview?WT.mc_id=academic-105485-koreyst) за прототипиране с ИИ модели. 
+
 
 ## Mistral Large 2 (2407)
+Mistral Large 2 в момента е водещият модел от Mistral и е предназначен за корпоративна употреба. 
 
-Mistral Large 2 е в момента водещият модел на Mistral и е предназначен за корпоративна употреба.
+Моделът е подобрение на оригиналния Mistral Large, като предлага 
+- По-голям контекстен прозорец - 128k срещу 32k 
+- По-добра производителност при задачи по математика и кодиране - средна точност 76.9% срещу 60.4% 
+- Повишена мултиезична производителност - езици включват: английски, френски, немски, испански, италиански, португалски, холандски, руски, китайски, японски, корейски, арабски и хинди.
 
-Моделът е ъпгрейд на оригиналния Mistral Large, като предлага:  
-- По-голям контекстен прозорец - 128k срещу 32k  
-- По-добра производителност при задачи с математика и кодиране - средна точност 76.9% срещу 60.4%  
-- Подобрена многоезична поддръжка - включва езици като: английски, френски, немски, испански, италиански, португалски, холандски, руски, китайски, японски, корейски, арабски и хинди.
+С тези функции Mistral Large се отличава при 
+- *Ретривъл-усилено генериране (RAG)* - заради по-големия контекстен прозорец
+- *Извикване на функции* - този модел има родно извикване на функции, което позволява интеграция с външни инструменти и API. Тези извиквания могат да се правят както паралелно, така и едно след друго в последователен ред. 
+- *Генериране на код* - този модел се отличава в генериране на Python, Java, TypeScript и C++. 
 
-С тези характеристики Mistral Large се отличава в:  
-- *Retrieval Augmented Generation (RAG)* - благодарение на по-големия контекстен прозорец  
-- *Function Calling* - този модел поддържа нативно извикване на функции, което позволява интеграция с външни инструменти и API-та. Тези извиквания могат да се изпълняват паралелно или последователно.  
-- *Генериране на код* - моделът се справя отлично с генериране на Python, Java, TypeScript и C++.
+### Пример за RAG с Mistral Large 2 
 
-### Пример за RAG с Mistral Large 2
+В този пример използваме Mistral Large 2, за да изпълним RAG модел върху текстов документ. Въпросът е написан на корейски и пита за дейностите на автора преди колежа. 
 
-В този пример използваме Mistral Large 2 за изпълнение на RAG модел върху текстов документ. Въпросът е написан на корейски и пита за дейностите на автора преди университета.
+Той използва Cohere Embeddings Model за създаване на вградания на текстовия документ и въпроса. За този пример се използва Python пакета faiss като векторно хранилище. 
 
-Използва се Cohere Embeddings Model за създаване на вграждания на текстовия документ и въпроса. За този пример се използва Python пакетът faiss като векторно хранилище.
-
-Подканата, изпратена към Mistral модела, включва както въпросите, така и извлечените части от текста, които са сходни с въпроса. Моделът след това предоставя отговор на естествен език.
+Запитването, изпратено към модела Mistral, включва както въпросите, така и извлечените части, които са подобни на въпроса. Моделът след това предоставя отговор на естествен език. 
 
 ```python 
 pip install faiss-cpu
@@ -60,9 +53,10 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.inference import EmbeddingsClient
 
-endpoint = "https://models.inference.ai.azure.com"
+# Вземете ги от страницата "Преглед" на вашия проект Microsoft Foundry
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-large"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -101,7 +95,7 @@ d = text_embeddings.shape[1]
 index = faiss.IndexFlatL2(d)
 index.add(text_embeddings)
 
-question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?？"
+question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?"
 
 question_embedding = embed_client.embed(
     input=[question],
@@ -111,7 +105,7 @@ question_embedding = embed_client.embed(
 question_embeddings = np.array(question_embedding.data[0].embedding)
 
 
-D, I = index.search(question_embeddings.reshape(1, -1), k=2) # distance, index
+D, I = index.search(question_embeddings.reshape(1, -1), k=2) # разстояние, индекс
 retrieved_chunks = [chunks[i] for i in I.tolist()[0]]
 
 prompt = f"""
@@ -139,30 +133,30 @@ chat_response = client.complete(
 print(chat_response.choices[0].message.content)
 ```
 
-## Mistral Small
+## Mistral Small 
+Mistral Small е друг модел от семейството на Mistral в категорията премиум/корпоративни модели. Както подсказва името, този модел е Малък езиков модел (SLM). Предимствата на Mistral Small са, че той е: 
+- Икономичен в сравнение с Mistral LLM модели като Mistral Large и NeMo - 80% по-ниска цена
+- Ниска латентност - по-бърз отговор в сравнение с LLM на Mistral
+- Гъвкав - може да бъде внедрен в различни среди с по-малко ограничения за изискваните ресурси. 
 
-Mistral Small е друг модел от семейството на Mistral в категорията премиум/корпоративни модели. Както подсказва името, това е малък езиков модел (SLM). Предимствата на Mistral Small са:  
-- Икономия на разходи в сравнение с Mistral LLM като Mistral Large и NeMo - 80% по-ниска цена  
-- Ниска латентност - по-бърз отговор в сравнение с LLM моделите на Mistral  
-- Гъвкавост - може да се внедрява в различни среди с по-малко изисквания към ресурсите.
 
-Mistral Small е подходящ за:  
-- Текстови задачи като обобщаване, анализ на настроения и превод  
-- Приложения с чести заявки поради своята икономичност  
-- Задачи с ниска латентност като преглед и предложения за код
+Mistral Small е подходящ за: 
+- Текстови задачи като обобщаване, анализ на настроения и превод. 
+- Приложения, където често се правят заявки заради икономичността му 
+- Задачи с код с ниска латентност като преглед и предложения за код 
 
-## Сравнение между Mistral Small и Mistral Large
+## Сравнение между Mistral Small и Mistral Large 
 
-За да видите разликите в латентността между Mistral Small и Large, изпълнете следващите клетки.
+За да покажем разлики в латентността между Mistral Small и Large, изпълнете следващите клетки. 
 
-Ще забележите разлика във времето за отговор от 3-5 секунди. Обърнете внимание и на дължината и стила на отговорите при една и съща подканваща фраза.
+Ще видите разлика в времената за отговор между 3-5 секунди. Обърнете внимание и на дължината и стила на отговорите при същото запитване.  
 
 ```python 
 
 import os 
-endpoint = "https://models.inference.ai.azure.com"
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-small"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -191,9 +185,9 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 
-endpoint = "https://models.inference.ai.azure.com"
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-large"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -217,30 +211,31 @@ print(response.choices[0].message.content)
 
 ## Mistral NeMo
 
-В сравнение с другите два модела, обсъдени в този урок, Mistral NeMo е единственият безплатен модел с лиценз Apache2.
+В сравнение с другите два модела, разгледани в този урок, Mistral NeMo е единственият безплатен модел с лиценз Apache2. 
 
-Той се разглежда като ъпгрейд на по-ранния отворен код LLM на Mistral, Mistral 7B.
+Той се разглежда като надграждане на по-ранния отворен код LLM от Mistral, Mistral 7B. 
 
-Някои други характеристики на NeMo модела са:
+Някои други характеристики на модела NeMo са: 
 
-- *По-ефективна токенизация:* Този модел използва Tekken tokenizer вместо по-често използвания tiktoken. Това позволява по-добра производителност при повече езици и код.
+- *По-ефективна токенизация:* Този модел използва токенизатора Tekken вместо по-често използвания tiktoken. Това позволява по-добра производителност при повече езици и код. 
 
-- *Финетюнинг:* Базовият модел е достъпен за финетюнинг, което дава повече гъвкавост за случаи, в които е необходима допълнителна настройка.
+- *Фино настройване:* Основният модел е наличен за фино настройване. Това осигурява повече гъвкавост за случаи на употреба, където е нужно фино настройване. 
 
-- *Нативно извикване на функции* - Подобно на Mistral Large, този модел е обучен за извикване на функции. Това го прави уникален като един от първите отворени модели с такава възможност.
+- *Родно извикване на функции* - Подобно на Mistral Large, този модел е обучен за извикване на функции. Това го прави уникален като един от първите модели с отворен код с такава способност. 
 
-### Сравнение на токенизатори
 
-В този пример ще разгледаме как Mistral NeMo обработва токенизацията в сравнение с Mistral Large.
+### Сравнение на токенизатори 
 
-И двата примера използват една и съща подканваща фраза, но ще видите, че NeMo връща по-малко токени в сравнение с Mistral Large.
+В този пример ще видим как Mistral NeMo обработва токенизацията в сравнение с Mistral Large. 
+
+И в двата примера се използва една и съща заявка, но ще видите, че NeMo връща по-малко токени от Mistral Large. 
 
 ```bash
 pip install mistral-common
 ```
 
 ```python 
-# Import needed packages:
+# Импортирайте необходимите пакети:
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -251,13 +246,13 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# Заредете токенизатора на Mistral
 
-model_name = "open-mistral-nemo	"
+model_name = "open-mistral-nemo"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# Токенизирайте списък със съобщения
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
@@ -275,7 +270,7 @@ tokenized = tokenizer.encode_chat_completion(
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "The temperature unit to use. Infer this from the user's location.",
                             },
                         },
                         "required": ["location", "format"],
@@ -291,12 +286,12 @@ tokenized = tokenizer.encode_chat_completion(
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# Брой на токените
 print(len(tokens))
 ```
 
 ```python
-# Import needed packages:
+# Импортирайте нужните пакети:
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -307,13 +302,13 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# Заредете Mistral токенизатора
 
 model_name = "mistral-large-latest"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# Токенизирайте списък със съобщения
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
@@ -331,7 +326,7 @@ tokenized = tokenizer.encode_chat_completion(
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "The temperature unit to use. Infer this from the user's location.",
                             },
                         },
                         "required": ["location", "format"],
@@ -347,13 +342,17 @@ tokenized = tokenizer.encode_chat_completion(
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# Бройте броя на токените
 print(len(tokens))
 ```
 
 ## Обучението не спира тук, продължете пътешествието
 
-След като завършите този урок, разгледайте нашата [колекция за обучение по Генеративен AI](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), за да продължите да развивате знанията си в областта на Генеративния AI!
+След като завършите този урок, разгледайте нашата [колекция за обучение по генеративен ИИ](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), за да продължите да усъвършенствате знанията си по генеративен ИИ!
 
-**Отказ от отговорност**:  
-Този документ е преведен с помощта на AI преводаческа услуга [Co-op Translator](https://github.com/Azure/co-op-translator). Въпреки че се стремим към точност, моля, имайте предвид, че автоматизираните преводи могат да съдържат грешки или неточности. Оригиналният документ на неговия роден език трябва да се счита за авторитетен източник. За критична информация се препоръчва професионален човешки превод. Ние не носим отговорност за каквито и да е недоразумения или неправилни тълкувания, произтичащи от използването на този превод.
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Отказ от отговорност**:
+Този документ е преведен с помощта на AI преводачески услуга [Co-op Translator](https://github.com/Azure/co-op-translator). Въпреки че се стремим към точност, моля имайте предвид, че автоматизираните преводи могат да съдържат грешки или неточности. Оригиналният документ на неговия роден език трябва да се счита за авторитетен източник. За критична информация се препоръчва професионален човешки превод. Ние не носим отговорност за каквито и да е недоразумения или неправилни тълкувания, произтичащи от използването на този превод.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

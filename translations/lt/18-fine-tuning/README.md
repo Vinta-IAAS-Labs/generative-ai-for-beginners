@@ -1,111 +1,107 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "807f0d9fc1747e796433534e1be6a98a",
-  "translation_date": "2025-10-18T02:28:46+00:00",
-  "source_file": "18-fine-tuning/README.md",
-  "language_code": "lt"
-}
--->
-[![Atvirojo kodo modeliai](../../../translated_images/lt/18-lesson-banner.f30176815b1a5074.webp)](https://youtu.be/6UAwhL9Q-TQ?si=5jJd8yeQsCfJ97em)
+[![Atviro Kodo Modeliai](../../../translated_images/lt/18-lesson-banner.f30176815b1a5074.webp)](https://youtu.be/6UAwhL9Q-TQ?si=5jJd8yeQsCfJ97em)
 
-# LLM modelio pritaikymas
+# Didelio kalbos modelio (LLM) derinimas
 
-Naudojant didelius kalbos modelius generatyviosios dirbtinio intelekto programoms kurti, kyla naujų iššūkių. Vienas pagrindinių klausimų yra užtikrinti atsakymų kokybę (tikslumą ir aktualumą), kai modelis generuoja turinį pagal vartotojo užklausą. Ankstesnėse pamokose aptarėme tokias technikas kaip užklausų kūrimas ir informacijos paieška, kurios siekia išspręsti problemą _modifikuojant modelio įvestį_.
+Naudojant didelius kalbos modelius generatyvioms AI programėlėms kurti atsiranda naujų iššūkių. Pagrindinė problema yra užtikrinti atsakymų kokybę (tikslumą ir aktualumą) modelio generuotame turinyje pagal vartotojo užklausą. Ankstesnėse pamokose aptarėme tokias technikas kaip užklausų kūrimas (prompt engineering) ir atsakymų gavimas su papildoma paieška (retrieval-augmented generation), kurios bando išspręsti šią problemą *keitinėjant užklausos įvestį* esamam modeliui.
 
-Šiandienos pamokoje aptarsime trečią techniką – **pritaikymą**, kuri siekia spręsti šį iššūkį _pertreniruojant patį modelį_ su papildomais duomenimis. Panagrinėkime detaliau.
+Šios pamokos tema yra trečioji technika – **derinimas (fine-tuning)**, kuri siekia spręsti iššūkį *perkvalifikuojant patį modelį* su papildomais duomenimis. Panagrinėkime detaliau.
 
 ## Mokymosi tikslai
 
-Šioje pamokoje pristatoma pritaikymo koncepcija iš anksto apmokytiems kalbos modeliams, aptariami šio metodo privalumai ir iššūkiai, taip pat pateikiamos rekomendacijos, kada ir kaip naudoti pritaikymą, siekiant pagerinti generatyviojo dirbtinio intelekto modelių veikimą.
+Šioje pamokoje supažindinsime su derinimo sąvoka išankstinio apmokymo kalbos modeliams, aptarsime šio metodo privalumus ir iššūkius, bei pateiksime rekomendacijas, kada ir kaip naudoti derinimą, kad pagerintumėte savo generatyvių AI modelių veikimą.
 
-Pamokos pabaigoje turėtumėte galėti atsakyti į šiuos klausimus:
+Pamokos pabaigoje turėtumėte sugebėti atsakyti į šiuos klausimus:
 
-- Kas yra kalbos modelių pritaikymas?
-- Kada ir kodėl pritaikymas yra naudingas?
-- Kaip galima pritaikyti iš anksto apmokytą modelį?
-- Kokie yra pritaikymo apribojimai?
+- Kas yra kalbos modelių derinimas?
+- Kada ir kodėl derinimas yra naudingas?
+- Kaip galima atlikti išankstinio apmokymo modelio derinimą?
+- Kokios yra derinimo ribotybės?
 
 Pasiruošę? Pradėkime.
 
-## Iliustruotas vadovas
+## Iliustruota apžvalga
 
-Norite gauti bendrą vaizdą apie tai, ką aptarsime, prieš pasinerdami į detales? Peržiūrėkite šį iliustruotą vadovą, kuriame aprašoma mokymosi kelionė šioje pamokoje – nuo pagrindinių pritaikymo koncepcijų ir motyvacijos supratimo iki proceso ir geriausios praktikos vykdant pritaikymo užduotį. Tai įdomi tema tyrinėjimui, todėl nepamirškite peržiūrėti [Resursų](./RESOURCES.md?WT.mc_id=academic-105485-koreyst) puslapio, kuriame rasite papildomų nuorodų, padėsiančių savarankiškai mokytis!
+Norite geriau suprasti, ką aptarsime, prieš kibdami į detalės? Peržiūrėkite šį iliustruotą gidą, kuris apibūdina mokymosi kelionę šiai pamokai – nuo pagrindinių derinimo sąvokų ir motyvacijos iki proceso supratimo ir geriausių praktikų atlikti derinimo užduotį. Tai intriguojanti tema, todėl nepamirškite apsilankyti [Resursų](./RESOURCES.md?WT.mc_id=academic-105485-koreyst) puslapyje, kur rasite papildomų nuorodų savarankiškam mokymuisi!
 
-![Iliustruotas kalbos modelių pritaikymo vadovas](../../../translated_images/lt/18-fine-tuning-sketchnote.11b21f9ec8a70346.webp)
+![Iliustruotas kalbos modelių derinimo vadovas](../../../translated_images/lt/18-fine-tuning-sketchnote.11b21f9ec8a70346.webp)
 
-## Kas yra kalbos modelių pritaikymas?
+## Kas yra kalbos modelių derinimas?
 
-Pagal apibrėžimą, dideli kalbos modeliai yra _iš anksto apmokyti_ naudojant didelius tekstų kiekius, surinktus iš įvairių šaltinių, įskaitant internetą. Kaip sužinojome ankstesnėse pamokose, mums reikia tokių technikų kaip _užklausų kūrimas_ ir _informacijos paieška_, kad pagerintume modelio atsakymų kokybę į vartotojo klausimus („užklausas“).
+Pagal apibrėžimą, dideli kalbos modeliai yra *išankstinio apmokymo* (pre-trained) su didele kiekių tekstų iš įvairių šaltinių, įskaitant internetą. Kaip išmokome ankstesnėse pamokose, mums reikia technikų, tokių kaip *užklausų kūrimas* ir *atsakymų gavimas su papildoma paieška*, kad pagerintume modelio atsakymų kokybę vartotojo klausimams („užklausoms“).
 
-Populiari užklausų kūrimo technika apima modelio nurodymą, ko tikimasi atsakyme, pateikiant _instrukcijas_ (aiškus nurodymas) arba _keletą pavyzdžių_ (netiesioginis nurodymas). Tai vadinama _mokymusi iš kelių pavyzdžių_, tačiau turi du apribojimus:
+Populiari užklausų kūrimo technika – suteikti modeliui daugiau nurodymų, ko tikimasi atsakyme, pateikiant *instrukcijas* (aiškias gaires) arba *keleto pavyzdžių* (netiesiogines gaires). Tai vadinama *keleto pavyzdžių mokymu* (few-shot learning), tačiau ji turi dvi ribas:
 
-- Modelio žodžių limitai gali apriboti pateikiamų pavyzdžių skaičių ir jų efektyvumą.
-- Modelio žodžių kaštai gali padaryti brangų kiekvienos užklausos papildymą pavyzdžiais ir apriboti lankstumą.
+- Modelio simbolių limitai gali apriboti pateikiamų pavyzdžių kiekį ir sumažinti efektyvumą.
+- Modelio simbolių sąnaudos gali pabranginti pavyzdžių pridėjimą prie kiekvienos užklausos ir sumažinti lankstumą.
 
-Pritaikymas yra įprasta praktika mašininio mokymosi sistemose, kai iš anksto apmokytas modelis pertreniruojamas su naujais duomenimis, siekiant pagerinti jo veikimą konkrečioje užduotyje. Kalbos modelių kontekste galime pritaikyti iš anksto apmokytą modelį _su kruopščiai atrinktais pavyzdžiais konkrečiai užduočiai ar taikymo sričiai_, kad sukurtume **pritaikytą modelį**, kuris gali būti tikslesnis ir aktualesnis konkrečiai užduočiai ar sričiai. Papildomas pritaikymo privalumas yra tas, kad jis gali sumažinti pavyzdžių poreikį mokymuisi iš kelių pavyzdžių – sumažinant žodžių naudojimą ir susijusius kaštus.
+Derinimas yra įprasta mašininio mokymosi praktika, kai išankstinį apmokytą modelį perkvalifikuojame su naujais duomenimis, kad pagerintume jo veikimą konkrečioje užduotyje. Kalbos modelių kontekste galime derinti išankstinį modelį *su atrinktu pavyzdžių rinkiniu konkrečiai užduočiai ar taikymo sričiai* ir sukurti **individualiai pritaikytą modelį**, kuris gali būti tikslesnis ir aktualesnis tam tikroje srityje. Papildomas derinimo privalumas – sumažėti keletą pavyzdžių, reikalingų keletos pavyzdžių mokymuisi – mažinama simbolių naudojimo ir su tuo susijusios išlaidos.
 
-## Kada ir kodėl turėtume pritaikyti modelius?
+## Kada ir kodėl reikėtų derinti modelius?
 
-Šiame kontekste, kai kalbame apie pritaikymą, turime omenyje **prižiūrimą** pritaikymą, kai pertreniruojama **pridedant naujus duomenis**, kurie nebuvo originaliame mokymo duomenų rinkinyje. Tai skiriasi nuo neprižiūrimo pritaikymo, kai modelis pertreniruojamas naudojant originalius duomenis, bet su skirtingais hiperparametrais.
+Šiame kontekste derinimas reiškia **prižiūrimą (supervised) derinimą**, kuomet perkvalifikavimas atliekamas **pridedant naujų duomenų**, kurie nebuvo originaliame mokymosi rinkinyje. Tai skiriasi nuo neprižiūrimo derinimo, kai modelis perkvalifikuojamas pagal originalius duomenis, bet naudojant kitus hiperparametrus.
 
-Svarbu atsiminti, kad pritaikymas yra pažangi technika, reikalaujanti tam tikro lygio ekspertinių žinių, kad būtų pasiekti norimi rezultatai. Jei tai atliekama netinkamai, gali būti, kad nebus pasiektas laukiamas pagerėjimas, o modelio veikimas tikslinėje srityje gali net pablogėti.
+Svarbiausia prisiminti, kad derinimas yra pažangi technika, reikalaujanti tam tikro lygio kompetencijos norint pasiekti norimus rezultatus. Jei atliktas neteisingai, jis gali nesuteikti laukiamų patobulinimų ir netgi pabloginti modelio veikimą jūsų pasirinktoje srityje.
 
-Todėl prieš mokantis „kaip“ pritaikyti kalbos modelius, reikia žinoti „kodėl“ verta rinktis šį kelią ir „kada“ pradėti pritaikymo procesą. Pirmiausia užduokite sau šiuos klausimus:
+Todėl prieš mokydamiesi „kaip“ derinti kalbos modelius, turite suprasti „kodėl“ verta tai daryti ir „kada“ pradėti derinimo procesą. Paklauskite savęs šiuos klausimus:
 
-- **Naudojimo atvejis**: Koks yra jūsų _naudojimo atvejis_ pritaikymui? Kurią dabartinio iš anksto apmokyto modelio dalį norite patobulinti?
-- **Alternatyvos**: Ar bandėte _kitas technikas_, kad pasiektumėte norimus rezultatus? Naudokite jas kaip palyginimo pagrindą.
-  - Užklausų kūrimas: Išbandykite technikas, tokias kaip mokymasis iš kelių pavyzdžių, pateikiant atitinkamų užklausų atsakymų pavyzdžius. Įvertinkite atsakymų kokybę.
-  - Informacijos paieška: Pabandykite papildyti užklausas paieškos rezultatais, gautais ieškant jūsų duomenų bazėje. Įvertinkite atsakymų kokybę.
-- **Kaštai**: Ar nustatėte pritaikymo kaštus?
-  - Pritaikomumas – ar iš anksto apmokytas modelis yra tinkamas pritaikymui?
+- **Naudojimo atvejis**: Koks jūsų *naudos atvejis* dėl derinimo? Ką norite patobulinti dabartiniame išankstinio apmokymo modelyje?
+- **Alternatyvos**: Ar bandėte *kitas technikas* norint pasiekti norimų rezultatų? Naudokite jas kaip palyginimo pagrindą.
+  - Užklausų kūrimas: Išbandykite technikas kaip keletos pavyzdžių užklausos su tinkamais atsakymo pavyzdžiais. Įvertinkite atsakymų kokybę.
+  - Atsakymų gavimas su papildoma paieška: Išbandykite užklausų papildymą rezultatų įtraukimu ieškant jūsų duomenų. Įvertinkite atsakymų kokybę.
+- **Išlaidos**: Ar įvertinote derinimo išlaidas?
+  - Derinamumas – ar išankstinis modelis prieinamas derinimui?
   - Pastangos – mokymo duomenų paruošimas, modelio vertinimas ir tobulinimas.
-  - Skaičiavimai – pritaikymo užduočių vykdymas ir pritaikyto modelio diegimas.
-  - Duomenys – pakankamas kokybiškų pavyzdžių kiekis pritaikymo poveikiui.
-- **Privalumai**: Ar patvirtinote pritaikymo privalumus?
-  - Kokybė – ar pritaikytas modelis pranoko pradinį lygį?
-  - Kaštai – ar tai sumažina žodžių naudojimą, supaprastinant užklausas?
-  - Pritaikomumas – ar galite pritaikyti bazinį modelį naujoms sritims?
+  - Skaičiavimai – derinimo užduočių vykdymas ir derinto modelio diegimas.
+  - Duomenys – prieiga prie pakankamos kokybės pavyzdžių derinimo poveikiui.
+- **Privalumai**: Ar patvirtinote derinimo naudą?
+  - Kokybė – ar derintas modelis viršijo lyginamąjį pagrindą?
+  - Kaina – ar sumažina simbolių naudojimą supaprastindamas užklausas?
+  - Išplėstinumą – ar galite pritaikyti bazinį modelį naujoms sritims?
 
-Atsakę į šiuos klausimus, turėtumėte galėti nuspręsti, ar pritaikymas yra tinkamas jūsų naudojimo atvejui. Idealiu atveju, šis metodas yra tinkamas tik tada, kai privalumai nusveria kaštus. Kai nuspręsite tęsti, metas pagalvoti, _kaip_ galite pritaikyti iš anksto apmokytą modelį.
+Atsakydami į šiuos klausimus, turėtumėte gebėti nuspręsti, ar derinimas yra tinkamas jūsų atvejui. Idealiu atveju šis metodas prasmingas tik tada, kai privalumai viršija išlaidas. Pasirinkę tęsti, pradėkite galvoti *kaip* galėtumėte derinti išankstinį modelį.
 
-Norite gauti daugiau įžvalgų apie sprendimų priėmimo procesą? Žiūrėkite [Pritaikyti ar nepritaikyti](https://www.youtube.com/watch?v=0Jo-z-MFxJs)
+Norite daugiau įžvalgų priimant sprendimą? Peržiūrėkite [Derinti ar nederinti?](https://www.youtube.com/watch?v=0Jo-z-MFxJs)
 
-## Kaip galime pritaikyti iš anksto apmokytą modelį?
+## Kaip galime derinti išankstinį modelį?
 
-Norėdami pritaikyti iš anksto apmokytą modelį, turite turėti:
+Norėdami atlikti modelio derinimą, jums reikia turėti:
 
-- iš anksto apmokytą modelį pritaikymui
-- duomenų rinkinį pritaikymui
-- mokymo aplinką pritaikymo užduočiai vykdyti
-- talpinimo aplinką pritaikytam modeliui diegti
+- išankstinį modelį derinimui
+- duomenų rinkinį naudojimui derinant
+- mokymo aplinką derinimo užduočiai vykdyti
+- talpinimo aplinką derintam modeliui diegti
 
-## Pritaikymas praktikoje
+## Derinimas praktikoje
 
-Šie resursai pateikia žingsnis po žingsnio vadovus, kurie padės jums atlikti realų pavyzdį, naudojant pasirinktą modelį su kruopščiai atrinktu duomenų rinkiniu. Norėdami atlikti šiuos vadovus, jums reikės turėti paskyrą pas konkretų tiekėją, taip pat prieigą prie atitinkamo modelio ir duomenų rinkinių.
+> **Pastaba:** `gpt-35-turbo` / `gpt-3.5-turbo`, minimi kai kuriuose toliau pateiktuose mokymuose, yra pašalinti tiek inferencijai, tiek derinimui. Jei šiandien pradedate naują derinimo darbą, pasirinkite šiuo metu palaikomą modelį – pavyzdžiui, `gpt-4o-mini` ar `gpt-4.1-mini`. Žr. [Derinamų modelių sąrašą](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?WT.mc_id=academic-105485-koreyst#fine-tuning-models) dėl dabartinio derinimui tinkančių modelių rinkinio. Šių mokymų koncepcijos ir žingsniai vis tiek taikomi.
 
-| Tiekėjas     | Vadovas                                                                                                                                                                       | Aprašymas                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OpenAI       | [Kaip pritaikyti pokalbių modelius](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_finetune_chat_models.ipynb?WT.mc_id=academic-105485-koreyst)                | Sužinokite, kaip pritaikyti `gpt-35-turbo` konkrečiai sričiai („receptų asistentas“), paruošiant mokymo duomenis, vykdant pritaikymo užduotį ir naudojant pritaikytą modelį inferencijai.                                                                                                                                                                                                                                              |
-| Azure OpenAI | [GPT 3.5 Turbo pritaikymo vadovas](https://learn.microsoft.com/azure/ai-services/openai/tutorials/fine-tune?tabs=python-new%2Ccommand-line?WT.mc_id=academic-105485-koreyst) | Sužinokite, kaip pritaikyti `gpt-35-turbo-0613` modelį **Azure platformoje**, atlikdami veiksmus, kaip sukurti ir įkelti mokymo duomenis, vykdyti pritaikymo užduotį. Diegti ir naudoti naują modelį.                                                                                                                                                                                                                                                                 |
-| Hugging Face | [Kalbos modelių pritaikymas su Hugging Face](https://www.philschmid.de/fine-tune-llms-in-2024-with-trl?WT.mc_id=academic-105485-koreyst)                                               | Šiame tinklaraščio įraše aprašomas pritaikymas _atviro kalbos modelio_ (pvz., `CodeLlama 7B`) naudojant [transformers](https://huggingface.co/docs/transformers/index?WT.mc_id=academic-105485-koreyst) biblioteką ir [Transformer Reinforcement Learning (TRL)](https://huggingface.co/docs/trl/index?WT.mc_id=academic-105485-koreyst]) su atvirais [duomenų rinkiniais](https://huggingface.co/docs/datasets/index?WT.mc_id=academic-105485-koreyst) Hugging Face platformoje. |
-|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 🤗 AutoTrain | [Kalbos modelių pritaikymas su AutoTrain](https://github.com/huggingface/autotrain-advanced/?WT.mc_id=academic-105485-koreyst)                                                         | AutoTrain (arba AutoTrain Advanced) yra „Hugging Face“ sukurta „Python“ biblioteka, leidžianti pritaikyti modelius įvairioms užduotims, įskaitant kalbos modelių pritaikymą. AutoTrain yra sprendimas be kodo, o pritaikymas gali būti atliekamas jūsų pačių debesyje, Hugging Face Spaces arba vietoje. Jis palaiko tiek internetinę GUI, tiek CLI, tiek mokymą naudojant yaml konfigūracijos failus.                                                                               |
-|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+Toliau pateikti šaltiniai siūlo žingsnis po žingsnio mokymus, kuriais galėsite atlikti realų pavyzdį su pasirinktiniu modeliu ir atrinktu duomenų rinkiniu. Norėdami dirbti su šiais mokymais, jums reikia paskyros pas konkrečią tiekėją bei prieigos prie atitinkamų modelių ir duomenų rinkinių.
 
-## Užduotis
+| Tiekėjas    | Mokymas                                                                                                                                                                       | Aprašymas                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OpenAI       | [Kaip derinti pokalbių modelius](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_finetune_chat_models.ipynb?WT.mc_id=academic-105485-koreyst)             | Išmokite derinti `gpt-35-turbo` konkrečiam domenui („receptų asistentas“) paruošiant mokymo duomenis, vykdant derinimo užduotį ir naudoti derintą modelį inferencijai.                                                                                                                                                                                                                                                             |
+| Azure OpenAI | [GPT 3.5 Turbo derinimo pamoka](https://learn.microsoft.com/azure/ai-services/openai/tutorials/fine-tune?tabs=python-new%2Ccommand-line&WT.mc_id=academic-105485-koreyst)     | Išmokite derinti `gpt-35-turbo-0613` modelį **Azure aplinkoje** atlikdami žingsnius nuo mokymo duomenų kūrimo ir įkėlimo iki derinimo užduoties vykdymo. Diegiama ir naudojama naujasis modelis.                                                                                                                                                                                                                                      |
+| Hugging Face | [Derinimas su Hugging Face LLM](https://www.philschmid.de/fine-tune-llms-in-2024-with-trl?WT.mc_id=academic-105485-koreyst)                                                  | Šiame tinklaraščio įraše aprašyta, kaip derinti *atvirą LLM* (pvz., `CodeLlama 7B`) naudojant [transformers](https://huggingface.co/docs/transformers/index?WT.mc_id=academic-105485-koreyst) biblioteką ir [Transformer Reinforcement Learning (TRL)](https://huggingface.co/docs/trl/index?WT.mc_id=academic-105485-koreyst) su atvirais [duomenų rinkiniais](https://huggingface.co/docs/datasets/index?WT.mc_id=academic-105485-koreyst) Hugging Face platformoje. |
+|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 🤗 AutoTrain | [Derinimas su AutoTrain](https://github.com/huggingface/autotrain-advanced/?WT.mc_id=academic-105485-koreyst)                                                                  | AutoTrain (arba AutoTrain Advanced) yra Hugging Face sukurta python biblioteka, leidžianti derinti daugybei skirtingų užduočių įskaitant LLM derinimą. AutoTrain yra programavimo nereikalaujantis sprendimas ir derinimas gali būti atliekamas jūsų pačių debesyje, Hugging Face Spaces arba vietoje. Jis palaiko tiek žiniatinklio GUI, tiek CLI ir mokymą per yaml konfigūracijų failus.                                                                                  |
+|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 🦥 Unsloth | [Derinimas su Unsloth](https://github.com/unslothai/unsloth?WT.mc_id=academic-105485-koreyst)                                                                                    | Unsloth yra atviro kodo karkasas, remiantis LLM derinimu ir stiprinamuoju mokymusi (RL). Unsloth supaprastina vietinį mokymą, vertinimą ir diegimą su paruoštais [užrašų knygelės](https://github.com/unslothai/notebooks?WT.mc_id=academic-105485-koreyst). Taip pat palaiko teksto ir kalbos (TTS), BERT ir multimodalinius modelius. Norėdami pradėti, perskaitykite jų žingsnis po žingsnio [LLM Derinimo Vadovą](https://docs.unsloth.ai/get-started/fine-tuning-llms-guide).                                                                                      |
+|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+## Priskyrimas
 
-Pasirinkite vieną iš aukščiau pateiktų vadovų ir atlikite jį. _Mes galime atkurti šių vadovų versiją Jupyter užrašuose šiame repozitoriume tik kaip nuorodą. Prašome naudoti originalius šaltinius, kad gautumėte naujausias versijas_.
+Pasirinkite vieną iš aukščiau pateiktų mokymų ir juos išbandykite. _Mes galbūt pakartosime tam tikrą šių mokymų versiją Jupyter užrašų knygutėse šiame repo tik kaip pavyzdį. Prašome naudotis originaliais šaltiniais, kad gautumėte naujausias versijas_.
 
 ## Puikus darbas! Tęskite mokymąsi.
 
-Baigę šią pamoką, peržiūrėkite mūsų [Generatyviojo dirbtinio intelekto mokymosi kolekciją](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), kad toliau gilintumėte savo žinias apie generatyvųjį dirbtinį intelektą!
+Baigę šią pamoką, peržiūrėkite mūsų [Generatyvios AI mokymosi kolekciją](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), kad toliau gilintumėte savo žinias apie generatyvią AI!
 
-Sveikiname!! Jūs baigėte paskutinę v2 serijos pamoką šiam kursui! Nenustokite mokytis ir kurti. \*\*Peržiūrėkite [RESURSAI](RESOURCES.md?WT.mc_id=academic-105485-koreyst) puslapį, kuriame rasite papildomų pasiūlymų būtent šia tema.
+Sveikiname!! Jūs baigėte paskutinę šio kurso v2 serijos pamoką! Nesustokite mokytis ir kurti. **Peržiūrėkite [RESURSŲ](RESOURCES.md?WT.mc_id=academic-105485-koreyst) puslapį, kuriame rasite papildomų pasiūlymų šiai temai.**
 
-Mūsų v1 pamokų serija taip pat buvo atnaujinta su daugiau užduočių ir koncepcijų. Todėl skirkite minutę atnaujinti savo žinias – ir prašome [pasidalinti savo klausimais ir atsiliepimais](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst), kad galėtume tobulinti šias pamokas bendruomenei.
+Mūsų v1 serija taip pat atnaujinta su daugiau priskyrimų ir koncepcijų. Taigi skirkite minutę žinių atnaujinimui – ir prašome [pasidalinti savo klausimais bei atsiliepimais](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst), kad padėtumėte mums patobulinti šias pamokas bendruomenei.
 
 ---
 
-**Atsakomybės apribojimas**:  
-Šis dokumentas buvo išverstas naudojant AI vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Dėl svarbios informacijos rekomenduojama profesionali žmogaus vertimo paslauga. Mes neprisiimame atsakomybės už nesusipratimus ar neteisingus aiškinimus, atsiradusius naudojant šį vertimą.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Atsakomybės apribojimas**:
+Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba laikomas autoritetingu šaltiniu. Svarbiai informacijai rekomenduojama naudoti profesionalų žmogiškąjį vertimą. Mes neatsakome už jokius nesusipratimus ar neteisingą interpretaciją, kilusią naudojantis šiuo vertimu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

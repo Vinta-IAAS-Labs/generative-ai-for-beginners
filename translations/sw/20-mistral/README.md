@@ -1,49 +1,42 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "4bd0fafda5d66cd9d60f1ebc7820415e",
-  "translation_date": "2025-07-09T19:02:43+00:00",
-  "source_file": "20-mistral/README.md",
-  "language_code": "sw"
-}
--->
-# Kujenga na Mifano ya Mistral
+# Kujenga na Mifano ya Mistral 
 
-## Utangulizi
+## Utangulizi 
 
-Somo hili litajumuisha:  
-- Kuchunguza mifano tofauti ya Mistral  
-- Kuelewa matumizi na hali za kila mfano  
-- Sampuli za msimbo zinaonyesha sifa za kipekee za kila mfano.
+Somo hili litajumuisha: 
+- Kuchunguza Mifano tofauti ya Mistral 
+- Kuelewa matumizi na hali za kila mfano 
+- Kuchunguza mifano ya msimbo unaoonyesha sifa za kipekee za kila mfano. 
 
-## Mifano ya Mistral
+## Mifano ya Mistral 
 
-Katika somo hili, tutachunguza mifano 3 tofauti ya Mistral:  
-**Mistral Large**, **Mistral Small** na **Mistral Nemo**.
+Katika somo hili, tutachunguza mifano 3 tofauti ya Mistral: 
+**Mistral Large**, **Mistral Small** na **Mistral Nemo**. 
 
-Kila mojawapo ya mifano hii inapatikana bure kwenye soko la Mifano la Github. Msimbo katika daftari hili utatumia mifano hii kuendesha msimbo. Hapa kuna maelezo zaidi kuhusu kutumia Mifano ya Github kwa [kuchora mfano na mifano ya AI](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst).
+Kila mmoja wa mifano hii inapatikana bure kwenye [Microsoft Foundry Models](https://ai.azure.com/catalog/models?WT.mc_id=academic-105485-koreyst). Msimbo kwenye daftari hili utatumia mifano hii kuendesha msimbo.
+
+> **Kumbuka:** GitHub Models itafutwa mwishoni mwa Julai 2026. Hapa kuna maelezo zaidi juu ya kutumia [Microsoft Foundry Models](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/overview?WT.mc_id=academic-105485-koreyst) kutengeneza prototypes na mifano ya AI. 
+
 
 ## Mistral Large 2 (2407)
+Mistral Large 2 kwa sasa ni mfano mkuu kutoka Mistral na umewekwa kwa matumizi ya biashara. 
 
-Mistral Large 2 kwa sasa ni mfano mkuu kutoka Mistral na umebuniwa kwa matumizi ya biashara.
+Mfano huu ni uboreshaji wa Mistral Large wa awali kwa kutoa 
+- Dirisha Kubwa la Muktadha - 128k dhidi ya 32k 
+- Utendaji Bora katika Majukumu ya Hisabati na Uandishi wa Msimbo - wastani wa usahihi 76.9% dhidi ya 60.4% 
+- Uboreshaji wa utendaji wa lugha nyingi - lugha ni pamoja na: Kiingereza, Kifaransa, Kijerumani, Kihispania, Kitaliano, Kireno, Kiholanzi, Kirusi, Kichina, Kijapani, Kikorea, Kiarabu, na Kihindi.
 
-Mfano huu ni toleo lililoboreshwa la Mistral Large asili kwa kutoa  
-- Dirisha kubwa la muktadha - 128k dhidi ya 32k  
-- Utendaji bora katika kazi za Hisabati na Uandishi wa Msimbo - usahihi wa wastani wa 76.9% dhidi ya 60.4%  
-- Utendaji ulioboreshwa wa lugha nyingi - lugha ni pamoja na: Kiingereza, Kifaransa, Kijerumani, Kihispania, Kiitaliano, Kireno, Kiholanzi, Kirusi, Kichina, Kijapani, Kikorea, Kiarabu, na Kihindi.
+Kwa sifa hizi, Mistral Large huonyesha ufanisi katika 
+- *Uzalishaji ulioboreshwa kwa Kupata Taarifa (RAG)* - kutokana na dirisha kubwa la muktadha
+- *Kupiga Simu za Kazi* - mfano huu una uwezo wa asili wa kupiga simu za kazi ambao unaruhusu kuunganishwa na zana za nje na APIs. Simu hizi zinaweza kufanyika kwa wakati mmoja au mmoja baada ya mwingine kwa mpangilio wa mfuatano. 
+- *Uzalishaji wa Msimbo* - mfano huu ni bora katika uzalishaji wa Python, Java, TypeScript na C++. 
 
-Kwa sifa hizi, Mistral Large huonyesha ubora katika  
-- *Uundaji wa Maandishi kwa Msaada wa Urejeshaji (RAG)* - kutokana na dirisha kubwa la muktadha  
-- *Kupiga Simu za Kazi* - mfano huu una uwezo wa asili wa kupiga simu za kazi unaoruhusu kuunganishwa na zana na API za nje. Simu hizi zinaweza kufanywa kwa wakati mmoja au mfululizo.  
-- *Uundaji wa Msimbo* - mfano huu una ubora katika uundaji wa Python, Java, TypeScript na C++.
+### Mfano wa RAG ukitumia Mistral Large 2 
 
-### Mfano wa RAG ukitumia Mistral Large 2
+Katika mfano huu, tunatumia Mistral Large 2 kuendesha mtindo wa RAG juu ya hati ya maandishi. Swali limeandikwa kwa Kikorea na linauliza kuhusu shughuli za mwandishi kabla ya chuo kikuu. 
 
-Katika mfano huu, tunatumia Mistral Large 2 kuendesha muundo wa RAG juu ya hati ya maandishi. Swali limeandikwa kwa Kikorea na linauliza kuhusu shughuli za mwandishi kabla ya chuo kikuu.
+Inatumia Mfano wa Cohere Embeddings kuunda embeddings za hati ya maandishi pamoja na swali. Kwa mfano huu, inatumia kifurushi cha faiss cha Python kama hifadhi ya vekta. 
 
-Inatumia Mfano wa Cohere Embeddings kuunda embeddings za hati ya maandishi pamoja na swali. Kwa sampuli hii, inatumia kifurushi cha Python cha faiss kama hifadhi ya vekta.
-
-Maelekezo yanayotumwa kwa mfano wa Mistral yanajumuisha maswali pamoja na vipande vilivyorekebishwa vinavyofanana na swali. Kisha Mfano hutoa jibu la lugha ya asili.
+Ombi lililotumwa kwa mfano wa Mistral linajumuisha maswali pamoja na vipande vilivyopatikana vinavyofanana na swali. Kisha Mfano hutoa jibu la lugha ya asili. 
 
 ```python 
 pip install faiss-cpu
@@ -60,9 +53,10 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.inference import EmbeddingsClient
 
-endpoint = "https://models.inference.ai.azure.com"
+# Pata hizi kutoka kwenye ukurasa wa "Muhtasari" wa mradi wako wa Microsoft Foundry
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-large"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -101,7 +95,7 @@ d = text_embeddings.shape[1]
 index = faiss.IndexFlatL2(d)
 index.add(text_embeddings)
 
-question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?？"
+question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?"
 
 question_embedding = embed_client.embed(
     input=[question],
@@ -111,7 +105,7 @@ question_embedding = embed_client.embed(
 question_embeddings = np.array(question_embedding.data[0].embedding)
 
 
-D, I = index.search(question_embeddings.reshape(1, -1), k=2) # distance, index
+D, I = index.search(question_embeddings.reshape(1, -1), k=2) # umbali, fahirisi
 retrieved_chunks = [chunks[i] for i in I.tolist()[0]]
 
 prompt = f"""
@@ -139,30 +133,30 @@ chat_response = client.complete(
 print(chat_response.choices[0].message.content)
 ```
 
-## Mistral Small
+## Mistral Small 
+Mistral Small ni mfano mwingine katika familia ya mifano ya Mistral chini ya kategoria ya premier/enterprise. Kama jina linavyosema, mfano huu ni Mfano Mdogo wa Lugha (SLM). Faida za kutumia Mistral Small ni kwamba ni: 
+- Kuokoa Gharama ikilinganishwa na Mistral LLMs kama Mistral Large na NeMo - punguzo la bei la 80%
+- Ucheleweshaji Mdogo - jibu la haraka ikilinganishwa na LLMs za Mistral
+- Kubadilika - inaweza kuanzishwa katika mazingira tofauti na vizuizi vichache kwa rasilimali zinazohitajika. 
 
-Mistral Small ni mfano mwingine katika familia ya Mistral chini ya kundi la premier/enterprise. Kama jina linavyosema, mfano huu ni Mfano Mdogo wa Lugha (SLM). Faida za kutumia Mistral Small ni kwamba ni:  
-- Hutoa akiba ya gharama ikilinganishwa na Mistral LLM kama Mistral Large na NeMo - punguzo la bei la 80%  
-- Ucheleweshaji mdogo - majibu ya haraka ikilinganishwa na LLM za Mistral  
-- Uwezo wa kubadilika - unaweza kutumika katika mazingira tofauti kwa vikwazo vidogo vya rasilimali zinazohitajika.
 
-Mistral Small ni mzuri kwa:  
-- Kazi zinazotegemea maandishi kama muhtasari, uchambuzi wa hisia na tafsiri.  
-- Programu ambapo maombi mara kwa mara hufanywa kutokana na ufanisi wake wa gharama  
-- Kazi za msimbo zenye ucheleweshaji mdogo kama mapitio na mapendekezo ya msimbo
+Mistral Small ni mzuri kwa: 
+- Majukumu yanayotegemea maandishi kama muhtasari, uchambuzi wa hisia na tafsiri. 
+- Programu ambapo maombi mara kwa mara hufanywa kutokana na ufanisi wa gharama yake 
+- Majukumu ya msimbo yenye ucheleweshaji mdogo kama kupitia ukaguzi na mapendekezo ya msimbo 
 
-## Kulinganisha Mistral Small na Mistral Large
+## Kulinganisha Mistral Small na Mistral Large 
 
-Ili kuonyesha tofauti za ucheleweshaji kati ya Mistral Small na Large, endesha seli zilizo hapa chini.
+Kuonyesha tofauti za ucheleweshaji kati ya Mistral Small na Large, endesha seli zilizo hapa chini. 
 
-Unapaswa kuona tofauti ya muda wa majibu kati ya sekunde 3-5. Pia zingatia urefu na mtindo wa majibu kwa maelekezo yale yale.
+Unapaswa kuona tofauti ya nyakati za majibu kati ya sekunde 3-5. Pia kumbuka urefu na mtindo wa majibu kwa ombi lile lile.  
 
 ```python 
 
 import os 
-endpoint = "https://models.inference.ai.azure.com"
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-small"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -191,9 +185,9 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 
-endpoint = "https://models.inference.ai.azure.com"
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-large"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -217,30 +211,31 @@ print(response.choices[0].message.content)
 
 ## Mistral NeMo
 
-Ikilinganishwa na mifano mingine miwili iliyojadiliwa katika somo hili, Mistral NeMo ni mfano pekee wa bure wenye Leseni ya Apache2.
+Ukilinganisha na mifano mingine miwili iliyojadiliwa katika somo hili, Mistral NeMo ni mfano pekee bure unao na Leseni ya Apache2. 
 
-Unachukuliwa kama toleo lililoboreshwa la LLM ya awali ya chanzo huria kutoka Mistral, Mistral 7B.
+Unachukuliwa kama uboreshaji wa awali wa LLM ya chanzo huria kutoka Mistral, Mistral 7B. 
 
-Baadhi ya sifa nyingine za mfano wa NeMo ni:
+Baadhi ya sifa nyingine za mfano wa NeMo ni: 
 
-- *Tokenization yenye ufanisi zaidi:* Mfano huu unatumia tokenizer ya Tekken badala ya tiktoken inayotumika zaidi. Hii inaruhusu utendaji bora kwa lugha na msimbo zaidi.
+- *Tokenization yenye ufanisi zaidi:* Mfano huu unatumia tokenize ya Tekken badala ya tiktoken inayotumika zaidi. Hii inaruhusu utendaji bora kwa lugha nyingi na msimbo. 
 
-- *Finetuning:* Mfano msingi unapatikana kwa finetuning. Hii inatoa ufanisi zaidi kwa matumizi ambapo finetuning inaweza kuhitajika.
+- *Kufinywa kwa utaalamu:* Mfano msingi upo kwa kufinywa kwa utaalamu. Hii inaruhusu kubadilika zaidi kwa matumizi ambapo kufinywa kunaweza kuhitajika. 
 
-- *Kupiga Simu za Kazi kwa Asili* - Kama Mistral Large, mfano huu umefundishwa kupiga simu za kazi. Hii humfanya kuwa wa kipekee kama mojawapo ya mifano ya chanzo huria ya kwanza kufanya hivyo.
+- *Kupiga Simu za Kazi kama Asili* - Kama Mistral Large, mfano huu umefundishwa kupiga simu za kazi. Hii inaufanya kuwa wa kipekee kama mojawapo ya mifano ya chanzo huria ya kwanza kufanya hivyo. 
 
-### Kulinganisha Tokenizers
 
-Katika sampuli hii, tutaangalia jinsi Mistral NeMo inavyoshughulikia tokenization ikilinganishwa na Mistral Large.
+### Kulinganisha Tokenizers 
 
-Sampuli zote mbili zinachukua maelekezo yale yale lakini unapaswa kuona kuwa NeMo hurudisha tokeni chache ikilinganishwa na Mistral Large.
+Katika mfano huu, tutaangalia jinsi Mistral NeMo inavyoshughulikia tokenization ikilinganishwa na Mistral Large. 
+
+Sampuli zote mbili huchukua ombi lile lile lakini unapaswa kuona kwamba NeMo inarudisha tokeni chache kuliko Mistral Large. 
 
 ```bash
 pip install mistral-common
 ```
 
 ```python 
-# Import needed packages:
+# Ingiza vifurushi vinavyohitajika:
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -251,13 +246,13 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# Pakia tokenizer ya Mistral
 
-model_name = "open-mistral-nemo	"
+model_name = "open-mistral-nemo"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# Gawanya orodha ya ujumbe
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
@@ -275,7 +270,7 @@ tokenized = tokenizer.encode_chat_completion(
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "The temperature unit to use. Infer this from the user's location.",
                             },
                         },
                         "required": ["location", "format"],
@@ -291,12 +286,12 @@ tokenized = tokenizer.encode_chat_completion(
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# Hesabu idadi ya tokens
 print(len(tokens))
 ```
 
 ```python
-# Import needed packages:
+# Ingiza vifurushi vinavyohitajika:
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -307,13 +302,13 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# Pakia tokenizer ya Mistral
 
 model_name = "mistral-large-latest"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# Tenganisha orodha ya ujumbe
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
@@ -331,7 +326,7 @@ tokenized = tokenizer.encode_chat_completion(
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "The temperature unit to use. Infer this from the user's location.",
                             },
                         },
                         "required": ["location", "format"],
@@ -347,13 +342,17 @@ tokenized = tokenizer.encode_chat_completion(
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# Hesabu idadi ya tokeni
 print(len(tokens))
 ```
 
-## Kujifunza hakukomi hapa, endelea Safari
+## Kujifunza hakukomi hapa, endelea safari
 
-Baada ya kumaliza somo hili, angalia [Mkusanyiko wetu wa Kujifunza AI ya Kizazi](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) ili kuendelea kuongeza ujuzi wako wa AI ya Kizazi!
+Baada ya kumaliza somo hili, angalia [Mkusanyiko wa Kujifunza AI Inayotengeneza](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) ili kuendelea kuinua maarifa yako ya AI Inayotengeneza!
 
-**Kiarifu cha Kutotegemea**:  
-Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kwa usahihi, tafadhali fahamu kwamba tafsiri za kiotomatiki zinaweza kuwa na makosa au upungufu wa usahihi. Hati ya asili katika lugha yake ya asili inapaswa kuchukuliwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu inayofanywa na binadamu inapendekezwa. Hatubebei dhamana kwa kutoelewana au tafsiri potofu zinazotokana na matumizi ya tafsiri hii.
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Kionyozo**:
+Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kupata usahihi, tafadhali fahamu kwamba tafsiri za kiotomatiki zinaweza kuwa na makosa au upungufu wa usahihi. Hati ya asili katika lugha yake halisi inapaswa kuchukuliwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu inayofanywa na binadamu inapendekezwa. Hatutojibu kwa kuelewa vibaya au tafsiri potofu zinazotokea kutokana na matumizi ya tafsiri hii.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

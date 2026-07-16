@@ -1,140 +1,143 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "0135e6c271f3ece8699050d4debbce88",
-  "translation_date": "2025-10-17T21:18:08+00:00",
-  "source_file": "04-prompt-engineering-fundamentals/README.md",
-  "language_code": "sw"
-}
--->
-# Misingi ya Uhandisi wa Maelekezo
+# Misingi ya Uhandisi wa Prompt
 
-[![Misingi ya Uhandisi wa Maelekezo](../../../translated_images/sw/04-lesson-banner.a2c90deba7fedacd.webp)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
+[![Misingi ya Uhandisi wa Prompt](../../../translated_images/sw/04-lesson-banner.a2c90deba7fedacd.webp)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
 
 ## Utangulizi
-Moduli hii inashughulikia dhana muhimu na mbinu za kuunda maelekezo bora kwa mifano ya AI inayozalisha. Jinsi unavyoandika maelekezo yako kwa LLM pia ni muhimu. Maelekezo yaliyoandaliwa kwa uangalifu yanaweza kufanikisha majibu bora zaidi. Lakini maneno kama _maelekezo_ na _uhandisi wa maelekezo_ yanamaanisha nini hasa? Na ninawezaje kuboresha _maelekezo_ ninayotuma kwa LLM? Haya ni maswali tutakayojaribu kujibu ndani ya sura hii na inayofuata.
+Moduli hii inashughulikia dhana na mbinu muhimu za kutengeneza prompts bora katika mifano ya AI ya kizazi. Njia unavyoandika prompt kwa LLM pia ni muhimu. Prompt iliyotengenezwa kwa ustadi inaweza kupata ubora bora wa majibu. Lakini hasa maneno kama _prompt_ na _prompt engineering_ yanamaanisha nini? Na ninawezaje kuboresha prompt _input_ ambayo nituma kwa LLM? Haya ni maswali tutayajaribu kujibu katika sura hii na inayofuata.
 
-_AI inayozalisha_ ina uwezo wa kuunda maudhui mapya (mfano, maandishi, picha, sauti, nambari n.k.) kwa kujibu maombi ya mtumiaji. Inafanikisha hili kwa kutumia _Mifano Mikubwa ya Lugha_ kama mfululizo wa GPT ("Generative Pre-trained Transformer") wa OpenAI ambao umefundishwa kutumia lugha ya asili na nambari.
+_Generative AI_ ina uwezo wa kuunda maudhui mapya (kama vile, maandishi, picha, sauti, nambari n.k.) kwa majibu ya maombi ya mtumiaji. Hii inafanikishwa kwa kutumia _Large Language Models_ kama mfululizo wa GPT ("Generative Pre-trained Transformer") wa OpenAI ambao wamefundishwa kutumia lugha ya asili na nambari.
 
-Watumiaji sasa wanaweza kuwasiliana na mifano hii kwa kutumia mifumo inayofahamika kama mazungumzo, bila kuhitaji utaalamu wa kiufundi au mafunzo. Mifano hii ni _inayotegemea maelekezo_ - watumiaji hutuma maandishi (maelekezo) na kupata majibu ya AI (ukamilishaji). Kisha wanaweza "kuzungumza na AI" mara kwa mara, katika mazungumzo ya mizunguko mingi, wakiboresha maelekezo yao hadi majibu yatakapolingana na matarajio yao.
+Watumiaji sasa wanaweza kuzungumza na mifano hii kwa kutumia njia zinazojulikana kama chat, bila ujuzi wa kiufundi au mafunzo. Mifano hii ni _prompt-based_ - watumiaji hutuma ingizo la maandishi (prompt) na kurudishiwa jibu la AI (completion). Kisha wanaweza "ku-chat na AI" kwa mzunguko, wakiboresha prompt yao hadi jibu lifanikishe matarajio yao.
 
-"Maelekezo" sasa yanakuwa kiolesura cha msingi cha _programu_ kwa programu za AI zinazozalisha, zikieleza mifano nini cha kufanya na kuathiri ubora wa majibu yanayorejeshwa. "Uhandisi wa Maelekezo" ni uwanja unaokua haraka wa masomo unaozingatia _muundo na uboreshaji_ wa maelekezo ili kutoa majibu thabiti na bora kwa kiwango kikubwa.
+"Prompts" sasa zinakuwa kiolesura kuu cha _programu_ kwa ajili ya programu za AI za kizazi, zikielekeza mifano kufanya nini na kuathiri ubora wa majibu yanayorejeshwa. "Uhandisi wa Prompt" ni fani inayokua kwa kasi inayojikita katika _usanifu na uboreshaji_ wa prompts ili kutoa majibu thabiti na bora kwa kiwango kikubwa.
 
 ## Malengo ya Kujifunza
 
-Katika somo hili, tunajifunza uhandisi wa maelekezo ni nini, kwa nini ni muhimu, na jinsi tunavyoweza kuunda maelekezo bora zaidi kwa mfano fulani na lengo la programu. Tutaelewa dhana za msingi na mbinu bora za uhandisi wa maelekezo - na kujifunza kuhusu mazingira ya majaribio ya "sandbox" ya Jupyter Notebooks ambapo tunaweza kuona dhana hizi zikitumika kwa mifano halisi.
+Katika somo hili, tutaelewa ni nini Prompt Engineering, kwa nini ni muhimu, na jinsi tunavyoweza kutengeneza prompts bora zaidi kwa mfano na lengo la programu. Tutajifunza dhana kuu na mbinu bora za uhandisi wa prompt - na pia kujifunza kuhusu mazingira ya "sandbox" ya Jupyter Notebooks ambapo tunaweza kuona dhana hizi zikitumika katika mifano halisi.
 
 Mwisho wa somo hili tutakuwa na uwezo wa:
 
-1. Kuelezea uhandisi wa maelekezo ni nini na kwa nini ni muhimu.
-2. Kufafanua vipengele vya maelekezo na jinsi vinavyotumika.
-3. Kujifunza mbinu bora na mbinu za uhandisi wa maelekezo.
-4. Kutumia mbinu zilizojifunza kwa mifano halisi, kwa kutumia kituo cha OpenAI.
+1. Elezea ni nini uhandisi wa prompt na kwa nini ni muhimu.
+2. Eleza vipengele vya prompt na jinsi vinavyotumika.
+3. Jifunze mbinu bora na mbinu za uhandisi wa prompt.
+4. Tumia mbinu ulizojifunza kwa mifano halisi, ukitumia endpoint ya OpenAI.
 
 ## Maneno Muhimu
 
-Uhandisi wa Maelekezo: Mazoezi ya kubuni na kuboresha maingizo ili kuelekeza mifano ya AI kutoa matokeo yanayotarajiwa.
-Tokenization: Mchakato wa kubadilisha maandishi kuwa vitengo vidogo, vinavyoitwa tokeni, ambavyo mfano unaweza kuelewa na kuchakata.
-LLMs Zilizotunzwa kwa Maelekezo: Mifano Mikubwa ya Lugha (LLMs) ambayo imeboreshwa kwa maelekezo maalum ili kuboresha usahihi na umuhimu wa majibu yao.
+Uhandisi wa Prompt: Zoefu la kubuni na kuboresha ingizo ili kuelekeza mifano ya AI kutoa matokeo yanayotarajiwa.
+Tokenization: Mchakato wa kubadilisha maandishi kuwa vitengo vidogo, vinavyoitwa tokens, ambavyo mfano unaweza kuelewa na kuzichakata.
+Instruction-Tuned LLMs: Large Language Models (LLMs) ambazo zimeboreshwa kwa maagizo maalum ili kuboresha usahihi na umuhimu wa majibu yao.
 
-## Mazingira ya Kujifunza
+## Mazingira ya Kujifunzia
 
-Uhandisi wa maelekezo kwa sasa ni zaidi ya sanaa kuliko sayansi. Njia bora ya kuboresha hisia zetu juu yake ni _kufanya mazoezi zaidi_ na kutumia mbinu ya majaribio na makosa inayochanganya utaalamu wa uwanja wa programu na mbinu zinazopendekezwa na uboreshaji maalum wa mfano.
+Uhandisi wa prompt kwa sasa ni sanaa zaidi kuliko sayansi. Njia bora ya kuboresha uelewa wetu ni _kufanya mazoezi zaidi_ na kutumia mbinu ya majaribio na makosa inayochanganya utaalamu wa eneo la matumizi na mbinu zinazopendekezwa na uboreshaji maalum wa model.
 
-Notebook ya Jupyter inayosindikiza somo hili inatoa mazingira ya _sandbox_ ambapo unaweza kujaribu kile unachojifunza - unapoendelea au kama sehemu ya changamoto ya nambari mwishoni. Ili kutekeleza mazoezi, utahitaji:
+Daftari la Jupyter linaloambatana na somo hili linatoa mazingira ya _sandbox_ ambapo unaweza kujaribu kile unachojifunza - unavyosonga mbele au kama sehemu ya changamoto ya msimbo mwishoni. Ili kutekeleza mazoezi, utahitaji:
 
-1. **Funguo ya API ya Azure OpenAI** - kituo cha huduma kwa LLM iliyowekwa.
-2. **Mazingira ya Python** - ambapo Notebook inaweza kutekelezwa.
-3. **Vigezo vya Mazingira ya Ndani** - _kamilisha hatua za [SETUP](./../00-course-setup/02-setup-local.md?WT.mc_id=academic-105485-koreyst) sasa ili kujiandaa_.
+1. **Ufunguo wa Azure OpenAI API** - sehemu ya huduma kwa LLM iliyowekwa.
+2. **Python Runtime** - ambayo Daftari linaweza kutumika ndani yake.
+3. **Mazingira ya Ndani ya Kihalisia** - _kamilisha hatua za [SETUP](./../00-course-setup/02-setup-local.md?WT.mc_id=academic-105485-koreyst) sasa ili uwe tayari_.
 
-Notebook inakuja na mazoezi ya _kuanzia_ - lakini unahimizwa kuongeza sehemu zako za _Markdown_ (maelezo) na _Nambari_ (maombi ya maelekezo) ili kujaribu mifano zaidi au mawazo - na kujenga hisia zako za kubuni maelekezo.
+Daftari linakuja na mazoezi ya _kuanzia_ - lakini unaungwa mkono kuongeza sehemu zako za _Markdown_ (maelezo) na _Code_ (maombi ya prompt) kujaribu mifano au mawazo zaidi - na kujenga uelewa wako wa usanifu wa prompt.
 
-## Mwongozo wa Picha
+## Mwongozo Uliyochorwa
 
-Unataka kupata picha kubwa ya kile somo hili linashughulikia kabla ya kuanza? Angalia mwongozo huu wa picha, ambao unakupa hisia ya mada kuu zinazoshughulikiwa na mambo muhimu ya kuzingatia katika kila moja. Ramani ya somo inakupeleka kutoka kuelewa dhana za msingi na changamoto hadi kuzishughulikia kwa mbinu husika za uhandisi wa maelekezo na mbinu bora. Kumbuka kuwa sehemu ya "Mbinu za Juu" katika mwongozo huu inahusu maudhui yanayoshughulikiwa katika sura _inayofuata_ ya mtaala huu.
+Unataka kupata taswira kubwa ya kile somo hili linashughulikia kabla hujaingia ndani? Angalia mwongozo huu uliyochorwa, unaokupa wazo la mada kuu zinazoshughulikiwa na matokeo muhimu ya kufikiria kila moja. Ramani ya somo inakuongoza kutoka kwa kuelewa dhana kuu na changamoto hadi kuzitatua kwa mbinu sahihi za uhandisi wa prompt na mbinu bora. Kumbuka kuwa sehemu ya "Mbinu Zinazidi" katika mwongozo huu inarejelea maudhui ambayo yamezungumziwa katika sura _inayofuata_ ya mkondo huu wa masomo.
 
-![Mwongozo wa Picha wa Uhandisi wa Maelekezo](../../../translated_images/sw/04-prompt-engineering-sketchnote.d5f33336957a1e4f.webp)
+![Mwongozo Uliyochorwa wa Uhandisi wa Prompt](../../../translated_images/sw/04-prompt-engineering-sketchnote.d5f33336957a1e4f.webp)
 
-## Kuanza kwa Biashara Yetu
+## Kampuni Yetu
 
-Sasa, hebu tuzungumze kuhusu jinsi _mada hii_ inavyohusiana na dhamira ya biashara yetu ya [kuleta ubunifu wa AI katika elimu](https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst). Tunataka kujenga programu za elimu zinazotumia AI kwa _ujifunzaji wa kibinafsi_ - kwa hivyo hebu tufikirie jinsi watumiaji tofauti wa programu yetu wanaweza "kubuni" maelekezo:
+Sasa, hebu tuzungumzie jinsi _mada hii_ inavyohusiana na dhamira yetu ya kuanzisha biashara ya [kuleta uvumbuzi wa AI katika elimu](https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst). Tunataka kujenga programu zilizoendeshwa na AI za _kujifunza binafsi_ - kwa hiyo fikiria jinsi watumiaji tofauti wa programu yetu wanaweza "kubuni" prompts:
 
-- **Wasimamizi** wanaweza kuuliza AI _kuchambua data ya mtaala ili kutambua mapungufu katika mafunzo_. AI inaweza kufupisha matokeo au kuyaonyesha kwa nambari.
-- **Walimu** wanaweza kuuliza AI _kuunda mpango wa somo kwa hadhira lengwa na mada fulani_. AI inaweza kuunda mpango wa kibinafsi katika muundo uliowekwa.
-- **Wanafunzi** wanaweza kuuliza AI _kuwafundisha somo gumu_. AI sasa inaweza kuwaongoza wanafunzi kwa masomo, vidokezo & mifano inayolingana na kiwango chao.
+- **Wasimamiaji** wanaweza kuomba AI _kuwachambua data za mitaala ili kubaini mapungufu ya mafunzo_. AI inaweza kufupisha matokeo au kuyaonyesha kwa nambari.
+- **Walimu** wanaweza kuomba AI _kutengeneza mpango wa somo kwa hadhira lengwa na mada_. AI inaweza kujenga mpango binafsi kwa muundo maalum.
+- **Wanafunzi** wanaweza kuomba AI _kuwaongoza katika somo gumu_. AI sasa inaweza kuwasaidia wanafunzi kwa masomo, vidokezo & mifano inayolingana na kiwango chao.
 
-Hiyo ni mwanzo tu. Angalia [Maelekezo kwa Elimu](https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst) - maktaba ya maelekezo ya chanzo huria iliyokusanywa na wataalamu wa elimu - ili kupata hisia pana ya uwezekano! _Jaribu kuendesha baadhi ya maelekezo hayo katika sandbox au kwa kutumia OpenAI Playground ili kuona kinachotokea!_
+Hiyo ni sehemu ndogo tu. Angalia [Prompts For Education](https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst) - maktaba ya prompts ya chanzo huria iliyokusanywa na wataalamu wa elimu - ili upate wazo pana la uwezekano! _Jaribu kuendesha baadhi ya prompts hizo kwenye sandbox au kutumia OpenAI Playground kuona matokeo!_
 
-## Uhandisi wa Maelekezo ni Nini?
+<!--
+TEMPLATE YA SOMO:
+Kipengele hiki kinapaswa kufunika dhana kuu #1.
+Thibitisha dhana kwa mifano na marejeleo.
 
-Tulianza somo hili kwa kufafanua **Uhandisi wa Maelekezo** kama mchakato wa _kubuni na kuboresha_ maingizo ya maandishi (maelekezo) ili kutoa majibu thabiti na bora (ukamilishaji) kwa lengo fulani la programu na mfano. Tunaweza kufikiria hili kama mchakato wa hatua 2:
+DHANA #1:
+Uhandisi wa Prompt.
+Ieleze na fafanua kwanini inahitajika.
+-->
 
-- _kubuni_ maelekezo ya awali kwa mfano fulani na lengo
-- _kuboresha_ maelekezo mara kwa mara ili kuboresha ubora wa majibu
+## Uhandisi wa Prompt ni Nini?
 
-Hii ni mchakato wa lazima wa majaribio na makosa unaohitaji hisia na juhudi za mtumiaji ili kupata matokeo bora. Kwa hivyo kwa nini ni muhimu? Ili kujibu swali hilo, tunahitaji kwanza kuelewa dhana tatu:
+Tulianza somo hili kwa kufafanua **Prompt Engineering** kama mchakato wa _kubuni na kuboresha_ ingizo la maandishi (prompts) ili kutoa majibu thabiti na bora (completions) kwa lengo maalum la programu na mfano. Tunaweza kuiangalia kama mchakato wa hatua 2:
 
-- _Tokenization_ = jinsi mfano "unavyoona" maelekezo
-- _Base LLMs_ = jinsi mfano wa msingi "unavyosindika" maelekezo
-- _LLMs Zilizotunzwa kwa Maelekezo_ = jinsi mfano unavyoweza kuona "kazi"
+- _kubuni_ prompt ya awali kwa mfano na lengo fulani
+- _kuboresha_ prompt kwa mizunguko ili kuboresha ubora wa jibu
+
+Huu ni mchakato wa majaribio na makosa unaotegemea hisia na jitihada za mtumiaji kupata matokeo bora. Kwa hiyo ni kwa nini ni muhimu? Ili kujibu swali hilo, tunahitaji kwanza kuelewa dhana tatu:
+
+- _Tokenization_ = jinsi mfano "unaona" prompt
+- _Base LLMs_ = jinsi mfano wa msingi "unosindika" prompt
+- _Instruction-Tuned LLMs_ = jinsi mfano sasa unaweza kuona "kazi"
 
 ### Tokenization
 
-LLM huona maelekezo kama _mlolongo wa tokeni_ ambapo mifano tofauti (au matoleo ya mfano) inaweza kugawa maelekezo sawa kwa njia tofauti. Kwa kuwa LLMs zimefundishwa kwa tokeni (na si kwa maandishi ghafi), jinsi maelekezo yanavyogawanywa ina athari ya moja kwa moja kwenye ubora wa majibu yanayozalishwa.
+LLM inaona prompts kama _mfuatano wa tokens_ ambapo mifano tofauti (au toleo la mfano) inaweza kugawanya prompt moja kwa njia tofauti. Kwa kuwa LLM zimefundishwa kwa tokens (na si kwa maandishi ya moja kwa moja), njia ambavyo prompts hugawanywa ina athari moja kwa moja kwa ubora wa jibu lililotengenezwa.
 
-Ili kupata hisia ya jinsi tokenization inavyofanya kazi, jaribu zana kama [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) iliyoonyeshwa hapa chini. Nakili maelekezo yako - na uone jinsi yanavyobadilishwa kuwa tokeni, ukizingatia jinsi wahusika wa nafasi na alama za uakifishaji zinavyoshughulikiwa. Kumbuka kuwa mfano huu unaonyesha LLM ya zamani (GPT-3) - kwa hivyo kujaribu hili na mfano mpya zaidi kunaweza kutoa matokeo tofauti.
+Ili kupata hisia ya jinsi tokenization inavyofanya kazi, jaribu zana kama [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) iliyoonyeshwa hapa chini. Nakili prompt yako - na ona jinsi inavyobadilishwa kuwa tokens, ukizingatia jinsi wahusika wa nafasi tupu na alama za ulinganifu zinavyoshughulikiwa. Kumbuka mfano huu unaonyesha LLM wa zamani (GPT-3) - hivyo kujaribu na mfano mpya kunaweza kutoa jibu tofauti.
 
 ![Tokenization](../../../translated_images/sw/04-tokenizer-example.e71f0a0f70356c5c.webp)
 
 ### Dhana: Mifano ya Msingi
 
-Mara maelekezo yanapogawanywa, kazi ya msingi ya ["Base LLM"](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) (au mfano wa msingi) ni kutabiri tokeni katika mlolongo huo. Kwa kuwa LLMs zimefundishwa kwa seti kubwa za data za maandishi, zina hisia nzuri ya uhusiano wa takwimu kati ya tokeni na zinaweza kufanya utabiri huo kwa ujasiri fulani. Kumbuka kuwa hazielewi _maana_ ya maneno katika maelekezo au tokeni; zinaona tu muundo ambao zinaweza "kukamilisha" kwa utabiri wao unaofuata. Zinaweza kuendelea kutabiri mlolongo hadi kusimamishwa na uingiliaji wa mtumiaji au hali fulani iliyowekwa awali.
+Mara prompt itakapogawanywa, kazi kuu ya ["Base LLM"](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) (au mfano wa msingi) ni kutabiri token inayofuata katika mfuatano huo. Kwa kuwa LLM zimefunzwa kwa seti kubwa za maandishi, zina uelewa mzuri wa uhusiano wa takwimu kati ya tokens na zinaweza kufanya utabiri huo kwa kujiamini fulani. Kumbuka hazielewi _maana_ ya maneno katika prompt au token; zinabaini tu muundo wanaoweza "ukamilishe" kwa utabiri wao ujao. Wanaweza kuendelea kutabiri mfuatano mpaka mzunguko ukikatizwa na mtumiaji au kwa hali iliyowekwa kwa awali.
 
-Unataka kuona jinsi ukamilishaji unaotegemea maelekezo unavyofanya kazi? Weka maelekezo hapo juu kwenye [_Chat Playground_](https://oai.azure.com/playground?WT.mc_id=academic-105485-koreyst) ya Azure OpenAI Studio na mipangilio ya chaguo-msingi. Mfumo umewekwa kutibu maelekezo kama maombi ya taarifa - kwa hivyo unapaswa kuona ukamilishaji unaoridhisha muktadha huu.
+Unataka kuona jinsi utimilifu wa prompt-based unavyofanya kazi? Weka prompt ya juu katika [Microsoft Foundry playground](https://ai.azure.com?WT.mc_id=academic-105485-koreyst) kwa mipangilio ya chaguo-msingi. Mfumo umewekwa kutambua prompts kama maombi ya taarifa - kwa hiyo unapaswa kuona utimilifu unaokidhi muktadha huu.
 
-Lakini je, mtumiaji alitaka kuona kitu maalum kinachokidhi vigezo fulani au lengo la kazi? Hapa ndipo _LLMs zilizotunzwa kwa maelekezo_ zinapokuja.
+Lakini vipi ikiwa mtumiaji angependa kuona kitu maalum kinachokidhi vigezo au lengo la kazi? Hapa ndipo LLM zilizo _na maelekezo zilizoboreshwa_ zinapoingia picha.
 
 ![Base LLM Chat Completion](../../../translated_images/sw/04-playground-chat-base.65b76fcfde0caa67.webp)
 
-### Dhana: LLMs Zilizotunzwa kwa Maelekezo
+### Dhana: LLM Zilizoboreshwa kwa Maelekezo
 
-[LLM iliyotunzwa kwa Maelekezo](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) huanza na mfano wa msingi na kuiboresha kwa mifano au jozi za ingizo/tokeo (mfano, "ujumbe" wa mizunguko mingi) ambazo zinaweza kuwa na maelekezo wazi - na majibu kutoka kwa AI yanajaribu kufuata maelekezo hayo.
+[Instruction Tuned LLM](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) huanza na mfano wa msingi na huboresha kwa mifano au jozi ya ingizo/matokeo (kama vile, "messages" za mizunguko mingi) ambazo zinaweza kuihifadhi maelekezo wazi - na AI hujaribu kufuata maelekezo hayo wakati wa jibu.
 
-Hii hutumia mbinu kama Kujifunza Kuimarisha kwa Maoni ya Binadamu (RLHF) ambayo inaweza kufundisha mfano _kufuata maelekezo_ na _kujifunza kutoka kwa maoni_ ili kutoa majibu yanayofaa zaidi kwa matumizi ya vitendo na yanayolingana zaidi na malengo ya mtumiaji.
+Hii hutumia mbinu kama Reinforcement Learning with Human Feedback (RLHF) ambazo zinaweza kufundisha mfano _kufuata maagizo_ na _kujifunza kutokana na maoni_ ili kutoa majibu yanayofaa zaidi kwa matumizi halisi na yenye umuhimu kwa malengo ya mtumiaji.
 
-Hebu tujaribu - rudi kwenye maelekezo hapo juu, lakini sasa badilisha _ujumbe wa mfumo_ ili kutoa maelekezo yafuatayo kama muktadha:
+Hebu tujaribu - rudi kwenye prompt hapo juu, lakini sasa badilisha _ujumbe wa mfumo_ kutoa maelekezo yafuatayo kama muktadha:
 
-> _Fupisha maudhui unayopewa kwa mwanafunzi wa darasa la pili. Weka matokeo katika aya moja yenye vidokezo 3-5._
+> _Fupisha maudhui yaliyotolewa kwa mwanafunzi wa darasa la pili. Weka matokeo katika aya moja yenye vidokezo 3-5._
 
-Angalia jinsi matokeo sasa yanavyolingana na lengo na muundo unaotakiwa? Mwalimu sasa anaweza kutumia moja kwa moja majibu haya katika slaidi za darasa hilo.
+Ona jinsi matokeo sasa yalivoongozwa kufanikisha lengo na muundo unaotakiwa? Mwalimu sasa anaweza kutumia jibu hili moja kwa moja katika slaidi za darasa hilo.
 
 ![Instruction Tuned LLM Chat Completion](../../../translated_images/sw/04-playground-chat-instructions.b30bbfbdf92f2d05.webp)
 
-## Kwa nini tunahitaji Uhandisi wa Maelekezo?
+## Kwa Nini Tunahitaji Uhandisi wa Prompt?
 
-Sasa kwa kuwa tunajua jinsi maelekezo yanavyosindika na LLMs, hebu tuzungumze kuhusu _kwa nini_ tunahitaji uhandisi wa maelekezo. Jibu liko katika ukweli kwamba LLMs za sasa zina changamoto kadhaa zinazofanya _ukamilishaji wa kuaminika na thabiti_ kuwa changamoto zaidi kufanikisha bila kuweka juhudi katika uundaji na uboreshaji wa maelekezo. Kwa mfano:
+Sasa tunapojua jinsi prompts zinavyosindikwa na LLM, hebu tuzungumzie _kwanini_ tunahitaji uhandisi wa prompt. Jibu liko katika ukweli kwamba LLM za sasa zina changamoto kadhaa zinazofanya _utimilifu wa uhakika na thabiti_ kuwa gumu kufanikishwa bila jitihada za uundaji na uboreshaji wa prompt. Kwa mfano:
 
-1. **Majibu ya mfano ni ya nasibu.** _Maelekezo yale yale_ yanaweza kutoa majibu tofauti na mifano tofauti au matoleo ya mfano. Na yanaweza hata kutoa matokeo tofauti na _mfano ule ule_ kwa nyakati tofauti. _Mbinu za uhandisi wa maelekezo zinaweza kutusaidia kupunguza tofauti hizi kwa kutoa miongozo bora_.
+1. **Majibu ya mfano ni ya bahati nasibu.** _Prompt ile ile_ huwezi kupata majibu sawa kila wakati na mifano au matoleo ya tofauti ya mfano. Na inaweza hata kutoa matokeo tofauti kwa _mfano ule ule_ kwa nyakati tofauti. _Mbinu za uhandisi wa prompt zinaweza kutusaidia kupunguza tofauti hizi kwa kuweka mizinga mizuri_.
 
-1. **Mifano inaweza kutunga majibu.** Mifano imefundishwa kwa seti kubwa lakini _finyu_ za data, ikimaanisha kuwa hazina maarifa kuhusu dhana nje ya wigo wa mafunzo hayo. Kwa sababu hiyo, zinaweza kutoa ukamilishaji ambao si sahihi, wa kufikirika, au unaopingana moja kwa moja na ukweli unaojulikana. _Mbinu za uhandisi wa maelekezo zinasaidia watumiaji kutambua na kupunguza utungaji kama huo kwa mfano, kwa kuomba AI ithibitishe au kutoa sababu_.
+1. **Mifano inaweza kutengeneza majibu.** Mifano imefundishwa kwa seti kubwa lakini zenye kikomo za data, maana haijui dhana za nje ya mafunzo hayo. Matokeo yake, inaweza kutoa majibu yasiyo sahihi, ya kubuni, au moja kwa moja kupingana na ukweli unaojulikana. _Mbinu za uhandisi wa prompt husaidia watumiaji kubaini na kupunguza utengenezaji wa makosa kama vile kuomba AI nakala za rasilimali au sababu_.
 
-1. **Uwezo wa mifano utatofautiana.** Mifano mpya au vizazi vya mfano vitakuwa na uwezo zaidi lakini pia huleta tabia za kipekee na changamoto za gharama & ugumu. _Uhandisi wa maelekezo unaweza kutusaidia kuunda mbinu bora na michakato inayoficha tofauti na kuendana na mahitaji maalum ya mfano kwa njia inayoweza kupimika na isiyo na mshono_.
+1. **Uwezo wa mifano utatofautiana.** Mifano mipya au matoleo mapya yataleta uwezo mzuri lakini pia tabia na changamoto za kipekee kiuchumi na teknohama. _Uhandisi wa prompt unaweza kutusaidia kuendeleza mbinu bora na michakato inayotoa tofauti na kuzoea mahitaji maalum ya mfano kwa njia zinazoweza kupanuliwa na rahisi_.
 
-Hebu tuone hili likifanya kazi katika OpenAI au Azure OpenAI Playground:
+Hebu tuone hii ikifanyakazi katika OpenAI au Azure OpenAI Playground:
 
-- Tumia maelekezo yale yale na mifano tofauti ya LLM (mfano, OpenAI, Azure OpenAI, Hugging Face) - je, uliona tofauti?
-- Tumia maelekezo yale yale mara kwa mara na _mfano ule ule_ wa LLM (mfano, Azure OpenAI Playground) - tofauti hizi zilikuwa vipi?
+- Tumia prompt ile ile na utoaji tofauti wa LLM (mfano, OpenAI, Azure OpenAI, Hugging Face) - uliiona tofauti?
+- Tumia prompt ile ile mara kwa mara na utoaji wa _mfano ule ule_ (mfano, Azure OpenAI playground) - tofauti hizi zilikuwa vipi?
 
-### Mfano wa Utungaji
+### Mfano wa Kutengeneza Majibu
 
-Katika kozi hii, tunatumia neno **"utungaji"** kurejelea hali ambapo LLMs wakati mwingine huzalisha taarifa zisizo sahihi kutokana na mapungufu katika mafunzo yao au vikwazo vingine. Unaweza pia kuwa umesikia hili likirejelewa kama _"halu"_" katika makala maarufu au karatasi za utafiti. Hata hivyo, tunapendekeza sana kutumia neno _"utungaji"_ ili tusihusishe tabia ya kibinadamu kwa matokeo yanayotokana na mashine. Hii pia inaimarisha [miongozo ya AI inayowajibika](https://www.microsoft.com/ai/responsible-ai?WT.mc_id=academic-105485-koreyst) kutoka kwa mtazamo wa istilahi, kuondoa maneno ambayo yanaweza pia kuchukuliwa kuwa ya kukera au yasiyo jumuishi katika baadhi ya muktadha.
+Katika kozi hii, tunatumia neno **"kutengeneza"** kurejelea hali ambapo LLM mara nyingine hubuni taarifa isiyo sahihi ki ukweli kutokana na mipaka ya mafunzo au vizingiti vingine. Labda umesikia pia hili likitajwa kama _"matukio ya kughafilika"_ katika makala maarufu au tafiti za kitaalamu. Hata hivyo, tunapendekeza sana kutumia neno _"kutengeneza"_ ili kuepuka kuionyesha tabia ya kiraia kwa mfano kama tabia ya mtu. Hii pia inathibitisha miongozo ya [AI Inayohusika](https://www.microsoft.com/ai/responsible-ai?WT.mc_id=academic-105485-koreyst) kutoka kwa mtazamo wa istilahi, kuondoa maneno ambayo yanaweza kutazamwa kama mabaya au yasiyo jumuishi katika muktadha fulani.
 
-Unataka kupata hisia ya jinsi utungaji unavyofanya kazi? Fikiria maelekezo yanayoelekeza AI kuunda maudhui kwa mada isiyokuwepo (ili kuhakikisha haipatikani katika seti ya mafunzo). Kwa mfano - nilijaribu maelekezo haya:
+Unataka kuelewa jinsi utengenezaji unavyofanya kazi? Fikiria prompt inayomwelekeza AI kuzalisha maudhui kwa mada isiyo ya kweli (ili kuhakikisha haipatikani katika data za mafunzo). Kwa mfano - nilijaribu prompt hii:
 
-> **Maelekezo:** tengeneza mpango wa somo kuhusu Vita vya Mirihi vya mwaka 2076.
-Utafutaji wa mtandao ulionyesha kuwa kulikuwa na akaunti za kubuni (mfano, mfululizo wa televisheni au vitabu) kuhusu vita vya Mars - lakini hakuna yoyote mwaka 2076. Akili ya kawaida pia inatuambia kuwa mwaka 2076 ni _katika siku zijazo_ na kwa hivyo, haiwezi kuhusishwa na tukio halisi.
+> **Prompt:** tengeneza mpango wa somo juu ya Vita vya Mars mwaka 2076.
 
-Kwa hivyo, nini kinatokea tunapojaribu ombi hili na watoa huduma tofauti wa LLM?
+Utafutaji mtandaoni ulinionyesha kuwa kulikuwa na akaunti za kubuniwa (mfano, mfululizo wa televisheni au vitabu) juu ya vita za Mars - lakini hakuna kwa mwaka 2076. Uelewa wa kawaida pia unasema kuwa 2076 ni _baadaye_ na kwa hivyo, haiwezi kuhusishwa na tukio halisi.
+
+
+Basi nini hutokea tunapotumia amri hii na watoa huduma tofauti wa LLM?
 
 > **Jibu 1**: OpenAI Playground (GPT-35)
 
@@ -144,58 +147,68 @@ Kwa hivyo, nini kinatokea tunapojaribu ombi hili na watoa huduma tofauti wa LLM?
 
 ![Jibu 2](../../../translated_images/sw/04-fabrication-aoai.b14268e9ecf25caf.webp)
 
-> **Jibu 3**: Hugging Face Chat Playground (LLama-2)
+> **Jibu 3**: : Hugging Face Chat Playground (LLama-2)
 
 ![Jibu 3](../../../translated_images/sw/04-fabrication-huggingchat.faf82a0a51278956.webp)
 
-Kama ilivyotarajiwa, kila modeli (au toleo la modeli) hutoa majibu yanayotofautiana kidogo kutokana na tabia ya nasibu na tofauti za uwezo wa modeli. Kwa mfano, modeli moja inalenga hadhira ya darasa la nane, wakati nyingine inadhani ni mwanafunzi wa shule ya upili. Lakini modeli zote tatu zilitengeneza majibu ambayo yanaweza kumshawishi mtumiaji asiye na taarifa kuwa tukio hilo lilikuwa halisi.
+Kama ilivyotarajiwa, kila mfano (au toleo la mfano) hutengeneza majibu tofauti kidogo kutokana na tabia isiyotabirika na tofauti za uwezo wa mfano. Kwa mfano, mfano mmoja unalenga hadhira ya darasa la nane wakati mwingine unadhani mwanafunzi wa shule ya upili. Lakini modeli zote tatu zilizalisha majibu ambayo yangemshawishi mtumiaji asiye na taarifa kuwa tukio hilo ni halisi.
 
-Mbinu za uhandisi wa ombi kama _metaprompting_ na _mipangilio ya joto_ zinaweza kupunguza uzushi wa modeli kwa kiwango fulani. Miundo mipya ya uhandisi wa ombi pia inajumuisha zana na mbinu mpya kwa urahisi katika mtiririko wa ombi, ili kupunguza au kupunguza baadhi ya athari hizi.
+Mbinu za uhandisi wa maombi kama _metaprompting_ na _usanidi wa joto_ zinaweza kupunguza utafiti wa mfano kwa kiwango fulani. Miundo mipya ya uhandisi wa maombi pia huingiza zana na mbinu mpya kwa urahisi katika mtiririko wa amri, ili kupunguza au kuondoa baadhi ya athari hizi.
 
 ## Uchunguzi wa Kesi: GitHub Copilot
 
-Tumalize sehemu hii kwa kupata hisia ya jinsi uhandisi wa ombi unavyotumika katika suluhisho za ulimwengu halisi kwa kuangalia Uchunguzi wa Kesi: [GitHub Copilot](https://github.com/features/copilot?WT.mc_id=academic-105485-koreyst).
+Tufunge sehemu hii kwa kupata hisia za jinsi uhandisi wa maombi unavyotumika katika suluhisho halisi kwa kuangalia Uchunguzi moja wa Kesi: [GitHub Copilot](https://github.com/features/copilot?WT.mc_id=academic-105485-koreyst).
 
-GitHub Copilot ni "Mshirika wako wa Programu ya AI" - inabadilisha maombi ya maandishi kuwa ukamilishaji wa msimbo na imeunganishwa katika mazingira yako ya maendeleo (mfano, Visual Studio Code) kwa uzoefu wa mtumiaji usio na mshono. Kama ilivyoandikwa katika mfululizo wa blogu hapa chini, toleo la awali lilitegemea modeli ya OpenAI Codex - huku wahandisi wakigundua haraka hitaji la kurekebisha modeli na kuendeleza mbinu bora za uhandisi wa ombi, ili kuboresha ubora wa msimbo. Mnamo Julai, walizindua [modeli ya AI iliyoboreshwa inayozidi Codex](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst) kwa mapendekezo ya haraka zaidi.
+GitHub Copilot ni "Mshirika Wako wa Kuprogramu wa AI" - hubadilisha maombi ya maandishi kuwa maandalizi ya msimbo na umeunganishwa na mazingira yako ya maendeleo (kama vile Visual Studio Code) kwa uzoefu rahisi wa mtumiaji. Kama ilivyoandikwa katika mfululizo wa blogu hapa chini, toleo la mapema lilikuwa la mfano wa OpenAI Codex - na wahandisi wakitambua haraka haja ya kufanyia marekebisho mfano na kuendeleza mbinu bora za uhandisi wa maombi, ili kuboresha ubora wa msimbo. Mwezi Julai, walizindua [mfano wa AI ulioboreshwa unaozidi Codex](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst) kwa mapendekezo ya haraka zaidi.
 
-Soma machapisho kwa mpangilio, ili kufuatilia safari yao ya kujifunza.
+Soma machapisho kwa mpangilio, kufuatilia safari yao ya kujifunza.
 
-- **Mei 2023** | [GitHub Copilot Inazidi Kuwa Bora Katika Kuelewa Msimbo Wako](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst)
-- **Mei 2023** | [Ndani ya GitHub: Kufanya Kazi na LLMs Nyuma ya GitHub Copilot](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst).
-- **Jun 2023** | [Jinsi ya Kuandika Maombi Bora kwa GitHub Copilot](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst).
-- **Jul 2023** | [.. GitHub Copilot Inazidi Codex na Modeli ya AI Iliyoboreshwa](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)
-- **Jul 2023** | [Mwongozo wa Mwandishi wa Programu kwa Uhandisi wa Maombi na LLMs](https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst)
-- **Sep 2023** | [Jinsi ya Kujenga Programu ya LLM ya Biashara: Masomo kutoka GitHub Copilot](https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst)
+- **Mei 2023** | [GitHub Copilot inaboresha kuelewa msimbo wako](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst)
+- **Mei 2023** | [Ndani ya GitHub: Kufanya kazi na LLMs nyuma ya GitHub Copilot](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst).
+- **Jun 2023** | [Jinsi ya kuandika maombi bora kwa GitHub Copilot](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst).
+- **Jul 2023** | [.. GitHub Copilot unazidi Codex na mfano wa AI ulioboreshwa](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)
+- **Jul 2023** | [Mwongozo wa Mhandisi kwa Uhandisi wa Maombi na LLMs](https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst)
+- **Sep 2023** | [Jinsi ya kujenga app ya LLM ya kampuni: Funzo kutoka GitHub Copilot](https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst)
 
-Unaweza pia kuvinjari [Blogu ya Uhandisi](https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst) kwa machapisho zaidi kama [hili](https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst) linaloonyesha jinsi modeli hizi na mbinu zinavyotumika kuendesha programu za ulimwengu halisi.
+Unaweza pia kutembelea [blogu yao ya Uhandisi](https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst) kwa machapisho zaidi kama [hiki](https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst) kinachoonyesha jinsi modeli na mbinu hizi zinavyotumika kuendesha matumizi halisi.
 
 ---
 
-## Uundaji wa Maombi
+<!--
+KILELE CHA SOMO:
+Kitengo hiki kinapaswa kufunika dhana kuu #2.
+Imarisha dhana hiyo kwa mifano na marejeleo.
 
-Tumeona kwa nini uhandisi wa ombi ni muhimu - sasa wacha tuelewe jinsi maombi yanavyoundwa ili tuweze kutathmini mbinu tofauti za kubuni maombi kwa ufanisi zaidi.
+DHANA #2:
+Ubunifu wa Amri.
+Imeonyeshwa kwa mifano.
+-->
 
-### Ombi la Msingi
+## Ujenzi wa Amri
 
-Wacha tuanze na ombi la msingi: pembejeo ya maandishi inayotumwa kwa modeli bila muktadha mwingine wowote. Hapa kuna mfano - tunapotuma maneno machache ya kwanza ya wimbo wa taifa wa Marekani kwa OpenAI [Completion API](https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst) inakamilisha mara moja majibu na mistari michache inayofuata, ikionyesha tabia ya msingi ya utabiri.
+Tumeona kwa nini uhandisi wa maombi ni muhimu - sasa hebu tufahamu jinsi maombi yanavyotengenezwa ili tuweze kutathmini mbinu tofauti kwa ajili ya kubuni amri zenye ufanisi zaidi.
 
-| Ombi (Pembejeo)     | Ukamilishaji (Matokeo)                                                                                                                        |
-| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| Oh say can you see  | Inaonekana kama unaanza maneno ya "The Star-Spangled Banner," wimbo wa taifa wa Marekani. Maneno kamili ni ...                               |
+### Amri ya Msingi
 
-### Ombi Gumu
+Hebu tuanze na amri ya msingi: ingizo la maandishi lililotumwa kwa mfano bila muktadha mwingine. Haya ni mfano - tunapotuma maneno machache ya mwanzo ya wimbo wa taifa wa Marekani kwa OpenAI [Completion API](https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst) mara moja _inakamilisha_ jibu na mistari mingine michache, ikionyesha tabia ya msingi ya utabiri.
 
-Sasa wacha tuongeze muktadha na maelekezo kwa ombi hilo la msingi. [Chat Completion API](https://learn.microsoft.com/azure/ai-services/openai/how-to/chatgpt?WT.mc_id=academic-105485-koreyst) inatuwezesha kuunda ombi gumu kama mkusanyiko wa _ujumbe_ wenye:
+| Amri (Injizo)     | Kukamilika (Matokeo)                                                                                                                        |
+| :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| Oh say can you see | Inaonekana kama unaanza mistari ya wimbo "The Star-Spangled Banner," wimbo wa taifa wa Marekani. Mistari yote iko ... |
 
-- Jozi za pembejeo/mazao zinazoakisi pembejeo za _mtumiaji_ na majibu ya _msaidizi_.
-- Ujumbe wa mfumo unaoweka muktadha wa tabia ya msaidizi au utu wake.
+### Amri Changamano
 
-Ombi sasa liko katika muundo hapa chini, ambapo _tokenization_ inakamata kwa ufanisi taarifa muhimu kutoka kwa muktadha na mazungumzo. Sasa, kubadilisha muktadha wa mfumo kunaweza kuwa na athari kubwa kwa ubora wa ukamilishaji, kama pembejeo za mtumiaji zinazotolewa.
+Sasa tutaongeza muktadha na maelekezo kwa amri hiyo ya msingi. [Chat Completion API](https://learn.microsoft.com/azure/ai-services/openai/how-to/chatgpt?WT.mc_id=academic-105485-koreyst) inatupatia uwezo wa kuunda amri changamano kama mkusanyiko wa _ujumbe_ wenye:
+
+- Jozi za ingizo/maoutput zinazoakisi ingizo la _mtumiaji_ na jibu la _msaidizi_.
+- Ujumbe wa mfumo unaoweka muktadha wa tabia au utu wa msaidizi.
+
+Ombi sasa iko katika muundo ulio hapa chini, ambapo _ugawaji tokeni_ hujumuisha habari muhimu kutoka kwa muktadha na mazungumzo. Sasa, kubadilisha muktadha wa mfumo kunaweza kuathiri ubora wa maelezo, kama vile ingizo la mtumiaji lililotolewa.
 
 ```python
-response = openai.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=[
+response = client.responses.create(
+    model="gpt-4o-mini",
+    input=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Who won the world series in 2020?"},
         {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
@@ -204,193 +217,196 @@ response = openai.chat.completions.create(
 )
 ```
 
-### Ombi la Maelekezo
+### Amri za Maelekezo
 
-Katika mifano ya hapo juu, ombi la mtumiaji lilikuwa swali rahisi la maandishi ambalo linaweza kufasiriwa kama ombi la taarifa. Kwa maombi ya _maelekezo_, tunaweza kutumia maandishi hayo kuelezea kazi kwa undani zaidi, tukitoa mwongozo bora kwa AI. Hapa kuna mfano:
+Katika mifano iliyotangulia, amri ya mtumiaji ilikuwa swali rahisi la maandishi ambalo linaweza kutafsiriwa kama ombi la taarifa. Kwa amri za _maelekezo_, tunaweza kutumia maandishi hayo kuelezea kazi kwa undani zaidi, tukitoa mwongozo bora kwa AI. Hapa kuna mfano:
 
-| Ombi (Pembejeo)                                                                                                                                                                                                                         | Ukamilishaji (Matokeo)                                                                                                        | Aina ya Maelekezo   |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :------------------ |
-| Andika maelezo ya Vita vya Kiraia                                                                                                                                                                                                      | _ilirejesha aya rahisi_                                                                                                      | Rahisi              |
-| Andika maelezo ya Vita vya Kiraia. Toa tarehe muhimu na matukio na eleza umuhimu wake                                                                                                                                                  | _ilirejesha aya ikifuatiwa na orodha ya tarehe muhimu za matukio na maelezo_                                                 | Gumu                |
-| Andika maelezo ya Vita vya Kiraia katika aya 1. Toa alama 3 za risasi zenye tarehe muhimu na umuhimu wake. Toa alama 3 zaidi za risasi zenye wahusika muhimu wa kihistoria na michango yao. Rejesha matokeo kama faili ya JSON.          | _ilirejesha maelezo ya kina zaidi katika kisanduku cha maandishi, kilichopangwa kama JSON unachoweza kunakili na kuweka kwenye faili na kuthibitisha kama inavyohitajika_ | Gumu. Iliyopangwa.  |
+| Amri (Injizo)                                                                                                                                                                                                                         | Kukamilika (Matokeo)                                                                                                        | Aina ya Maelekezo  |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+| Andika maelezo ya Vita vya wenyewe kwa wenyewe                                                                                                                                                                                   | _iliarifiwa aya rahisi_                                                                                              | Rahisi              |
+| Andika maelezo ya Vita vya wenyewe kwa wenyewe. Toa tarehe muhimu na matukio na eleza umuhimu wake                                                                                                                                     | _iliarifiwa aya ikifuatiwa na orodha ya tarehe muhimu za matukio na maelezo_                                             | Changamano          |
+| Andika maelezo ya Vita vya wenyewe kwa wenyewe katika aya 1. Toa vidokezo 3 na tarehe muhimu na umuhimu wake. Toa vidokezo 3 zaidi vya watu wa kihistoria na mchango wao. Rejesha matokeo kama faili la JSON | _inarudisha maelezo ya kina kwa kisanduku cha maandishi, kilichoandaliwa kama JSON ambacho unaweza kunakili na kuweka kwenye faili na kuthibitisha kama inahitajika_ | Changamano. Imeandaliwa. |
 
 ## Maudhui ya Msingi
 
-Katika mifano ya hapo juu, ombi bado lilikuwa wazi sana, likiruhusu LLM kuamua ni sehemu gani ya seti ya data iliyofunzwa awali inayohusiana. Kwa muundo wa _maudhui ya msingi_, maandishi ya pembejeo yanagawanywa katika sehemu mbili:
+Katika mifano iliyopita, amri ilikuwa bado wazi kwa kiasi, ikiruhusu LLM kuamua ni sehemu gani ya seti yake ya data iliyofunzwa kabla ni muhimu. Kwa muundo wa _maudhui ya msingi_, maandishi ya ingizo yanagawanywa sehemu mbili:
 
 - maelekezo (kitendo)
-- maudhui yanayohusiana (yanayoathiri kitendo)
+- maudhui muhimu (yanayoathiri kitendo)
 
-Hapa kuna mfano ambapo maelekezo ni "yafupishe haya kwa sentensi 2".
+Hapa kuna mfano ambapo maelekezo ni "fupisha hii kwa sentensi 2".
 
-| Ombi (Pembejeo)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Ukamilishaji (Matokeo)                                                                                                                                                                                                                                                                             |
+| Amri (Injizo)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Kukamilika (Matokeo)                                                                                                                                                                                                                                                                             |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni jitu la gesi lenye uzito wa moja ya elfu ya Jua, lakini mara mbili na nusu ya uzito wa sayari zote nyingine katika Mfumo wa Jua kwa pamoja. Jupiter ni moja ya vitu vinavyong'aa zaidi vinavyoonekana kwa macho usiku, na imejulikana na ustaarabu wa kale tangu kabla ya historia iliyorekodiwa. Imepewa jina la mungu wa Kirumi Jupiter.[19] Ikionekana kutoka Duniani, Jupiter inaweza kuwa na mwangaza wa kutosha kwa mwanga wake unaoakisiwa kutupa vivuli vinavyoonekana,[20] na kwa wastani ni kitu cha tatu kinachong'aa zaidi katika anga ya usiku baada ya Mwezi na Zuhura. <br/> **Yafupishe haya kwa sentensi 2 fupi** | Jupiter, sayari ya tano kutoka Jua, ni kubwa zaidi katika Mfumo wa Jua na inajulikana kwa kuwa moja ya vitu vinavyong'aa zaidi katika anga ya usiku. Imepewa jina la mungu wa Kirumi Jupiter, ni jitu la gesi lenye uzito mara mbili na nusu ya sayari zote nyingine kwa pamoja. |
+| Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni gasi kubwa yenye uzito wa elfu moja wa Uzito wa Jua, lakini mara mbili na nusu ya uzito wa sayari nyingine zote pamoja. Jupiter ni mojawapo ya vitu angavu vinavyoonekana kwa jicho tupu usiku, na imetambuliwa na tamaduni za kale tangu kabla ya historia recorded. Imepewa jina la mungu wa Kirumi, Jupiter.[19] Inapotazamwa kutoka Dunia, Jupiter inaweza kuwa angavu vya kutosha kwa taa yake kuonyesha vivuli vinavyoonekana,[20] na kwa wastani ni kitu cha tatu angavu zaidi asili katika anga la usiku baada ya Mwezi na Venus. <br/> **Fupisha hii kwa sentensi 2 fupi** | Jupiter, sayari ya tano kutoka Jua, ni kubwa zaidi katika Mfumo wa Jua na inajulikana kama moja ya vitu angavu katika anga la usiku. Imepewa jina la mungu wa Kirumi, Jupiter, ni gasi kubwa yenye uzito mara mbili na nusu ya sayari nyingine zote za Mfumo wa Jua pamoja. |
 
 Sehemu ya maudhui ya msingi inaweza kutumika kwa njia mbalimbali kuendesha maelekezo yenye ufanisi zaidi:
 
-- **Mifano** - badala ya kuambia modeli nini cha kufanya kwa maelekezo ya wazi, mpe mifano ya nini cha kufanya na uiruhusu itoe muundo wa matokeo yanayohitajika.
-- **Dalili** - fuata maelekezo na "dalili" inayochochea ukamilishaji, ikiongoza modeli kuelekea majibu yanayohusiana zaidi.
-- **Violezo** - hivi ni 'mapishi' yanayoweza kurudiwa kwa maombi yenye nafasi za kujazwa (vigezo) ambavyo vinaweza kubadilishwa na data kwa matumizi maalum.
+- **Mifano** - badala ya kuwaambia mfano nini cha kufanya kwa maelekezo wazi, toa mifano ya kile cha kufanya na umruhusu mtindo ubaini muundo.
+- **Vihisi** - fuata maelekezo na "kihisi" kinachoiweka mwanga kwa kukamilika, kuongoza mfano kwa majibu yanayohusiana zaidi.
+- **Mitindo** - haya ni 'mapishi' yanarudiwa ya maombi yenye sehemu za kujaza (vigezo) ambavyo vinaweza kubadilishwa kwa data za matumizi maalum.
 
-Wacha tuangalie haya yakifanya kazi.
+Hebu tuchambue haya kwa vitendo.
 
 ### Kutumia Mifano
 
-Hii ni mbinu ambapo unatumia maudhui ya msingi "kulisha modeli" baadhi ya mifano ya matokeo yanayohitajika kwa maelekezo fulani, na kuiruhusu itoe muundo wa matokeo yanayohitajika. Kulingana na idadi ya mifano iliyotolewa, tunaweza kuwa na maombi ya zero-shot, one-shot, few-shot n.k.
+Hii ni njia ambapo unatumia maudhui ya msingi "kulisha mfano" na mifano ya matokeo yanayotarajiwa kwa maelekezo yaliyotolewa, na kumruhusu abaini muundo wa matokeo yanayohitajika. Kulingana na idadi ya mifano iliyotolewa, tunaweza kuwa na maombi ya zero-shot, one-shot, few-shot, nk.
 
-Ombi sasa lina sehemu tatu:
+Amri sasa ina sehemu tatu:
 
 - Maelezo ya kazi
-- Mifano michache ya matokeo yanayohitajika
-- Mwanzo wa mfano mpya (ambayo inakuwa maelezo ya kazi isiyo ya moja kwa moja)
+- Mifano michache ya matokeo yanayotarajiwa
+- Mwanzo wa mfano mpya (ambayo hutokea kuwa maelezo ya kazi ya kiholela)
 
-| Aina ya Kujifunza | Ombi (Pembejeo)                                                                                                                                        | Ukamilishaji (Matokeo)         |
-| :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------- |
-| Zero-shot         | "Jua linang'aa". Tafsiri kwa Kihispania                                                                                                              | "El Sol está brillando".    |
-| One-shot          | "Jua linang'aa" => ""El Sol está brillando". <br> "Ni siku baridi na yenye upepo" =>                                                                 | "Es un día frío y ventoso". |
-| Few-shot          | Mchezaji alikimbia mzunguko wa uwanja => Baseball <br/> Mchezaji alipiga ace => Tennis <br/> Mchezaji alipiga sita => Kriketi <br/> Mchezaji alifanya slam-dunk => | Basketball                  |
-|                   |                                                                                                                                                       |                             |
+| Aina ya Kujifunza | Amri (Injizo)                                                                                                                                        | Kukamilika (Matokeo)         |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------- |
+| Zero-shot     | "Jua linang'aa". Tafsiri kwa Kihispania                                                                                                            | "El Sol está brillando".    |
+| One-shot      | "Jua linang'aa" => ""El Sol está brillando". <br> "Ni Siku Baridi na Upepo" =>                                                                 | "Es un día frío y ventoso". |
+| Few-shot      | Mchezaji aliruka msingi => Baseball <br/> Mchezaji alipiga ace => Tennis <br/> Mchezaji alipiga six => Cricket <br/> Mchezaji alifanya slam-dunk => | Basketball                  |
+|               |                                                                                                                                                       |                             |
 
-Angalia jinsi tulivyohitaji kutoa maelekezo ya wazi ("Tafsiri kwa Kihispania") katika maombi ya zero-shot, lakini inatolewa katika mfano wa one-shot. Mfano wa few-shot unaonyesha jinsi kuongeza mifano zaidi kunavyoruhusu modeli kufanya maamuzi sahihi zaidi bila maelekezo ya ziada.
+Angalia jinsi tulivyohitaji kutoa maelekezo wazi ("Tafsiri kwa Kihispania") katika zero-shot prompting, lakini inajulikana katika mfano wa one-shot prompting. Mfano wa few-shot unaonyesha jinsi kuongeza mifano zaidi inavyoruhusu modeli kufanya maelezo sahihi bila maelekezo zaidi.
 
-### Dalili za Ombi
+### Vihisi vya Amri
 
-Mbinu nyingine ya kutumia maudhui ya msingi ni kutoa _dalili_ badala ya mifano. Katika kesi hii, tunampa modeli msukumo sahihi kwa _kuanzisha_ na kipande kinachoakisi muundo wa matokeo yanayohitajika. Modeli kisha "inachukua dalili" kuendelea kwa mtindo huo.
+Mbinu nyingine ya kutumia maudhui ya msingi ni kutoa _vihisi_ badala ya mifano. Katika kesi hii, tunampa mfano ndugu kwa kuanza kwa kipande kinachoonyesha muundo wa jibu unaohitajika. Kisha mfano "hutumia vihisi" kuendelea katika muktadha huo.
 
-| Idadi ya Dalili | Ombi (Pembejeo)                                                                                                                                                                                                                                                                                                                                                                                                                                               | Ukamilishaji (Matokeo)                                                                                                                                                                                                                                                                                       |
-| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0               | Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni jitu la gesi lenye uzito wa moja ya elfu ya Jua, lakini mara mbili na nusu ya uzito wa sayari zote nyingine katika Mfumo wa Jua kwa pamoja. Jupiter ni moja ya vitu vinavyong'aa zaidi vinavyoonekana kwa macho usiku, na imejulikana na ustaarabu wa kale tangu kabla ya historia iliyorekodiwa. <br/>**Yafupishe Haya**                                       | Jupiter ni sayari kubwa zaidi katika Mfumo wa Jua na ya tano kutoka Jua. Ni jitu la gesi lenye uzito mara mbili na nusu ya sayari zote nyingine kwa pamoja, na inajulikana kwa mwangaza wake katika anga ya usiku. |
-| 1              | Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni sayari ya gesi yenye uzito wa moja ya elfu ya Jua, lakini mara mbili na nusu ya uzito wa sayari zote za Mfumo wa Jua zikijumuishwa. Jupiter ni moja ya vitu vinavyong'aa zaidi vinavyoonekana kwa macho usiku, na imejulikana na ustaarabu wa kale tangu kabla ya historia kurekodiwa. <br/>**Fupisha Hili** <br/> Tulichojifunza ni kwamba Jupiter | ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni sayari ya gesi yenye uzito wa moja ya elfu ya Jua, lakini mara mbili na nusu ya uzito wa sayari zote zikijumuishwa. Inaonekana kwa urahisi kwa macho na imejulikana tangu nyakati za kale.                        |
-| 2              | Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni sayari ya gesi yenye uzito wa moja ya elfu ya Jua, lakini mara mbili na nusu ya uzito wa sayari zote za Mfumo wa Jua zikijumuishwa. Jupiter ni moja ya vitu vinavyong'aa zaidi vinavyoonekana kwa macho usiku, na imejulikana na ustaarabu wa kale tangu kabla ya historia kurekodiwa. <br/>**Fupisha Hili** <br/> Ukweli 3 Bora Tuliojifunza:         | 1. Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. <br/> 2. Ni sayari ya gesi yenye uzito wa moja ya elfu ya Jua...<br/> 3. Jupiter imekuwa ikionekana kwa macho tangu nyakati za kale ...                                                                       |
+| Idadi ya Vihisi | Amri (Injizo)                                                                                                                                                                                                                                                                                                                                                                                                                                               | Kukamilika (Matokeo)                                                                                                                                                                                                                                                                                       |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0              | Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni gasi kubwa yenye uzito wa elfu moja wa Uzito wa Jua, lakini mara mbili na nusu ya uzito wa sayari nyingine zote pamoja. Jupiter ni mojawapo ya vitu angavu vinavyoonekana kwa jicho tupu usiku, na imetambuliwa na tamaduni za kale tangu kabla ya historia recorded. <br/>**Fupisha Hii**                                       | Jupiter ni sayari kubwa zaidi katika Mfumo wetu wa Jua na ya tano kutoka Jua. Ni gasi kubwa yenye uzito 1/1000 ya Jua, lakini ni nzito kuliko sayari zote nyingine pamoja. Tamaduni za kale zimejua kuhusu Jupiter kwa wakati mrefu, na inaonekana kwa urahisi angani usiku. |
+| 1              | Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni gasi kubwa yenye uzito wa elfu moja wa Uzito wa Jua, lakini mara mbili na nusu ya uzito wa sayari nyingine zote pamoja. Jupiter ni mojawapo ya vitu angavu vinavyoonekana kwa jicho tupu usiku, na imetambuliwa na tamaduni za kale tangu kabla ya historia recorded. <br/>**Fupisha Hii** <br/> Tulivyojifunza ni kuwa Jupiter | ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni gasi kubwa yenye uzito wa elfu moja wa Jua, lakini mara mbili na nusu ya uzito wa sayari nyingine zote pamoja. Inaonekana kwa urahisi kwa jicho wazi na imetambuliwa tangu nyakati za kale.                        |
+
+| 2              | Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. Ni kijua kikubwa cha gesi chenye wingi wa moja kwa elfu ya ule wa Jua, lakini mara mbili na nusu ya zile za sayari zote nyingine katika Mfumo wa Jua pamoja. Jupiter ni mojawapo ya vitu vinavyoonekana kwa macho ya kawaida ang’avu katika anga la usiku, na imejulikana kwa ustaarabu wa kale tangu kabla ya historia kuandikwa. <br/>**Fupisha Hii** <br/> Mambo 3 ya Juu Tuliyojifunza:         | 1. Jupiter ni sayari ya tano kutoka Jua na kubwa zaidi katika Mfumo wa Jua. <br/> 2. Ni kijua kikubwa cha gesi chenye wingi wa moja kwa elfu ya ule wa Jua...<br/> 3. Jupiter imeonekana kwa macho ya kawaida tangu nyakati za kale ...                                                                       |
 |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                           |
 
-### Miundo ya Maelekezo
+### Violezo vya Maagizo
 
-Muundo wa maelekezo ni _mapishi yaliyotayarishwa ya maelekezo_ ambayo yanaweza kuhifadhiwa na kutumika tena inapohitajika, ili kuendesha uzoefu wa watumiaji kwa njia thabiti kwa kiwango kikubwa. Kwa hali yake rahisi, ni mkusanyiko wa mifano ya maelekezo kama [hii kutoka OpenAI](https://platform.openai.com/examples?WT.mc_id=academic-105485-koreyst) inayotoa vipengele vya maelekezo ya maingiliano (ujumbe wa mtumiaji na mfumo) na muundo wa ombi linaloendeshwa na API - kusaidia matumizi ya mara kwa mara.
+Kiolezo cha maagizo ni _mapishi yaliyoandaliwa mapema kwa ajili ya agizo_ ambayo yanaweza kuhifadhiwa na kutumika tena inapohitajika, kuongeza usahihi zaidi wa uzoefu wa mtumiaji kwa wingi. Katika muundo wake wa msingi, ni mkusanyiko wa mifano ya maagizo kama [huyu kutoka OpenAI](https://cookbook.openai.com/examples/gpt4-1_prompting_guide?WT.mc_id=academic-105485-koreyst) inayotoa sehemu za maagizo ya mwingiliano (jumbe za mtumiaji na mfumo) na muundo wa ombi unaosimamiwa na API - kusaidia matumizi tena.
 
-Kwa hali yake ngumu zaidi kama [mfano huu kutoka LangChain](https://python.langchain.com/docs/concepts/prompt_templates/?WT.mc_id=academic-105485-koreyst) ina _sehemu za nafasi_ ambazo zinaweza kubadilishwa na data kutoka vyanzo mbalimbali (maingizo ya mtumiaji, muktadha wa mfumo, vyanzo vya data vya nje n.k.) ili kuunda maelekezo kwa njia ya kiotomatiki. Hii inatuwezesha kuunda maktaba ya maelekezo yanayoweza kutumika tena ambayo yanaweza kutumika kuendesha uzoefu wa watumiaji kwa njia thabiti **kwa njia ya programu** kwa kiwango kikubwa.
+Katika muundo mgumu zaidi kama [mfano huu kutoka LangChain](https://python.langchain.com/docs/concepts/prompt_templates/?WT.mc_id=academic-105485-koreyst) una _vipengele vinavyoweza kubadilishwa_ vinavyoweza kuchukuliwa kutoka kwa data za vyanzo mbalimbali (ingizo la mtumiaji, muktadha wa mfumo, vyanzo vya data vya nje n.k.) kuunda agizo kwa njia ya nguvu. Hii inatuwezesha kuunda maktaba ya maagizo yanayoweza kutumika tena kwa ajili ya kuendesha uzoefu wa mtumiaji **kwa mpangilio** kwa wingi.
 
-Hatimaye, thamani halisi ya miundo iko katika uwezo wa kuunda na kuchapisha _maktaba ya maelekezo_ kwa nyanja za matumizi maalum - ambapo muundo wa maelekezo sasa umeboreshwa kuonyesha muktadha maalum wa matumizi au mifano inayofanya majibu kuwa muhimu zaidi na sahihi kwa hadhira lengwa ya watumiaji. Hifadhi ya [Prompts For Edu](https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst) ni mfano mzuri wa mbinu hii, ikikusanya maktaba ya maelekezo kwa nyanja ya elimu kwa msisitizo wa malengo muhimu kama upangaji wa masomo, muundo wa mtaala, ushauri wa wanafunzi n.k.
+Hatimaye, thamani halisi ya violezo iko katika uwezo wa kuunda na kuchapisha _maktaba za maagizo_ kwa maeneo maalum ya matumizi - ambapo kiolezo cha agizo sasa kimeboreshwa kuonyesha muktadha wa programu maalum au mifano inayofanya majibu kuwa muhimu zaidi na sahihi kwa hadhira lengwa ya watumiaji. Hifadhi ya [Prompts For Edu](https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst) ni mfano mzuri wa mbinu hii, ikikusanya maktaba ya maagizo kwa eneo la elimu na mkazo kwenye malengo muhimu kama upangaji wa masomo, kubuni mtaala, kufundisha wanafunzi n.k.
 
-## Maudhui ya Msaada
+## Muktadha wa Msaada
 
-Tukifikiria uundaji wa maelekezo kama kuwa na maelekezo (kazi) na lengo (maudhui ya msingi), basi _maudhui ya sekondari_ ni kama muktadha wa ziada tunaotoa ili **kuathiri matokeo kwa namna fulani**. Inaweza kuwa vigezo vya kurekebisha, maelekezo ya muundo, taksonomia za mada n.k. ambazo zinaweza kusaidia modeli _kurekebisha_ majibu yake ili kufaa malengo au matarajio ya mtumiaji.
+Ikiwa tutafikiria kuhusu uundaji wa agizo kama kuwa na maelekezo (kazi) na lengo (maudhui makuu), basi _maudhui ya sekondari_ ni kama muktadha wa ziada tunaotoa ili **kuathiri matokeo kwa njia fulani**. Hii inaweza kuwa vigezo vya kusanifu, maelekezo ya muundo, aina za mada n.k. ambavyo vinaweza kusaidia mfano _kubadilisha_ jibu lake ili kulingana na malengo au matarajio ya mtumiaji yanayohitajika.
 
-Kwa mfano: Tukipewa katalogi ya kozi yenye metadata nyingi (jina, maelezo, kiwango, lebo za metadata, mwalimu n.k.) kuhusu kozi zote zinazopatikana katika mtaala:
+Kwa mfano: Ukiwa na katika katalogi ya kozi yenye metadata nyingi (jina, maelezo, ngazi, lebo za metadata, mwalimu n.k.) kwenye kozi zote zinazopatikana katika mtaala:
 
-- tunaweza kufafanua maelekezo ya "kufupisha katalogi ya kozi kwa Msimu wa Kuanguka 2023"
-- tunaweza kutumia maudhui ya msingi kutoa mifano michache ya matokeo yanayotarajiwa
-- tunaweza kutumia maudhui ya sekondari kutambua "lebo" 5 za juu za maslahi.
+- tunaweza kuweka maelekezo ya "fupisha katalogi ya kozi za Msimu wa Kuanguka 2023"
+- tunaweza kutumia maudhui makuu kutoa mifano michache ya matokeo yanayotarajiwa
+- tunaweza kutumia maudhui ya sekondari kutambua "lebo" 5 za juu zinazovutia.
 
-Sasa, modeli inaweza kutoa muhtasari kwa muundo ulioonyeshwa na mifano michache - lakini ikiwa matokeo yana lebo nyingi, inaweza kuzipa kipaumbele lebo 5 zilizotambuliwa katika maudhui ya sekondari.
+Sasa, mfano unaweza kutoa muhtasari katika muundo unaoonyeshwa na mifano michache - lakini kama matokeo yana lebo nyingi, unaweza kuipa kipaumbele lebo 5 zilizotambuliwa katika maudhui ya sekondari.
 
 ---
 
 <!--
-MUUNDO WA SOMO:
-Sehemu hii inapaswa kufunika dhana kuu #1.
-Imarisha dhana hiyo kwa mifano na marejeleo.
+KIOLEZO CHA SOMO:
+Kitengo hiki kinapaswa kugusia dhana msingi #1.
+Imarisha dhana kwa mifano na marejeleo.
 
 DHANA #3:
-Mbinu za Uhandisi wa Maelekezo.
-Je, ni mbinu zipi za msingi za uhandisi wa maelekezo?
-Onyesha kwa mazoezi.
+Mbinu za Uhandisi wa Maagizo.
+Ni mbinu gani za msingi za uhandisi wa maagizo?
+Toa mfano wake kwa mazoezi.
 -->
 
-## Mazoea Bora ya Uhandisi wa Maelekezo
+## Mazoezi Bora ya Kutoa Maagizo
 
-Sasa kwa kuwa tunajua jinsi maelekezo yanavyoweza _kuundwa_, tunaweza kuanza kufikiria jinsi ya _kuyabuni_ ili kuonyesha mazoea bora. Tunaweza kufikiria hili kwa sehemu mbili - kuwa na _mtazamo_ sahihi na kutumia _mbinu_ sahihi.
+Sasa tunapojua jinsi maagizo yanavyoweza _kuundwa_, tunaweza kuanza kufikiria jinsi ya _kubuni_ ili yaonyeshe mazoea bora. Tunaweza kufikiri hili katika sehemu mbili - kuwa na _mtazamo_ sahihi na kutumia _mbinu_ sahihi.
 
-### Mtazamo wa Uhandisi wa Maelekezo
+### Mtazamo wa Uhandisi wa Maagizo
 
-Uhandisi wa Maelekezo ni mchakato wa majaribio na makosa, kwa hivyo zingatia mambo makuu matatu ya mwongozo:
+Uhandisi wa Maagizo ni mchakato wa jaribio na makosa kwa hiyo kumbuka mambo makubwa matatu ya kuongoza:
 
-1. **Uelewa wa Nyanja ni Muhimu.** Usahihi na umuhimu wa majibu ni matokeo ya _nyanja_ ambayo programu au mtumiaji huyo anafanya kazi. Tumia angalizo lako na utaalamu wa nyanja ili **kubinafsisha mbinu** zaidi. Kwa mfano, fafanua _tabia maalum za nyanja_ katika maelekezo ya mfumo wako, au tumia _miundo maalum ya nyanja_ katika maelekezo ya mtumiaji wako. Toa maudhui ya sekondari yanayoonyesha muktadha maalum wa nyanja, au tumia _vidokezo na mifano maalum ya nyanja_ kuongoza modeli kuelekea mifumo ya matumizi inayojulikana.
+1. **Uelewa wa Eneo ni Muhimu.** Usahihi na umuhimu wa jibu ni kibali cha _eneo_ ambalo programu au mtumiaji anafanya kazi. Tumia hisia na utaalamu wa eneo lako ili **kubinafsisha mbinu** zaidi. Kwa mfano, weka _midahalo ya eneo maalum_ katika maagizo ya mfumo wako, au tumia _violezo vya eneo maalum_ katika maagizo ya mtumiaji. Toa maudhui ya sekondari yanayoonyesha muktadha wa eneo, au tumia _viashiria na mifano ya eneo maalum_ kuongoza mfano kuelekea mifumo ya matumizi inayojulikana.
 
-2. **Uelewa wa Modeli ni Muhimu.** Tunajua modeli ni za nasibu kwa asili. Lakini utekelezaji wa modeli unaweza pia kutofautiana kulingana na seti ya data ya mafunzo wanayotumia (maarifa yaliyotayarishwa), uwezo wanatoa (mfano, kupitia API au SDK) na aina ya maudhui wanayoboreshwa kwa ajili yake (mfano, msimbo dhidi ya picha dhidi ya maandishi). Elewa nguvu na mapungufu ya modeli unayotumia, na tumia maarifa hayo _kupa kipaumbele kazi_ au kujenga _miundo maalum_ inayoboreshwa kwa uwezo wa modeli.
+2. **Uelewa wa Mfano ni Muhimu.** Tunajua mifano ni ya bahati kwa asili. Lakini utekelezaji wa mfano unaweza pia kutofautiana kwa vile dataset ya mafunzo wanayotumia (maarifa yaliyotanguliwa), uwezo wanaotoa (mfano, kupitia API au SDK) na aina ya maudhui wanaoboreshwa kwa ajili yake (mfano, msimbo dhidi ya picha dhidi ya maandishi). Elewa nguvu na vikwazo vya mfano unaotumia, na tumia maarifa hayo _kupa kipaumbele kazi_ au kuunda _violezo vilivyosanifiwa_ vinavyoboresha uwezo wa mfano.
 
-3. **Kurudia na Uthibitishaji ni Muhimu.** Modeli zinabadilika haraka, na mbinu za uhandisi wa maelekezo pia zinabadilika. Kama mtaalamu wa nyanja, unaweza kuwa na muktadha au vigezo vingine _vya_ programu yako maalum, ambavyo vinaweza kutotumika kwa jamii pana. Tumia zana na mbinu za uhandisi wa maelekezo kuanza uundaji wa maelekezo, kisha rudia na thibitisha matokeo ukitumia angalizo lako na utaalamu wa nyanja. Rekodi maarifa yako na unda **maktaba ya maarifa** (mfano, maktaba ya maelekezo) ambayo yanaweza kutumika kama msingi mpya na wengine, kwa kurudia haraka siku zijazo.
+3. **Kurudia & Uhakiki ni Muhimu.** Mifano inabadilika haraka, ndivyo mbinu za uhandisi wa maagizo zinavyokuwa pia. Kama mtaalamu wa eneo, unaweza kuwa na muktadha mwingine au vigezo _kwa_ programu yako maalum, ambavyo havitumiki kwa jamii kwa ujumla. Tumia zana na mbinu za uhandisi wa maagizo kuanzisha kwa kasi uundaji wa agizo, kisha rudia na hakiki matokeo kwa kutumia hisia na utaalamu wako wa eneo. Rekodi maarifa yako na unda **hifadhidata ya maarifa** (mfano, maktaba za maagizo) ambayo inaweza kutumika kama msingi mpya kwa wengine, kwa mzunguko wa haraka baadaye.
 
 ## Mazoea Bora
 
-Sasa tuangalie mazoea bora yanayopendekezwa na [OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst) na watendaji wa [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst).
+Sasa tazama mazoea bora ya kawaida yanayopendekezwa na wataalamu wa [OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst) na [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst).
 
-| Nini                              | Kwa nini                                                                                                                                                                                                                                               |
+| Nini                              | Kwa Nini                                                                                                                                                                                                                                             |
 | :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Tathmini modeli za hivi karibuni. | Vizazi vipya vya modeli vina uwezekano wa kuwa na vipengele vilivyoboreshwa na ubora - lakini vinaweza pia kuhusisha gharama kubwa. Tathmini athari, kisha fanya maamuzi ya uhamiaji.                                                                                |
-| Tenganisha maelekezo na muktadha  | Angalia ikiwa modeli/mtoa huduma wako anafafanua _vifupisho_ kutofautisha maelekezo, maudhui ya msingi na ya sekondari kwa uwazi zaidi. Hii inaweza kusaidia modeli kupeana uzito kwa usahihi kwa tokeni.                                                         |
-| Kuwa maalum na wazi               | Toa maelezo zaidi kuhusu muktadha unaotakiwa, matokeo, urefu, muundo, mtindo n.k. Hii itaboresha ubora na uthabiti wa majibu. Hifadhi mapishi katika miundo inayoweza kutumika tena.                                                          |
-| Kuwa na maelezo, tumia mifano     | Modeli zinaweza kujibu vyema zaidi kwa mbinu ya "onyesha na eleza". Anza na mbinu ya `zero-shot` ambapo unampa maelekezo (lakini bila mifano) kisha jaribu `few-shot` kama marekebisho, ukitoa mifano michache ya matokeo yanayotarajiwa. Tumia mfananisho. |
-| Tumia vidokezo kuanzisha majibu   | Elekeza kuelekea matokeo yanayotakiwa kwa kumpa maneno au misemo ya kuanzia ambayo anaweza kutumia kama mwanzo wa majibu.                                                                                                               |
-| Rudia                             | Wakati mwingine unaweza kuhitaji kujirudia kwa modeli. Toa maelekezo kabla na baada ya maudhui ya msingi, tumia maelekezo na kidokezo, n.k. Rudia na thibitisha kuona kinachofanya kazi.                                                         |
-| Mpangilio ni Muhimu               | Mpangilio wa jinsi unavyowasilisha taarifa kwa modeli unaweza kuathiri matokeo, hata katika mifano ya kujifunza, kutokana na upendeleo wa ukaribu. Jaribu chaguo tofauti kuona kinachofanya kazi bora.                                                               |
-| Mpe modeli "njia ya kutokea"      | Mpe modeli majibu ya _kuangukia_ ambayo anaweza kutoa ikiwa hawezi kukamilisha kazi kwa sababu yoyote. Hii inaweza kupunguza nafasi za modeli kutoa majibu ya uongo au ya kubuni.                                                         |
-|                                   |                                                                                                                                                                                                                                                   |
+| Tathmini mifano ya hivi karibuni. | Vizazi vipya vya mfano vina sifa na ubora ulioongezeka - lakini pia vinaweza kuleta gharama kubwa. Vithamini kwa athari, kisha chukua maamuzi ya kuhama.                                                                                            |
+| Tofautisha maelekezo & muktadha   | Angalia kama mfano/watanga huduma wanataja _viongozi_ kutofautisha maelekezo, maudhui makuu na sekondari kwa uwazi zaidi. Hii inaweza kusaidia mifano kuweka uzito kwa tokens kwa usahihi.                                                            |
+| Kuwa maalum na wazi               | Toa maelezo zaidi kuhusu muktadha unaotakiwa, matokeo, urefu, muundo, mtindo n.k. Hii itaboresha ubora na muungano wa majibu. Hifadhi mapishi katika violezo vinavyoweza kutumika tena.                                                                |
+| Kuwa na maelezo, tumia mifano      | Mifano inaweza kujibu vizuri zaidi kwa njia ya "onyesho na simu". Anza kwa mbinu ya `zero-shot` ambapo unampa maelekezo (lakini hakuna mifano) kisha jaribu `few-shot` kama maboresho, ukitoa baadhi ya mifano ya matokeo yanayotarajiwa. Tumia mfano. |
+| Tumia viashiria kuanzisha majibu | Mpeleke kuelekea matokeo yanayotarajiwa kwa kumpa maneno au misemo ya kuongoza anaweza kutumia kama msingi wa jibu.                                                                                                                                    |
+| Rudia tena                       | Wakati mwingine unaweza kuhitaji kujirudia kwa mfano. Toa maelekezo kabla na baada ya maudhui makuu, tumia maelekezo na kiashirio, nk. Rudia na hakiki kuona kinachofanya kazi.                                                                             |
+| Mpangilio ni Muhimu              | Mpangilio wa taarifa unapoonyeshwa kwa mfano unaweza kuathiri matokeo, hata katika mifano ya kujifunza, kutokana na mwelekeo wa ukumbusho wa hivi karibuni. Jaribu chaguzi tofauti kuona kinachofanya kazi zaidi.                                           |
+| Mpe mfano “njia ya kutokea”      | Mpe mfano jibu la _mbadala_ ambalo anaweza kutoa ikiwa hawezi kukamilisha kazi kwa sababu yoyote. Hii inaweza kupunguza uwezekano wa mifano kutoa majibu ya uwongo au yaliyotengenezwa.                                                                  |
+|                                   |                                                                                                                                                                                                                                                     |
 
-Kama ilivyo kwa mazoea yoyote bora, kumbuka kuwa _matokeo yako yanaweza kutofautiana_ kulingana na modeli, kazi na nyanja. Tumia haya kama mwanzo, na rudia ili kupata kinachofanya kazi bora kwako. Tathmini mara kwa mara mchakato wako wa uhandisi wa maelekezo kadri modeli mpya na zana zinavyopatikana, kwa kuzingatia upanuzi wa mchakato na ubora wa majibu.
+Kama ilivyo kwa mazoea bora yoyote, kumbuka kuwa _matokeo yako yanaweza kutofautiana_ kulingana na mfano, kazi na eneo. Tumia haya kama mwanzo, na rudia ili kupata kinachofaa zaidi kwako. Endelea kuthamini upya mchakato wako wa uhandisi wa maagizo wakati mifano na zana mpya zinapatikana, ukizingatia upanuzi wa mchakato na ubora wa majibu.
 
 <!--
-MUUNDO WA SOMO:
-Sehemu hii inapaswa kutoa changamoto ya msimbo ikiwa inafaa
+KIOLEZO CHA SOMO:
+Kitengo hiki kinapaswa kutoa changamoto ya msimbo ikiwa inafaa
 
 CHANGAMOTO:
-Unganisha na Jupyter Notebook yenye maelezo ya msimbo tu katika maelekezo (sehemu za msimbo ziko tupu).
+Kiungo cha Daftari la Jupyter lenye maelezo tu ya msimbo katika maelekezo (sehemu za msimbo ni tupu).
 
 SULUHISHO:
-Unganisha na nakala ya Notebook hiyo yenye maelekezo yamejazwa na kuendeshwa, ikionyesha mfano mmoja wa matokeo.
+Kiungo cha nakala ya Daftari hilo lenye maagizo yamejazwa na kutekelezwa, ikionyesha mfano mmoja wa matokeo.
 -->
 
-## Kazi
+## Kazi ya Nyumbani
 
-Hongera! Umefika mwisho wa somo! Ni wakati wa kujaribu baadhi ya dhana na mbinu hizo kwa mifano halisi!
+Hongera! Umefikia mwisho wa somo! Ni wakati wa kujaribu baadhi ya dhana na mbinu hizo kwa mifano halisi!
 
-Kwa kazi yetu, tutatumia Jupyter Notebook yenye mazoezi unayoweza kukamilisha kwa maingiliano. Unaweza pia kupanua Notebook hiyo kwa seli zako za Markdown na Msimbo ili kuchunguza mawazo na mbinu zako mwenyewe.
+Kwa kazi yetu ya nyumbani, tutatumia Daftari la Jupyter lenye mazoezi unaweza kuyakamilisha kwa ujumuishaji. Pia unaweza kuongeza daftari lako mwenyewe la Markdown na seli za Msimbo kuchunguza mawazo na mbinu kwa njia yako mwenyewe.
 
-### Kuanzisha, fanya fork ya repo, kisha
+### Kuanza, fanyia fork repo, kisha
 
-- (Inapendekezwa) Fungua GitHub Codespaces
-- (Vinginevyo) Clone repo kwenye kifaa chako cha ndani na uitumie na Docker Desktop
-- (Vinginevyo) Fungua Notebook na mazingira yako ya runtime ya Notebook unayopendelea.
+- (Inapendekezwa) Anzisha GitHub Codespaces
+- (Mbadala) Nakili repo kwenye kifaa chako cha karibu na uitegemeze na Docker Desktop
+- (Mbadala) Fungua Daftari lako kwa mazingira unayopendelea kwa uendeshaji wa daftari.
 
-### Kisha, sanidi vigezo vya mazingira yako
+### Ifuatayo, sanidi mabadiliko ya mazingira yako
 
-- Nakili faili `.env.copy` katika mzizi wa repo hadi `.env` na ujaze maadili ya `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT` na `AZURE_OPENAI_DEPLOYMENT`. Rudi kwenye [sehemu ya Learning Sandbox](../../../04-prompt-engineering-fundamentals/04-prompt-engineering-fundamentals) kujifunza jinsi.
+- Nakili faili `.env.copy` toka mizizi ya repo kwenda `.env` na ujaze thamani za `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT` na `AZURE_OPENAI_DEPLOYMENT`. Rudi kwenye [sehemu ya Learning Sandbox](#mazingira-ya-kujifunzia) kujifunza jinsi.
 
-### Kisha, fungua Jupyter Notebook
+### Ifuatayo, fungua Daftari la Jupyter
 
-- Chagua kernel ya runtime. Ikiwa unatumia chaguo 1 au 2, chagua tu kernel ya Python 3.10.x iliyotolewa na kontena la maendeleo.
+- Chagua kernel ya utendaji. Ukitumia chaguo 1 au 2, chagua kernel ya Python 3.10.x default inayotolewa na chombo cha maendeleo.
 
-Uko tayari kuendesha mazoezi. Kumbuka kuwa hakuna _majibu sahihi na yasiyo sahihi_ hapa - ni kuchunguza chaguo kwa majaribio na makosa na kujenga angalizo la kinachofanya kazi kwa modeli fulani na nyanja ya programu.
+Uko tayari kuendesha mazoezi. Kumbuka kwamba hapa hakuna majibu _sahihi na si sahihi_ - ni uchunguzi wa chaguzi kwa jaribio na makosa na kujenga hisia ya kufahamu kinachofaa kwa mfano na eneo la matumizi.
 
-_Kwa sababu hii hakuna sehemu za Suluhisho la Msimbo katika somo hili. Badala yake, Notebook itakuwa na seli za Markdown zilizopewa jina "Suluhisho Langu:" zinazoonyesha mfano mmoja wa matokeo kwa marejeleo._
+_Kwa sababu hii hakuna sehemu za Suluhisho la Msimbo katika somo hili. Badala yake, Daftari litakuwa na seli za Markdown zenye kichwa "Suluhisho Langu:" kinachoonyesha mfano mmoja wa matokeo kwa kumbukumbu._
 
  <!--
-MUUNDO WA SOMO:
-Funga sehemu na muhtasari na rasilimali za kujifunza kwa kujiongoza.
+KIOLEZO CHA SOMO:
+Malizia sehemu hii kwa muhtasari na rasilimali za kujifunza kwa njia ya kujitafutia.
 -->
 
-## Ukaguzi wa Maarifa
+## Kagua Maarifa
 
-Ni ipi kati ya zifuatazo ni maelekezo mazuri yanayofuata baadhi ya mazoea bora yanayofaa?
+Ni ipi kati ya zifuatazo ni agizo nzuri ikifuata mazoea bora yanayoeleweka?
 
 1. Nionyeshe picha ya gari jekundu
-2. Nionyeshe picha ya gari jekundu la chapa Volvo na modeli XC90 limeegeshwa karibu na mwamba huku jua likizama
-3. Nionyeshe picha ya gari jekundu la chapa Volvo na modeli XC90
+2. Nionyeshe picha ya gari jekundu la chapa Volvo na mfano XC90 limeegeshwa kando ya mto peponi wakati jua linapotua
+3. Nionyeshe picha ya gari jekundu la chapa Volvo na mfano XC90
 
-J: 2, ni maelekezo bora zaidi kwani yanatoa maelezo kuhusu "nini" na yanaingia katika maelezo maalum (si gari lolote bali chapa na modeli maalum) na pia yanaelezea mazingira ya jumla. 3 ni bora zaidi baada ya hapo kwani pia ina maelezo mengi.
+A: 2, ni agizo bora zaidi kwa sababu hutoa maelezo ya "nini" na inaingia kwa undani (si gari lolote tu bali chapa na mfano maalum) pia inaelezea mazingira kwa ujumla. 3 ni bora ifuatayo kwa kuwa pia lina maelezo mengi.
 
 ## 🚀 Changamoto
 
-Angalia kama unaweza kutumia mbinu ya "kidokezo" na maelekezo: Kamilisha sentensi "Nionyeshe picha ya gari jekundu la chapa Volvo na ". Inajibu nini, na ungeiboresha vipi?
+Angalia kama unaweza kutumia mbinu ya "kiashirio" na agizo: Kamilisha sentensi "Nionyeshe picha ya gari jekundu la chapa Volvo na ". Je, inajibu vipi, na ungeiboreshaje?
 
 ## Kazi Nzuri! Endelea Kujifunza
 
-Unataka kujifunza zaidi kuhusu dhana tofauti za Uhandisi wa Maelekezo? Nenda kwenye [ukurasa wa kujifunza zaidi](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) kupata rasilimali nyingine nzuri kuhusu mada hii.
+Unataka kujifunza zaidi kuhusu dhana tofauti za Uhandisi wa Maagizo? Nenda kwenye [ukurasa wa kujifunza unaoendelea](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) kupata rasilimali zingine nzuri juu ya mada hii.
 
-Nenda kwenye Somo la 5 ambapo tutatazama [mbinu za hali ya juu za maelekezo](../05-advanced-prompts/README.md?WT.mc_id=academic-105485-koreyst)!
+Nenda kwenye Somo la 5 ambapo tutaangalia [mbinu za hali ya juu za kutoa maagizo](../05-advanced-prompts/README.md?WT.mc_id=academic-105485-koreyst)!
 
 ---
 
-**Kanusho**:  
-Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kwa usahihi, tafadhali fahamu kuwa tafsiri za kiotomatiki zinaweza kuwa na makosa au kutokuwa sahihi. Hati ya asili katika lugha yake ya awali inapaswa kuzingatiwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu ya binadamu inapendekezwa. Hatutawajibika kwa kutoelewana au tafsiri zisizo sahihi zinazotokana na matumizi ya tafsiri hii.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Kionyozo**:
+Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kupata usahihi, tafadhali fahamu kwamba tafsiri za kiotomatiki zinaweza kuwa na makosa au upungufu wa usahihi. Hati ya asili katika lugha yake halisi inapaswa kuchukuliwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu inayofanywa na binadamu inapendekezwa. Hatutojibu kwa kuelewa vibaya au tafsiri potofu zinazotokea kutokana na matumizi ya tafsiri hii.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

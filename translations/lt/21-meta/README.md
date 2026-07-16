@@ -1,67 +1,61 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "4c2a0b0c738b649ef049fb99a23be661",
-  "translation_date": "2025-08-25T12:46:22+00:00",
-  "source_file": "21-meta/README.md",
-  "language_code": "lt"
-}
--->
-# Darbas su Meta šeimos modeliais
+# Kūrimas su Meta šeimos modeliais 
 
-## Įvadas
+## Įvadas 
 
-Šioje pamokoje aptarsime:
+Ši pamoka apims: 
 
-- Dviejų pagrindinių Meta šeimos modelių – Llama 3.1 ir Llama 3.2 – apžvalgą
-- Kiekvieno modelio naudojimo atvejus ir scenarijus
-- Kodo pavyzdį, parodantį kiekvieno modelio unikalius bruožus
+- Dvejų pagrindinių Meta šeimos modelių - Llama 3.1 ir Llama 3.2 - tyrinėjimą 
+- Kiekvieno modelio naudojimo atvejų ir scenarijų supratimą 
+- Kodo pavyzdį, demonstruojantį kiekvieno modelio unikalių savybių panaudojimą 
 
-## Meta modelių šeima
 
-Šioje pamokoje apžvelgsime 2 modelius iš Meta šeimos, dar vadinamos „Llama banda“ – Llama 3.1 ir Llama 3.2
+## Meta šeimos modeliai 
 
-Šie modeliai turi skirtingas versijas ir yra prieinami GitHub Model marketplace. Daugiau informacijos apie GitHub Models naudojimą [AI modelių prototipavimui](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst).
+Šioje pamokoje išnagrinėsime 2 modelius iš Meta šeimos arba „Llama Herd“ - Llama 3.1 ir Llama 3.2.
 
-Modelių variantai:
-- Llama 3.1 – 70B Instruct
-- Llama 3.1 – 405B Instruct
-- Llama 3.2 – 11B Vision Instruct
-- Llama 3.2 – 90B Vision Instruct
+Šie modeliai yra įvairių variantų ir yra prieinami [Microsoft Foundry Models kataloge](https://ai.azure.com/catalog/models?WT.mc_id=academic-105485-koreyst).
 
-*Pastaba: Llama 3 taip pat prieinamas GitHub Models, tačiau šioje pamokoje nebus aptariamas*
+> **Pastaba:** GitHub Models bus uždaromas 2026 metų liepos pabaigoje. Čia rasite daugiau informacijos apie [Microsoft Foundry Models](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/overview?WT.mc_id=academic-105485-koreyst), skirtų AI modelių prototipavimui.
 
-## Llama 3.1
+Modelių variantai: 
+- Llama 3.1 - 70B Instrukcija 
+- Llama 3.1 - 405B Instrukcija 
+- Llama 3.2 - 11B Vision Instrukcija 
+- Llama 3.2 - 90B Vision Instrukcija 
 
-Turėdamas 405 milijardus parametrų, Llama 3.1 patenka į atvirojo kodo LLM kategoriją.
+*Pastaba: Llama 3 taip pat yra prieinamas Microsoft Foundry Models, bet ši pamoka jo neapims*
 
-Šis modelis yra ankstesnės Llama 3 versijos patobulinimas, siūlantis:
+## Llama 3.1 
 
-- Didesnį konteksto langą – 128k žodžių vietoj 8k
-- Didesnį maksimalų išvesties žodžių skaičių – 4096 vietoj 2048
-- Geresnę daugiakalbę paramą – dėl padidėjusio mokymo duomenų kiekio
+Turėdamas 405 milijardus parametrų, Llama 3.1 patenka į atviro kodo LLM kategoriją. 
 
-Tai leidžia Llama 3.1 spręsti sudėtingesnius atvejus kuriant GenAI programas, įskaitant:
-- Gimtą funkcijų iškvietimą – galimybę kviesti išorinius įrankius ir funkcijas už LLM ribų
-- Geresnį RAG našumą – dėl didesnio konteksto lango
-- Sintetinių duomenų generavimą – galimybę kurti efektyvius duomenis, pvz., modelio patobulinimui
+Modelis yra ankstesnio Llama 3 leidimo atnaujinimas, siūlantis: 
 
-### Gimtasis funkcijų iškvietimas
+- Didesnį konteksto langą - 128 tūkst. žetonų priešingai nei 8 tūkst. žetonų 
+- Didesnį maksimalų išvesties žetonų skaičių - 4096 prieš 2048 
+- Geresnę daugiakalbę paramą - dėl padidėjusio treniravimo žetonų skaičiaus 
 
-Llama 3.1 buvo papildomai apmokytas, kad efektyviau kviestų funkcijas ar įrankius. Jame taip pat yra du integruoti įrankiai, kuriuos modelis gali atpažinti kaip reikalingus naudoti pagal vartotojo užklausą. Šie įrankiai:
+Tai leidžia Llama 3.1 tvarkyti sudėtingesnius naudojimo atvejus, kuriant GenAI programas, įskaitant: 
+- Vietinį funkcijų kvietimą - galimybę kviesti išorinius įrankius ir funkcijas už LLM darbo eigos ribų
+- Geresnį RAG veikimą - dėl didesnio konteksto lango 
+- Sintetinį duomenų generavimą - galimybę kurti efektyvius duomenis užduotims, tokioms kaip tobulinimas 
 
-- **Brave Search** – gali būti naudojamas gauti naujausią informaciją, pvz., orus, atliekant paiešką internete
-- **Wolfram Alpha** – gali būti naudojamas sudėtingesniems matematiniams skaičiavimams, todėl nereikia rašyti savo funkcijų
+### Vietinis funkcijų kvietimas 
 
-Taip pat galite susikurti savo pasirinktinius įrankius, kuriuos LLM galės kviesti.
+Llama 3.1 buvo tobulinamas, kad efektyviau atliktų funkcijų ar įrankių kvietimus. Taip pat turi du įmontuotus įrankius, kuriuos modelis gali atpažinti kaip reikalingus naudoti pagal vartotojo užklausą. Šie įrankiai yra: 
 
-Žemiau pateiktame kodo pavyzdyje:
+- **Brave Search** - galima naudoti norint gauti aktualią informaciją, pavyzdžiui, orą atliekant interneto paiešką 
+- **Wolfram Alpha** - galima naudoti sudėtingesniems matematikos skaičiavimams, todėl nereikia rašyti savo funkcijų. 
 
-- Sistemos užklausoje apibrėžiame galimus įrankius (brave_search, wolfram_alpha)
-- Vartotojo užklausa klausia apie orus tam tikrame mieste
-- LLM atsakys įrankio iškvietimu Brave Search įrankiui, kuris atrodys taip: `<|python_tag|>brave_search.call(query="Stockholm weather")`
+Taip pat galite sukurti savo individualius įrankius, kuriuos LLM gali kviesti. 
 
-*Pastaba: Šiame pavyzdyje įrankis tik iškviečiamas, jei norite gauti rezultatus, turėsite susikurti nemokamą paskyrą Brave API puslapyje ir apibrėžti pačią funkciją*
+Žemiau pateiktame kodo pavyzdyje: 
+
+- Sistemos užklausoje apibrėžiame prieinamus įrankius (brave_search, wolfram_alpha). 
+- Išsiunčiame vartotojo užklausą, kuri klausia apie orą tam tikrame mieste. 
+- LLM atsakys įrankio kvietimu į Brave Search įrankį, kuris atrodys taip `<|python_tag|>brave_search.call(query="Stockholm weather")` 
+
+*Pastaba: šis pavyzdys tik atlieka įrankio kvietimą, jei norite gauti rezultatus, turėsite sukurti nemokamą paskyrą Brave API puslapyje ir apibrėžti pačią funkciją.
 
 ```python 
 import os
@@ -69,9 +63,10 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import AssistantMessage, SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 
-token = os.environ["GITHUB_TOKEN"]
-endpoint = "https://models.inference.ai.azure.com"
-model_name = "meta-llama-3.1-405b-instruct"
+# Gaukite juos iš savo Microsoft Foundry projekto puslapio „Apžvalga“
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
+model_name = "Meta-Llama-3.1-405B-Instruct"
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -101,15 +96,16 @@ response = client.complete(messages=messages, model=model_name)
 print(response.choices[0].message.content)
 ```
 
-## Llama 3.2
+## Llama 3.2 
 
-Nors Llama 3.1 yra LLM, viena iš jo ribojimų – multimodalumas. Tai reiškia, kad jis negali naudoti skirtingų įvesties tipų, pavyzdžiui, vaizdų, kaip užklausų ir pateikti atsakymų. Ši galimybė yra vienas pagrindinių Llama 3.2 bruožų. Kiti šio modelio privalumai:
+Nors Llama 3.1 yra LLM, vienas iš jos trūkumų yra multimodalumo stoka. Tai reiškia, kad ji negali naudoti skirtingų įvesties tipų, tokių kaip vaizdai kaip užklausos, ir teikti atsakymus. Ši galimybė yra viena pagrindinių Llama 3.2 funkcijų. Šios funkcijos taip pat apima: 
 
-- Multimodalumas – gali apdoroti tiek tekstines, tiek vaizdines užklausas
-- Mažos ir vidutinės apimties variantai (11B ir 90B) – suteikia lankstumo diegiant
-- Tik tekstiniai variantai (1B ir 3B) – leidžia modelį diegti kraštiniuose / mobiliuosiuose įrenginiuose ir užtikrina mažą delsą
+- Multimodalumą - gebėjimą vertinti tiek teksto, tiek vaizdų užklausas 
+- Mažų ir vidutinių dydžių variantai (11B ir 90B) - tai suteikia lankstumo diegimo galimybėms, 
+- Tik tekstiniai variantai (1B ir 3B) - leidžia modelį diegti krašte / mobiliuosiuose įrenginiuose ir suteikia mažą delsą 
 
-Multimodalinė parama yra didelis žingsnis atvirojo kodo modelių pasaulyje. Žemiau pateiktame kodo pavyzdyje naudojamas ir vaizdas, ir tekstinė užklausa, kad Llama 3.2 90B pateiktų vaizdo analizę.
+Multimodalinė parama yra didelis žingsnis atvirojo kodo modelių pasaulyje. Žemiau pateiktas kodo pavyzdys priima tiek vaizdą, tiek teksto užklausą, norint gauti Llama 3.2 90B vaizdo analizę. 
+
 
 ### Multimodalinė parama su Llama 3.2
 
@@ -126,8 +122,9 @@ from azure.ai.inference.models import (
 )
 from azure.core.credentials import AzureKeyCredential
 
-token = os.environ["GITHUB_TOKEN"]
-endpoint = "https://models.inference.ai.azure.com"
+# Gautus iš savo Microsoft Foundry projekto „Apžvalgos“ puslapio
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Llama-3.2-90B-Vision-Instruct"
 
 client = ChatCompletionsClient(
@@ -158,11 +155,13 @@ response = client.complete(
 print(response.choices[0].message.content)
 ```
 
-## Mokymasis čia nesibaigia – tęskite kelionę
+## Mokymasis čia nesibaigia, tęskite kelionę
 
-Baigę šią pamoką, apsilankykite mūsų [Generatyvaus AI mokymosi kolekcijoje](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), kad toliau gilintumėte žinias apie generatyvųjį AI!
+Baigę šią pamoką, apsilankykite mūsų [Generatyvios AI mokymosi kolekcijoje](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), kad toliau keltumėte savo žinias apie Generatyviąją AI!
 
 ---
 
-**Atsakomybės atsisakymas**:  
-Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Svarbios informacijos atveju rekomenduojame profesionalų žmogaus vertimą. Mes neatsakome už nesusipratimus ar neteisingą interpretavimą, kilusį dėl šio vertimo naudojimo.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Atsakomybės apribojimas**:
+Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba laikomas autoritetingu šaltiniu. Svarbiai informacijai rekomenduojama naudoti profesionalų žmogiškąjį vertimą. Mes neatsakome už jokius nesusipratimus ar neteisingą interpretaciją, kilusią naudojantis šiuo vertimu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

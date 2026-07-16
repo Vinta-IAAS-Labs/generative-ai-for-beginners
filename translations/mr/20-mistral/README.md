@@ -1,49 +1,42 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "4bd0fafda5d66cd9d60f1ebc7820415e",
-  "translation_date": "2025-07-09T18:58:16+00:00",
-  "source_file": "20-mistral/README.md",
-  "language_code": "mr"
-}
--->
-# Mistral मॉडेल्ससह बिल्डिंग
+# मिस्त्राल मॉडेल्ससह बिल्डिंग 
 
-## परिचय
+## परिचय 
 
-या धड्यात आपण खालील गोष्टी पाहणार आहोत:  
-- वेगवेगळ्या Mistral मॉडेल्सची ओळख  
-- प्रत्येक मॉडेलच्या वापराच्या प्रकरणांची आणि परिस्थितींची समज  
-- कोड नमुने जे प्रत्येक मॉडेलच्या खास वैशिष्ट्ये दाखवतात.
+हा धडा यावर माहिती देईल: 
+- वेगवेगळ्या मिस्त्राल मॉडेल्सचा अभ्यास 
+- प्रत्येक मॉडेलसाठी वापर प्रकरणे व परिस्थिती समजून घेणे 
+- प्रत्येक मॉडेलच्या अनोख्या वैशिष्ट्यांचे उदाहरणात्मक कोड वापरून एक्सप्लोर करणे. 
 
-## Mistral मॉडेल्स
+## मिस्त्राल मॉडेल्स 
 
-या धड्यात आपण 3 वेगवेगळ्या Mistral मॉडेल्सची ओळख करून घेणार आहोत:  
-**Mistral Large**, **Mistral Small** आणि **Mistral Nemo**.
+या धड्यात, आपण 3 वेगवेगळ्या मिस्त्राल मॉडेल्सचा अभ्यास करू: 
+**मिस्त्राल लार्ज**, **मिस्त्राल स्मॉल** आणि **मिस्त्राल नेमो**. 
 
-हे सर्व मॉडेल्स Github Model मार्केटप्लेसवर मोफत उपलब्ध आहेत. या नोटबुकमधील कोड या मॉडेल्सचा वापर करून चालवला जाईल. Github Models वापरून [AI मॉडेल्ससह प्रोटोटायपिंग](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst) कसे करायचे याबाबत अधिक माहिती येथे आहे.
+या मॉडेल्सपैकी प्रत्येक [Microsoft Foundry Models](https://ai.azure.com/catalog/models?WT.mc_id=academic-105485-koreyst) वर मोफत उपलब्ध आहे. या नोटबुकमधील कोड या मॉडेल्सचा वापर करून चालवला जाईल.
 
-## Mistral Large 2 (2407)
+> **टीप:** GitHub Models जुलै 2026 च्या शेवटी बंद होत आहे. AI मॉडेल्ससह प्रोटोटाइप करण्यासाठी [Microsoft Foundry Models](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/overview?WT.mc_id=academic-105485-koreyst) वापरण्याबाबत अधिक तपशील येथे आहेत. 
 
-Mistral Large 2 सध्या Mistral कडून उपलब्ध असलेले प्रमुख मॉडेल आहे आणि ते एंटरप्राइझ वापरासाठी डिझाइन केलेले आहे.
 
-हे मॉडेल मूळ Mistral Large चा अपग्रेड आहे, ज्यामध्ये  
-- मोठा Context Window - 128k विरुद्ध 32k  
-- गणित आणि कोडिंग टास्कवर चांगली कामगिरी - सरासरी अचूकता 76.9% विरुद्ध 60.4%  
-- बहुभाषिक कामगिरी वाढवली आहे - भाषांमध्ये इंग्रजी, फ्रेंच, जर्मन, स्पॅनिश, इटालियन, पोर्तुगीज, डच, रशियन, चायनीज, जपानीज, कोरियन, अरबी आणि हिंदी यांचा समावेश आहे.
+## मिस्त्राल लार्ज 2 (2407)
+मिस्त्राल लार्ज 2 सध्या मिस्त्रालचे प्रमुख मॉडेल आहे आणि ते एंटरप्राइझ वापरासाठी डिझाईन केले आहे. 
 
-या वैशिष्ट्यांमुळे Mistral Large खालील बाबतीत उत्कृष्ट आहे:  
-- *Retrieval Augmented Generation (RAG)* - मोठ्या context window मुळे  
-- *Function Calling* - या मॉडेलमध्ये नैसर्गिक function calling आहे ज्यामुळे बाह्य साधने आणि API शी एकत्रीकरण शक्य होते. हे कॉल्स एकाच वेळी किंवा अनुक्रमे केले जाऊ शकतात.  
-- *Code Generation* - Python, Java, TypeScript आणि C++ कोड जनरेशनमध्ये हे मॉडेल उत्कृष्ट आहे.
+हे मॉडेल मूळ मिस्त्राल लार्जचे अपग्रेड आहे जे पुरवते 
+-  मोठे संदर्भ विंडो - 128k विरुद्ध 32k 
+-  गणित आणि कोडिंग कार्यांवरील उत्कृष्ट कामगिरी - 76.9% सरासरी अचूकता विरुद्ध 60.4% 
+-  वाढलेली बहुभाषिक कामगिरी - भाषांमध्ये समाविष्ट आहेत: इंग्रजी, फ्रेंच, जर्मन, स्पॅनिश, इटालियन, पोर्तुगीज, डच, रशियन, चिनी, जपानी, कोरियन, अरबी, आणि हिंदी.
 
-### Mistral Large 2 वापरून RAG उदाहरण
+या वैशिष्ट्यांमुळे, मिस्त्राल लार्ज उत्कृष्ट आहे 
+- *रिट्रीव्हल ऑगमेंटेड जेनरेशन (RAG)* - मोठ्या संदर्भ विंडोमुळे
+- *फंक्शन कॉलिंग* - या मॉडेलमध्ये स्थानिक फंक्शन कॉलिंग आहे ज्यामुळे बाह्य टूल्स आणि API सह एकत्रीकरण शक्य होते. हे कॉल एकाच वेळी किंवा एकाच नंतर एक क्रमाने केले जाऊ शकतात. 
+- *कोड जनरेशन* - या मॉडेलमध्ये Python, Java, TypeScript आणि C++ जनरेशनमध्ये उत्कृष्ट कामगिरी आहे. 
 
-या उदाहरणात, आपण Mistral Large 2 वापरून एका मजकूर दस्तऐवजावर RAG पॅटर्न चालवत आहोत. प्रश्न कोरियन भाषेत लिहिला आहे आणि लेखकाच्या कॉलेजपूर्वीच्या क्रियाकलापांविषयी विचारतो.
+### मिस्त्राल लार्ज 2 वापरून RAG उदाहरण 
 
-हे Cohere Embeddings Model वापरून मजकूर दस्तऐवज आणि प्रश्न यांचे embeddings तयार करते. या नमुन्यासाठी faiss Python पॅकेज व्हेक्टर स्टोअर म्हणून वापरले आहे.
+या उदाहरणात, आपण मिस्त्राल लार्ज 2 वापरून एका मजकूर दस्तऐवजात RAG नमुना चालवत आहोत. प्रश्न कोरियन भाषेत लिहिला आहे आणि लेखकाच्या महाविद्यालयाआधीच्या क्रियाकलापांबद्दल विचारतो. 
 
-Mistral मॉडेलला पाठवलेला प्रॉम्प्ट प्रश्न आणि प्रश्नाशी संबंधित पुनर्प्राप्त केलेले भाग दोन्ही समाविष्ट करतो. मॉडेल नंतर नैसर्गिक भाषेत उत्तर देते.
+हे Cohere Embeddings मॉडेल वापरते जे मजकूर दस्तऐवज तसेच प्रश्नाचे एम्बेडिंग तयार करते. या नमुन्यासाठी, faiss Python पॅकेज व्हेक्टर स्टोर म्हणून वापरले जाते. 
+
+मिस्त्राल मॉडेलला पाठवलेला प्रॉम्प्ट मध्ये प्रश्न तसेच प्रश्नाशी संबंधित पुनर्प्राप्त केलेले तुकडे दोन्ही समाविष्ट आहेत. मॉडेल नंतर नैसर्गिक भाषा प्रतिसाद प्रदान करते. 
 
 ```python 
 pip install faiss-cpu
@@ -60,9 +53,10 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.inference import EmbeddingsClient
 
-endpoint = "https://models.inference.ai.azure.com"
+# हे आपल्या Microsoft Foundry प्रकल्पाच्या "अवलोकन" पृष्ठातून घ्या
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-large"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -101,7 +95,7 @@ d = text_embeddings.shape[1]
 index = faiss.IndexFlatL2(d)
 index.add(text_embeddings)
 
-question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?？"
+question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?"
 
 question_embedding = embed_client.embed(
     input=[question],
@@ -111,7 +105,7 @@ question_embedding = embed_client.embed(
 question_embeddings = np.array(question_embedding.data[0].embedding)
 
 
-D, I = index.search(question_embeddings.reshape(1, -1), k=2) # distance, index
+D, I = index.search(question_embeddings.reshape(1, -1), k=2) # अंतर, निर्देशांक
 retrieved_chunks = [chunks[i] for i in I.tolist()[0]]
 
 prompt = f"""
@@ -139,30 +133,30 @@ chat_response = client.complete(
 print(chat_response.choices[0].message.content)
 ```
 
-## Mistral Small
+## मिस्त्राल स्मॉल 
+मिस्त्राल स्मॉल हा मिस्त्राल कुटुंबातील आणखी एक मॉडेल आहे जे प्रीमियर/एंटरप्राइझ श्रेणीखाली येतो. नावाप्रमाणे, हे मॉडेल एक लहान भाषा मॉडेल (SLM) आहे. मिस्त्राल स्मॉल वापरण्याचे फायदे आहेत: 
+- मिस्त्राल लार्ज आणि NeMo सारख्या मोठ्या LLM च्या तुलनेत खर्च कमी - 80% किंमतीत घट
+- कमी विलंब - मिस्त्रालच्या LLM पेक्षा जलद प्रतिसाद
+- लवचिक - विविध पर्यावरणांमध्ये कमी संसाधने आवश्यक असल्यामुळे सहज तैनात करता येऊ शकते. 
 
-Mistral Small हा Mistral कुटुंबातील आणखी एक मॉडेल आहे जो प्रीमियर/एंटरप्राइझ श्रेणीत येतो. नावाप्रमाणे, हा एक Small Language Model (SLM) आहे. Mistral Small वापरण्याचे फायदे म्हणजे:  
-- Mistral Large आणि NeMo सारख्या Mistral LLMs च्या तुलनेत खर्चात बचत - 80% किंमतीत कपात  
-- कमी विलंब - Mistral च्या LLMs च्या तुलनेत जलद प्रतिसाद  
-- लवचिक - कमी संसाधनांच्या गरजांसह विविध वातावरणांमध्ये सहज तैनात करता येतो.
 
-Mistral Small चांगला आहे:  
-- मजकूर आधारित कामांसाठी जसे की सारांश तयार करणे, भावना विश्लेषण आणि भाषांतर  
-- जिथे वारंवार विनंत्या येतात अशा अनुप्रयोगांसाठी, कारण तो खर्चिकदृष्ट्या फायदेशीर आहे  
-- कमी विलंब असलेल्या कोड कामांसाठी जसे की पुनरावलोकन आणि कोड सूचना
+मिस्त्राल स्मॉल उत्तम आहे: 
+- मजकूर आधारित कार्यांसाठी जसे की सारांश तयार करणे, भावना विश्लेषण आणि भाषांतर. 
+- ज्या अर्जांमध्ये वारंवार विनंत्या होतात कारण ते खर्च प्रभावी आहे 
+- कमी विलंब असलेल्या कोड कामांसाठी जसे समीक्षा आणि कोड सूचना 
 
-## Mistral Small आणि Mistral Large यांची तुलना
+## मिस्त्राल स्मॉल आणि मिस्त्राल लार्जची तुलना 
 
-Mistral Small आणि Large मधील विलंबातील फरक दाखवण्यासाठी खालील सेल्स चालवा.
+मिस्त्राल स्मॉल आणि लार्जमधील विलंबता फरक दर्शविण्यासाठी खालील सेल्स चालवा. 
 
-आपण 3-5 सेकंदांच्या फरकाचा प्रतिसाद वेळेत अनुभव घेऊ शकता. तसेच त्याच प्रॉम्प्टवर प्रतिसादाची लांबी आणि शैली यावरही लक्ष द्या.
+तुम्हाला प्रत्युत्तर वेळेत 3-5 सेकंदांचा फरक दिसेल. तसेच त्याच प्रॉम्प्टवर प्रतिसादाची लांबी आणि शैलीही लक्षात घ्या.  
 
 ```python 
 
 import os 
-endpoint = "https://models.inference.ai.azure.com"
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-small"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -191,9 +185,9 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 
-endpoint = "https://models.inference.ai.azure.com"
+endpoint = os.environ["AZURE_INFERENCE_ENDPOINT"]
 model_name = "Mistral-large"
-token = os.environ["GITHUB_TOKEN"]
+token = os.environ["AZURE_INFERENCE_CREDENTIAL"]
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
@@ -215,32 +209,33 @@ print(response.choices[0].message.content)
 
 ```
 
-## Mistral NeMo
+## मिस्त्राल नेमॉ
 
-या धड्यातील इतर दोन मॉडेल्सच्या तुलनेत, Mistral NeMo हा एकमेव मोफत मॉडेल आहे ज्याला Apache2 परवाना आहे.
+या धड्यात चर्चा केलेल्या इतर दोन मॉडेल्सशी तुलना करता, मिस्त्राल नेमॉ हा एकमेव मोफत मॉडेल आहे ज्याला Apache2 परवानगी आहे. 
 
-हा Mistral च्या आधीच्या ओपन सोर्स LLM, Mistral 7B चा अपग्रेड मानला जातो.
+हे पूर्वीच्या मिस्त्रालच्या मुक्त स्रोत LLM, मिस्त्राल 7B वर एक अपग्रेड म्हणून पाहिले जाते. 
 
-NeMo मॉडेलची काही इतर वैशिष्ट्ये:  
+नेमॉ मॉडेलची काही इतर वैशिष्ट्ये: 
 
-- *अधिक कार्यक्षम टोकनायझेशन:* हे मॉडेल Tekken टोकनायझर वापरते, जो सामान्यतः वापरल्या जाणाऱ्या tiktoken पेक्षा वेगळा आहे. यामुळे अधिक भाषा आणि कोडवर चांगली कामगिरी होते.
+- *अधिक कार्यक्षम टोकनायझेशन:* हे मॉडेल Tekken टोकनायझर वापरते जो सामान्यतः वापरल्या जाणाऱ्या tiktoken पेक्षा वेगळा आहे. यामुळे अधिक भाषा आणि कोडवर चांगली कामगिरी होते. 
 
-- *फाइनट्यूनिंग:* बेस मॉडेल फाइनट्यूनिंगसाठी उपलब्ध आहे. यामुळे ज्या वापराच्या प्रकरणांमध्ये फाइनट्यूनिंग आवश्यक आहे त्यासाठी अधिक लवचिकता मिळते.
+- *फायनट्यूनिंग:* बेस मॉडेल फायनट्यूनिंगसाठी उपलब्ध आहे. त्यामुळे ज्यांना फायनट्यूनिंगची आवश्यकता आहे अशा वापर प्रकरणांमध्ये अधिक लवचिकता मिळते. 
 
-- *नैसर्गिक Function Calling* - Mistral Large प्रमाणे, या मॉडेलला function calling वर प्रशिक्षण दिले गेले आहे. त्यामुळे हे पहिले ओपन सोर्स मॉडेल्सपैकी एक आहे ज्यामध्ये ही क्षमता आहे.
+- *निवडक फंक्शन कॉलिंग* - मिस्त्राल लार्जसारखे, या मॉडेलला फंक्शन कॉलिंगसाठी प्रशिक्षित केले गेले आहे. त्यामुळे हे एकमेव मुक्त स्रोत मॉडेल्सपैकी एक आहे जे हे कार्य करते. 
 
-### टोकनायझर्सची तुलना
 
-या नमुन्यात, आपण पाहणार आहोत की Mistral NeMo Mistral Large च्या तुलनेत टोकनायझेशन कसे हाताळते.
+### टोकनायझरची तुलना 
 
-दोन्ही नमुने एकाच प्रॉम्प्टवर आधारित आहेत, पण आपण पाहाल की NeMo तुलनेत कमी टोकन्स परत करते.
+या नमुन्यात, आपण पाहू कसे मिस्त्राल नेमॉ टोकनायझेशन हाताळतो मिस्त्राल लार्जच्या तुलनेत. 
+
+दोन्ही नमुने एकसारखा प्रॉम्प्ट घेतात पण तुम्हाला दिसेल की नेमॉ लार्जच्या तुलनेत कमी टोकन्स परत करतो. 
 
 ```bash
 pip install mistral-common
 ```
 
 ```python 
-# Import needed packages:
+# आवश्यक पॅकेजेस आयात करा:
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -251,13 +246,13 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# मिस्ट्रल टोकनायझर लोड करा
 
-model_name = "open-mistral-nemo	"
+model_name = "open-mistral-nemo"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# संदेशांची यादी टोकनायझ करा
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
@@ -275,7 +270,7 @@ tokenized = tokenizer.encode_chat_completion(
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "The temperature unit to use. Infer this from the user's location.",
                             },
                         },
                         "required": ["location", "format"],
@@ -291,12 +286,12 @@ tokenized = tokenizer.encode_chat_completion(
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# टोकन्सची संख्या मोजा
 print(len(tokens))
 ```
 
 ```python
-# Import needed packages:
+# आवश्यक पॅकेजेस आयात करा:
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -307,13 +302,13 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# Mistral टोकनायझर लोड करा
 
 model_name = "mistral-large-latest"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# संदेशांची यादी टोकन करा
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
@@ -331,7 +326,7 @@ tokenized = tokenizer.encode_chat_completion(
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "The temperature unit to use. Infer this from the user's location.",
                             },
                         },
                         "required": ["location", "format"],
@@ -347,13 +342,17 @@ tokenized = tokenizer.encode_chat_completion(
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# टोकनची संख्या मोजा
 print(len(tokens))
 ```
 
 ## शिकणे येथे थांबत नाही, प्रवास सुरू ठेवा
 
-हा धडा पूर्ण केल्यानंतर, आमच्या [Generative AI Learning collection](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) ला भेट द्या आणि आपले Generative AI ज्ञान अधिक वाढवा!
+हा धडा पूर्ण केल्यावर, आमची [जनरेटिव्ह AI शिकण्याची संग्रह](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) तपासा आणि तुमचे जनरेटिव्ह AI ज्ञान पुढे वाढवा!
 
-**अस्वीकरण**:  
-हा दस्तऐवज AI अनुवाद सेवा [Co-op Translator](https://github.com/Azure/co-op-translator) वापरून अनुवादित केला आहे. आम्ही अचूकतेसाठी प्रयत्नशील असलो तरी, कृपया लक्षात घ्या की स्वयंचलित अनुवादांमध्ये चुका किंवा अचूकतेची कमतरता असू शकते. मूळ दस्तऐवज त्याच्या स्थानिक भाषेत अधिकृत स्रोत मानला जावा. महत्त्वाच्या माहितीसाठी व्यावसायिक मानवी अनुवाद करण्याची शिफारस केली जाते. या अनुवादाच्या वापरामुळे उद्भवलेल्या कोणत्याही गैरसमजुती किंवा चुकीच्या अर्थलागी आम्ही जबाबदार नाही.
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**अस्वीकरण**:
+हा दस्तऐवज AI भाषांतर सेवा [Co-op Translator](https://github.com/Azure/co-op-translator) चा वापर करून अनुवादित केला आहे. जरी आम्ही अचूकतेसाठी प्रयत्न करतो, तरी कृपया लक्षात घ्या की स्वयंचलित भाषांतरांमध्ये त्रुटी किंवा अचूकतेची कमतरता असू शकते. मूळ दस्तऐवज त्याच्या मूळ भाषेत अधिकृत स्रोत मानला पाहिजे. महत्त्वाची माहिती असल्यास, व्यावसायिक मानवी भाषांतराची शिफारस केली जाते. या भाषांतराच्या वापरामुळे उद्भवणाऱ्या कोणत्याही गैरसमज किंवा चुकीच्या अर्थलावणीसाठी आम्ही जबाबदार नाही.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,196 +1,214 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "0135e6c271f3ece8699050d4debbce88",
-  "translation_date": "2025-10-18T02:06:54+00:00",
-  "source_file": "04-prompt-engineering-fundamentals/README.md",
-  "language_code": "my"
-}
--->
-# Prompt Engineering အခြေခံ
+# Prompt Engineering အခြေခံများ  
 
-[![Prompt Engineering Fundamentals](../../../translated_images/my/04-lesson-banner.a2c90deba7fedacd.webp)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
+[![Prompt Engineering Fundamentals](../../../translated_images/my/04-lesson-banner.a2c90deba7fedacd.webp)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)  
 
-## အကျဉ်းချုပ်
-ဒီ module မှာ generative AI models တွေမှာ prompt တွေကို ထိရောက်စွာဖန်တီးနိုင်ဖို့အတွက် အရေးကြီးတဲ့အယူအဆတွေ၊ နည်းလမ်းတွေကို လေ့လာပါမယ်။ LLM ကို prompt ရေးသားပုံကလည်း အရေးကြီးပါတယ်။ Prompt ကို သေချာစွာရေးသားနိုင်ရင် response quality ပိုမိုကောင်းမွန်စေပါတယ်။ ဒါပေမယ့် _prompt_ နဲ့ _prompt engineering_ ဆိုတာ ဘာလဲ? LLM ကို ပေးပို့တဲ့ prompt _input_ ကို ဘယ်လိုတိုးတက်အောင်လုပ်မလဲ? ဒီ chapter နဲ့ နောက် chapter မှာ ဒီမေးခွန်းတွေကို ဖြေရှင်းဖို့ ကြိုးစားပါမယ်။
+## နိဒါန်း  
+ဒီမော်ဂျူးလ်တွင် generative AI မော်ဒယ်များတွင် ထိရောက်သော prompt များ ဖန်တီးခြင်းအတွက် အရေးကြီးသော အယူအဆများနှင့် နည်းပညာများကို ရှင်းလင်းပြသထားပါသည်။ LLM သို့ prompt ကို ဘယ်လိုရေးသားသလဲ ဆိုတာလည်း အရေးကြီးပါသည်။ ကြည့်ရှုစူးစမ်းထားပြီး တိကျသည့် prompt တစ်ခုက တုံ့ပြန်မှု အရည်အသွေးကောင်းမွန်စေပါသည်။ ဒါပေမယ့် _prompt_ နဲ့ _prompt engineering_ ဆိုတဲ့ စကားလုံးတွေကဘာလဲ? အဲဒီ prompt _input_ ကို LLM ထံ ပေးပို့ရာမှာ ဘယ်လိုတိုးတက်အောင်လုပ်မလဲ? ဒီခေါင်းစဉ်နဲ့နောက်တစ်ခန်းမှာ အဖြေရှာကြည့်ပါမယ်။  
 
-_Generative AI_ က အသုံးပြုသူရဲ့တောင်းဆိုမှုကို အခြေခံပြီး content အသစ် (ဥပမာ - text, images, audio, code စသည်) ဖန်တီးနိုင်ပါတယ်။ ဒါကို OpenAI ရဲ့ GPT ("Generative Pre-trained Transformer") စီးရီးလို natural language နဲ့ code ကို သင်ကြားထားတဲ့ _Large Language Models_ တွေကို အသုံးပြုပြီး အောင်မြင်စေပါတယ်။
+_Generative AI_ က စာသား၊ ပုံရိပ်၊ အသံ၊ ကုတ် စတဲ့ အသုံးပြုသူတောင်းဆိုချက်တွေကို ဖြေကြားဖန်တီးပေးနိုင်တဲ့ ပံ့ပိုးမှု ရှိပါတယ်။ OpenAI GPT ("Generative Pre-trained Transformer") စီးရီးလို နောက်ခံ _Large Language Models_ အသုံးပြုပြီး သဘာဝဘာသာစကားနဲ့ ကုတ်သို့ သင်ကြားထားပါတယ်။  
 
-အသုံးပြုသူတွေဟာ chat လိုမျိုး ရိုးရှင်းတဲ့နည်းလမ်းတွေနဲ့ ဒီ models တွေနဲ့ အပြန်အလှန် ဆွေးနွေးနိုင်ပါတယ်။ Models တွေဟာ _prompt-based_ ဖြစ်ပြီး - အသုံးပြုသူတွေက text input (prompt) ကို ပေးပို့ပြီး AI response (completion) ကို ပြန်လည်ရရှိပါတယ်။ ထို့နောက် "AI နဲ့ စကားပြော" လုပ်ပြီး multi-turn conversations တွေမှာ prompt ကို ပြင်ဆင်ပြီး response ကို မျှော်လင့်ချက်နဲ့ ကိုက်ညီအောင်လုပ်နိုင်ပါတယ်။
+အသုံးပြုသူတွေက ယခုမော်ဒယ်တွေနဲ့ ဆက်သွယ်ရာမှာ နေရာအရပ်ပါ များလစဉ် အခြေခံထားသော chat စနစ်အတိုင်း ပညာအတတ်ပညာ မလိုပဲ အဆင်ပြေစွာ အသုံးပြုနိုင်ပါတယ်။ မော်ဒယ်တွေကို _prompt-based_ လို့ ခေါ်ပြီး အသုံးပြုသူတွေက စာသား input (prompt) ပေးပြီး AI ရဲ့ ပြန်လည်ဖြေကြားမှု(completion) ကို ရယူပါတယ်။ အဲ့ဒီနောက် "AI နဲ့ အပြန်အလှန် chat" များကို အဆက်မပြတ် ဆက်လျှောက်လုပ်ဆောင်ပြီး ပြန်လည်ရရှိမှုနဲ့ ကိုက်ညီသည်အထိ ရေးသားမှုကို တိုးတက်အောင် ပြုလုပ်နိုင်ပါတယ်။  
 
-"Prompts" တွေဟာ generative AI apps တွေအတွက် အဓိက _programming interface_ ဖြစ်လာပြီး models တွေကို ဘာလုပ်မလဲဆိုတာ ပြောပြပေးပြီး ပြန်ပေးတဲ့ response quality ကိုလည်း ထိန်းညှိပေးပါတယ်။ "Prompt Engineering" ဆိုတာ prompt တွေကို _design နဲ့ optimization_ လုပ်ပြီး consistent နဲ့ quality responses တွေကို အကျိုးရှိရှိရရှိစေဖို့ အာရုံစိုက်တဲ့ အမြန်တိုးတက်နေတဲ့ သုတေသနနယ်ပယ်တစ်ခုဖြစ်ပါတယ်။
+"Prompts" တို့က အခုတော့ generative AI အက်ပ်လီကေးရှင်းများမှာ အဓိက _ပရိုဂရမ်မင်း အင်တာဖေ့စ်_ အဖြစ် ပေါ်ထွန်းလာပြီး မော်ဒယ်တွေကို ဘာလုပ်ရမယ် ဆိုတာ ပြောပြပေးပြီး ပြန်လာမယ့်တုံ့ပြန်မှု အရည်အသွေးကို သက်ရောက်မှုရှိစေပါတယ်။ "Prompt Engineering" ဟာ prompt များကို ဒီဇိုင်းဆွဲပြီး တိုးတက်အောင် ပြင်ဆင်ရေးရာ ကို အာရုံစိုက်တဲ့ မြန်ဆန်လျင်မြန်စွာ တိုးတက်နေသော လေ့လာရေးနယ်ပယ်တစ်ခုဖြစ်ပါတယ်။  
 
-## သင်ယူရမယ့်အရာများ
+## သင်ယူရမည့် ရည်မှန်းချက်များ  
 
-ဒီသင်ခန်းစာမှာ Prompt Engineering ဆိုတာဘာလဲ၊ ဘာကြောင့် အရေးကြီးလဲ၊ နောက်ပြီး model နဲ့ application ရည်ရွယ်ချက်အတွက် ထိရောက်တဲ့ prompts တွေကို ဘယ်လိုဖန်တီးနိုင်မလဲဆိုတာကို သင်ယူပါမယ်။ Prompt engineering အတွက် အဓိကအယူအဆတွေ၊ အကောင်းဆုံးနည်းလမ်းတွေကို နားလည်ပြီး - ဒီအယူအဆတွေကို အမှန်တကယ်သော ဥပမာတွေမှာ အသုံးချပုံကို မြင်နိုင်တဲ့ interactive Jupyter Notebooks "sandbox" ပတ်ဝန်းကျင်အကြောင်းကိုလည်း သင်ယူပါမယ်။
+ဒီသင်ခန်းစာမှာ Prompt Engineering ဆိုတာဘာလဲ၊ ဘာကြောင့် အရေးကြီးသလဲ၊ အတိအကျအတွက် မော်ဒယ်နဲ့ အက်ပ်လီကေးရှင်းရည်မှန်းချက်တစ်ခုအတွက် ထိရောက်တဲ့ prompt များကို ဘယ်လိုဖန်တီးမလဲဆိုတာကို သင်ကြားပါမယ်။ Prompt engineering အတွက် အခြေခံအယူအဆနဲ့ အကောင်းဆုံးလေ့လာမှုနည်းလမ်းတွေပေါ် တစ်ခုချင်းနားလည်နိုင်ပြီး Jupyter Notebooks "sandbox" အခန်းကဏ္ဍမှာ ဥပမာများမှ အသုံးချမှုကို ကြည့်ရှုနိုင်မှာ ဖြစ်ပါတယ်။  
 
-ဒီသင်ခန်းစာပြီးဆုံးတဲ့အခါမှာ -
+ဒီသင်ခန်းစာအဆုံးမှာ ကျွန်ုပ်တို့သည် အောက်ပါ အချက်များကို ပြုလုပ်နိုင်လိမ့်မည် -  
 
-1. Prompt engineering ဆိုတာဘာလဲ၊ ဘာကြောင့် အရေးကြီးလဲဆိုတာ ရှင်းပြနိုင်မယ်။
-2. Prompt ရဲ့ components တွေကို ရှင်းပြပြီး ဘယ်လိုအသုံးပြုရမယ်ဆိုတာ ရှင်းပြနိုင်မယ်။
-3. Prompt engineering အတွက် အကောင်းဆုံးနည်းလမ်းတွေကို သင်ယူနိုင်မယ်။
-4. OpenAI endpoint ကို အသုံးပြုပြီး သင်ယူထားတဲ့နည်းလမ်းတွေကို အမှန်တကယ်သော ဥပမာတွေမှာ အသုံးချနိုင်မယ်။
+1. Prompt engineering ဆိုတာဘာလဲ၊ ဘာကြောင့်အရေးကြီးသလဲ ဆိုတာ ရှင်းပြတတ်ရန်။  
+2. Prompt ၏ အစိတ်အပိုင်းများနှင့် ယင်းတို့ကို ဘယ်လိုအသုံးပြုကြောင်း ဖော်ပြနိုင်ရန်။  
+3. Prompt engineering အတွက် အကောင်းဆုံးလေ့လာမှုနည်းလမ်းများနှင့် နည်းနည်းပညာများကို လေ့လာရန်။  
+4. သင်ယူထားသော နည်းလမ်းများကို အကျိုးသက်ရောက်မှုနေရာများတွင် OpenAI endpoint အသုံးပြုကာ ပြုလုပ်နိုင်ရန်။  
 
-## အဓိကအသုံးအနှုန်းများ
+## အဓိကစကားလုံးများ  
 
-Prompt Engineering: AI models တွေကို ရည်ရွယ်ချက်အလိုက် output ကိုထုတ်ပေးစေဖို့ input တွေကို design နဲ့ refine လုပ်တဲ့အတတ်ပညာ။
-Tokenization: Text ကို model နားလည်နိုင်တဲ့ tokens လို့ခေါ်တဲ့ အပိုင်းငယ်တွေ အဖြစ် ပြောင်းလဲတဲ့လုပ်ငန်းစဉ်။
-Instruction-Tuned LLMs: Response accuracy နဲ့ relevance ကို တိုးတက်စေဖို့ အထူးညွှန်းချက်တွေနဲ့ fine-tune လုပ်ထားတဲ့ Large Language Models (LLMs)။
+Prompt Engineering: AI မော်ဒယ်များအား လိုလားသည့် အထွက်များ ထုတ်ပေးရန်အတွက် input များကို ဒီဇိုင်းဆွဲခြင်းနှင့် တိုးတက်အောင် ပြင်ဆင်ခြင်း လေ့လာမှု။  
+Tokenization: စာသားကို မော်ဒယ်အနေနဲ့ နားလည်နိုင်သည့် အသေးစား တိုကင်များအဖြစ် ဟုတ်သော အပိုင်းများသို့ ပြောင်းလဲခြင်းဖြစ်စဉ်။  
+Instruction-Tuned LLMs: တိကျသော အညွှန်းများဖြင့် ကြိုတင်ကိုယ်စားပြု၍ တိုးတက်အောင် သင်ကြားထားသော Large Language Models (LLMs)။ ဒီနည်းဖြင့် တုံ့ပြန်မှု တိကျမှုနှင့် သက်ဆိုင်မှု တိုးတက်စေသည်။  
 
-## Learning Sandbox
+## သင်ယူမှု Sandbox  
 
-Prompt engineering ဟာ လက်ရှိအခြေအနေမှာ သိပ္ပံနည်းကျထက် အနုပညာဆန်တဲ့အရာဖြစ်ပါတယ်။ Prompt engineering ကို ပိုမိုနားလည်နိုင်ဖို့အတွက် _အတွေ့အကြုံ_ ရရှိဖို့နဲ့ application domain expertise ကို model-specific optimizations နဲ့ ပေါင်းစပ်ပြီး trial-and-error နည်းလမ်းကို အသုံးပြုဖို့ အကောင်းဆုံးနည်းလမ်းဖြစ်ပါတယ်။
+Prompt engineering သည် ယခုအခါ အတတ်ပညာပိုင်းပို အားသာပြီး သိပ္ပံပိုင်းနည်းပညာအနည်းငယ်ရှိပါသည်။ နားလည်မှု တိုးတက်ရန်အတွက် နမူနာများကို လေ့လာခြင်းနှင့် အသုံးချခြင်းတို့ဖြင့် သင်ယူမှု ပိုမိုကြိုးစားမှုကို လိုအပ်သည်။ နည်းလမ်းအသစ်များနှင့် မော်ဒယ်ထူးခြားချက်များကို စမ်းသပ်ဆန်းစစ်ရန် Trial-and-error အတိုင်း လေ့လာသင့်ကြောင်း ဖြစ်ပါသည်။  
 
-ဒီသင်ခန်းစာနဲ့အတူလာတဲ့ Jupyter Notebook ဟာ သင်ယူထားတဲ့အရာတွေကို စမ်းသပ်နိုင်တဲ့ _sandbox_ ပတ်ဝန်းကျင်ကို ပေးထားပြီး - သင်ယူနေစဉ်မှာပဲ သို့မဟုတ် code challenge အဆုံးမှာ စမ်းသပ်နိုင်ပါတယ်။ Exercises တွေကို run လုပ်ဖို့အတွက် -
+ဒီသင်ခန်းစာတွင် Jupyter Notebook ကို _sandbox_ ပတ်ဝန်းကျင်အဖြစ် အသုံးပြုနိုင်ပါတယ်။ သင်ယူထားသည်တို့ကို လက်တွေ့စမ်းသပ်ရန် - သင်ခန်းစာအဆုံးတွင် တိုက်တွန်းချက်များအဖြစ်သို့မဟုတ် ချက်ချင်း လေ့လာစဉ် သုံးနိုင်သည်။ လေ့ကျင့်ခန်းများ ဆောင်ရွက်ရန် လိုအပ်သည်မှာ -  
 
-1. **Azure OpenAI API key** - deployed LLM အတွက် service endpoint
-2. **Python Runtime** - Notebook ကို run လုပ်နိုင်တဲ့ environment
-3. **Local Env Variables** - _[SETUP](./../00-course-setup/02-setup-local.md?WT.mc_id=academic-105485-koreyst) အဆင့်တွေကို အခုလုပ်ဆောင်ပါ_
+1. **Azure OpenAI API Key** - တပ်ဆင်ထားသော LLM အတွက် service endpoint  
+2. **Python runtime** - Notebook ကို လုပ်ဆောင်နိုင်သော စက်တစ်လုံး  
+3. **Local Environment Variables** - [SETUP](./../00-course-setup/02-setup-local.md?WT.mc_id=academic-105485-koreyst) နည်းလမ်းများကို ပြီးမြောက်အောင် လုပ်ဆောင်ထားရန်  
 
-Notebook မှာ _starter_ exercises တွေ ပါဝင်ပြီး - သင့်ကိုယ်တိုင် _Markdown_ (description) နဲ့ _Code_ (prompt requests) အပိုင်းတွေကို ထည့်သွင်းပြီး ဥပမာတွေ သို့မဟုတ် အကြံဉာဏ်အသစ်တွေကို စမ်းသပ်နိုင်ပါတယ် - နောက်ပြီး prompt design အတွက် သင့်ရဲ့အတွေ့အကြုံကို တိုးတက်စေပါမယ်။
+Notebook တွင် စတင်လေ့ကျင့်ရန် _starter_ လေ့ကျင့်ခန်းများ ပါရှိသော်လည်း ကိုယ့်အကြံဉာဏ်များနှင့် နမူနာများအပိုင်းကို _Markdown_ (ဖော်ပြချက်) နှင့် _Code_ (prompt တောင်းဆိုမှု) အနေနဲ့ မိမိရဲ့ကိုယ်ပိုင် အပိုင်းများ ထပ်မံထည့်သွင်း၍ prompt ဒီဇိုင်းအကြောင်း နားလည်မှု တိုးမြှင့်နိုင်သည်။  
 
-## ရှင်းလင်းပြပုံ
+## ပုံဖော်ထားသော လမ်းညွှန်  
 
-ဒီသင်ခန်းစာမှာ ဘာတွေကို လေ့လာရမယ်ဆိုတာကို အဓိကအချက်တွေကို ရှင်းလင်းပြပေးထားတဲ့ guide ကို ကြည့်ရှုနိုင်ပါတယ်။ ဒီ lesson roadmap က core concepts နဲ့ challenges တွေကို နားလည်စေပြီး prompt engineering techniques နဲ့ အကောင်းဆုံးနည်းလမ်းတွေကို အသုံးပြုပြီး ပြဿနာတွေကို ဖြေရှင်းပုံကို ပြသပေးပါတယ်။ ဒီ guide ရဲ့ "Advanced Techniques" အပိုင်းကတော့ curriculum ရဲ့ _နောက် chapter_ မှာ လေ့လာရမယ့် content ကို ရည်ညွှန်းထားပါတယ်။
+ဒီသင်ခန်းစာကဘာတွေပါဝင်သလဲ ဆိုတာ ကြည့်ရှုသင်ယူရန် ပြင်ဆင်ထားသော ပုံဖော်ထားသော လမ်းညွှန်ကို ကြည့်ပါ။ အဓိက ခေါင်းစဉ်များနှင့် သင်ယူသင့်သော အချက်များကို အစားထိုးရှုနိုင်ပါသည်။ သင်ခန်းစာ စီမံကိန်းက အခြေခံ အယူအဆတွေ၊ စိန်ခေါ်မှုတွေ နားလည်ပြီး prompt engineering နည်းလမ်းများနှင့် အကောင်းဆုံး လေ့လာမှုနည်းလမ်းများဖြင့် ဖြေရှင်းသွားမယ်။ "Advanced Techniques" အပိုင်းမှာ ဒီသင်တန်း စာရင်းရှိ နောက်တစ်ခန်းမှာဖော်ပြထားတာဖြစ်သည်။  
 
-![Illustrated Guide to Prompt Engineering](../../../translated_images/my/04-prompt-engineering-sketchnote.d5f33336957a1e4f.webp)
+![Illustrated Guide to Prompt Engineering](../../../translated_images/my/04-prompt-engineering-sketchnote.d5f33336957a1e4f.webp)  
 
-## ကျွန်တော်တို့ရဲ့ Startup
+## ကျွန်ုပ်တို့၏ စတားတပ်  
 
-အခုတော့ _ဒီအကြောင်းအရာ_ ဟာ ကျွန်တော်တို့ရဲ့ startup mission [AI နည်းပညာကို ပညာရေးမှာ တိုးတက်အောင်လုပ်ဆောင်ခြင်း](https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst) နဲ့ ဘယ်လိုဆက်စပ်နေလဲဆိုတာကို ပြောကြမယ်။ ကျွန်တော်တို့ဟာ _personalized learning_ အတွက် AI-powered applications တွေ ဖန်တီးချင်ပါတယ် - ဒါကြောင့် ကျွန်တော်တို့ app ကို အသုံးပြုမယ့် အသုံးပြုသူအမျိုးမျိုးက "design" prompts တွေကို ဘယ်လိုလုပ်မလဲဆိုတာကို စဉ်းစားကြည့်ရမယ်။
+အခု ယခုခေါင်းစဉ်ဟာ ကျွန်ုပ်တို့ရဲ့ [ပညာရေးထဲ AI အသစ်တီထွင်မှု လာရောက်စေခြင်း](https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst) စေားမြှင့်တဲ့ စတားတပ် မစ်ရှင်နှင့် ဘယ်လိုဆက်နွယ်သလဲ ဆိုတာကို ပြောကြမယ်။ ကျွန်ုပ်တို့ AI မောင်းနှင်သော _ပုဂ္ဂိုလ်ရေးသင်ယူမှု_ အက်ပ်လီကေးရှင်းများ ဖန်တီးချင်သောကြောင့် ကျွန်ုပ်တို့၏ အသုံးပြုသူ များ prompt များကို ဘယ်လို "ဒီဇိုင်းဆွဲနိုင်မလဲ" ဆိုတာတွေးကြပါစို့ -  
 
-- **အုပ်ချုပ်ရေးမှူးများ** က AI ကို _curriculum data ကို ခွဲခြမ်းစိတ်ဖြာပြီး coverage gaps တွေကို ရှာဖွေဖို့_ တောင်းဆိုနိုင်ပါတယ်။ AI က ရလဒ်တွေကို အကျဉ်းချုပ်ပေးနိုင်သလို code နဲ့ visualizations တွေကိုလည်း ဖန်တီးပေးနိုင်ပါတယ်။
-- **ဆရာ/ဆရာမများ** က AI ကို _target audience နဲ့ topic အတွက် lesson plan တစ်ခု ဖန်တီးပေးဖို့_ တောင်းဆိုနိုင်ပါတယ်။ AI က personalized plan ကို သတ်မှတ်ထားတဲ့ format နဲ့ ဖန်တီးပေးနိုင်ပါတယ်။
-- **ကျောင်းသားများ** က AI ကို _ခက်ခဲတဲ့ဘာသာရပ်မှာ သင်ကြားပေးဖို့_ တောင်းဆိုနိုင်ပါတယ်။ AI က ကျောင်းသားတွေရဲ့အဆင့်အလိုက် lessons, hints & examples တွေကို လမ်းညွှန်ပေးနိုင်ပါတယ်။
+- **အုပ်ချုပ်သူများ** က AI ကို _သင်ရိုးညွှန်းတမ်း ဒေတာ သုံးသပ်ပြီး ဖွင့်ဆိုချက်များ ဖော်ထုတ်ရန်_ မေးမြန်းနိုင်တယ်။ AI က ရလဒ်တွေ အနှစ်ချုပ်ရေးသွားတယ် သို့မဟုတ် ကုတ်ဖြင့် မြင်ကွင်းဖော်ပြတယ်။  
+- **ဆရာ/ဆရာမများ** က AI ကို _ပန်းတိုင်ထားသော အသင်းနှင့် ခေါင်းစဉ်အတွက် သင်ခန်းစာစီမံချက် တစ်ခု ဖန်တီးရန်_ မေးမြန်းနိုင်တယ်။ AI က ဒီဇိုင်းအတိုင်း ပုဂ္ဂိုလ်ရေးစီမံချက်ကို ဖန်တီးပေးတယ်။  
+- **ကျောင်းသား/သူများ** က AI ကို _ခက်ခဲသောဘာသာရပ်အတွက် တတ်မြောက်အောင် သင်ကြားပေးရန်_ မေးမြန်းနိုင်တယ်။ AI က လက်ရှိအဆင့်အတွက် သင်ခန်းစာများ၊ အကြံပြုချက်များ နှင့် နမူနာများ ဖြင့် လမ်းညွှန်ပေးတယ်။  
 
-ဒါက အစပိုင်းပဲဖြစ်ပါတယ်။ [Prompts For Education](https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst) ကို ကြည့်ရှုပါ - ပညာရေးအထူးကျွမ်းကျင်သူတွေက curated လုပ်ထားတဲ့ open-source prompts library ဖြစ်ပြီး - အခွင့်အလမ်းတွေကို ပိုမိုနားလည်နိုင်ဖို့ အထောက်အကူဖြစ်စေပါမယ်! _Sandbox မှာ သို့မဟုတ် OpenAI Playground ကို အသုံးပြုပြီး ဒီ prompts တွေကို run လုပ်ကြည့်ပြီး ဘာဖြစ်လဲကြည့်ပါ!_
+ဒါဟာ အခြေခံ အချက်လေးပဲ ဖြစ်ပါတယ်။ [Prompts For Education](https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst) ကိုကြည့်ပါ - ပညာရေးအကြောင်း ရှင်းပြမှုများ ဖြင့် ဖန်တီးထားသော open-source prompts သိုက်ကြီးတစ်ခုပါ။ _Sandbox မှာ ဆက်စပ် prompt များကို စမ်းသပ်မဲ း OpenAI Playground ခေါင်းစဉ်တွင် စမ်းပါ၊ ရလာသည့် အဖြေများကို ကြည့်ပါ!_  
 
-<!--
-LESSON TEMPLATE:
-ဒီ unit မှာ core concept #1 ကို လေ့လာရမယ်။
-ဥပမာတွေ နဲ့ ရည်ညွှန်းချက်တွေကို အသုံးပြုပြီး concept ကို အတည်ပြုပါ။
+<!--  
+LESSON TEMPLATE:  
+This unit should cover core concept #1.  
+Reinforce the concept with examples and references.  
 
-CONCEPT #1:
-Prompt Engineering.
-ဒါကို အဓိကအကြောင်းအရာကို ရှင်းပြပြီး ဘာကြောင့် အရေးကြီးလဲဆိုတာ ရှင်းပြပါ။
--->
+CONCEPT #1:  
+Prompt Engineering.  
+Define it and explain why it is needed.  
+-->  
 
-## Prompt Engineering ဆိုတာဘာလဲ?
+## Prompt Engineering ဆိုတာဘာလဲ?  
 
-ဒီသင်ခန်းစာကို Prompt Engineering ကို _design နဲ့ optimize_ လုပ်ပြီး application ရည်ရွယ်ချက်နဲ့ model အတွက် consistent နဲ့ quality responses (completions) ကိုရရှိစေဖို့ လုပ်ဆောင်တဲ့ လုပ်ငန်းစဉ်အဖြစ် သတ်မှတ်ပြီး စတင်ခဲ့ပါတယ်။ ဒီကို ၂-အဆင့်လုပ်ငန်းစဉ်အဖြစ် စဉ်းစားနိုင်ပါတယ် -
+ဒီသင်ခန်းစာကို စတင်ရင်း prompt engineering ကို အတိအကျအတွက် အက်ပ်လီကေးရှင်းရည်မှန်းချက်နှင့် မော်ဒယ်တစ်ခုအတွက် တုံ့ပြန်မှု (completion) အရည်အသွေးမြင့်မားစေရန် _ဒီဇိုင်းဆွဲခြင်းနှင့် တိုးတက်အောင်ပြင်ဆင်ခြင်း_ ဖြစ်စဉ်အဖြစ် သတ်မှတ်ခဲ့ပါသည်။ ဒါကို အဆင့် ၂ ခုလိုဖြစ်စဉ်အဖြစ် စဉ်းစားနိုင်သည် -  
 
-- model နဲ့ ရည်ရွယ်ချက်အလိုက် initial prompt ကို _design_ လုပ်ခြင်း
-- response quality ကို တိုးတက်အောင် _refine_ လုပ်ခြင်း
+- ပထမဦးဆုံး မော်ဒယ်နှင့် ရည်မှန်းချက်အတွက် _ဒီဇိုင်းဆွဲခြင်း_  
+- တုံ့ပြန်မှုအရည်အသွေး တိုးတက်စေရန် _ထပ်ထပ်ပြင်ဆင်ခြင်း_  
 
-ဒီဟာက trial-and-error လုပ်ငန်းစဉ်ဖြစ်ပြီး optimal results ရဖို့ အသုံးပြုသူရဲ့ intuition နဲ့ ကြိုးစားမှုလိုအပ်ပါတယ်။ ဒါကြောင့် အရေးကြီးတာလဲဆိုတာ ဘာလဲ? ဒီမေးခွန်းကို ဖြေရှင်းဖို့အတွက် အဓိက concept သုံးခုကို အရင်နားလည်ရပါမယ် -
+ဤနည်းလမ်းသည် trial-and-error ဖြစ်ပြီး အသုံးပြုသူ၏ စုံစမ်းမှုနှင့် ကြိုးပမ်းမှုများလိုအပ်သောကြောင့် အကောင်းဆုံးရလဒ်ရရန် လိုအပ်ပါသည်။ ဘာကြောင့် အရေးကြီးသနည်းဆိုတာ အဖြေရှာရန် သုံးခုအယူအဆကို ပထမဦးစွာ နားလည်ရပါမည် -  
 
-- _Tokenization_ = model က prompt ကို "မြင်"တဲ့နည်းလမ်း
-- _Base LLMs_ = foundation model က prompt ကို "လုပ်ဆောင်"တဲ့နည်းလမ်း
-- _Instruction-Tuned LLMs_ = model က "tasks" တွေကို "မြင်"နိုင်တဲ့နည်းလမ်း
+- _Tokenization_ = မော်ဒယ်သည် prompt ကို ဘယ်လို "မြင်" မှတ်ယူသည်  
+- _Base LLMs_ = အခြေခံ မော်ဒယ်သည် prompt ကို ဘယ်လို "လုပ်ဆောင်" လုပ်သည်  
+- _Instruction-Tuned LLMs_ = မော်ဒယ်သည် "တာဝန်များ" ကို ဘယ်လို မြင်ရှုပါသည်  
 
-### Tokenization
+### Tokenization  
 
-LLM က prompts တွေကို _tokens တွေ အစီအစဉ်_ အဖြစ် မြင်ပါတယ်။ မတူညီတဲ့ models (သို့မဟုတ် model versions) တွေက prompt တစ်ခုကို tokenize လုပ်တဲ့နည်းလမ်း မတူနိုင်ပါတယ်။ LLMs တွေဟာ tokens တွေကို သင်ကြားထားပြီး (raw text ကိုမဟုတ်ပါ) prompt တွေ tokenize လုပ်ပုံဟာ generated response quality ကို တိုက်ရိုက်သက်ရောက်မှုရှိပါတယ်။
+LLM က prompt များကို _တိုကင် သာမန်ကြောင်း_ အဖြစ် မြင်တယ်။ မော်ဒယ်တစ်ခုချင်းစီ သို့မဟုတ် မော်ဒယ်ဗားရှင်းတစ်ခုချင်းစီသည် တူညီ prompt ကို ကွဲပြားပြီး tokenize ပြုလုပ်နိုင်ပါသည်။ LLM များသည် စာသားမဟုတ်ပဲ တိုကင်များအပေါ် သင်ကြားထားသောကြောင့် prompt တွေကို tokenize ပြုလုပ်ပုံက ထုတ်လွှင့်သည့် တုံ့ပြန်မှုအရည်အသွေးကို တိုက်ရိုက်သက်ရောက်စေပါသည်။  
 
-Tokenization လုပ်ပုံကို နားလည်ဖို့ [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) လို tools တွေကို စမ်းသပ်ကြည့်ပါ။ Prompt ကို copy လုပ်ပြီး tokens တွေ အဖြစ် ပြောင်းလဲပုံကို ကြည့်ပါ။ Whitespace characters နဲ့ punctuation marks တွေကို ဘယ်လိုကိုင်တွယ်ထားလဲဆိုတာကိုလည်း သတိထားပါ။ ဥပမာမှာ GPT-3 LLM ကို ပြထားပြီး - နောက်ဆုံးပေါ် model နဲ့ စမ်းကြည့်ရင် အခြားအခြေအနေတစ်ခုကို ရနိုင်ပါတယ်။
+Tokenization ဘယ်လို လုပ်ဆောင်သလဲ ဆိုတာကို ခံစားနားလည်ရန်အတွက် အောက်ပါ [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) ဆော့ဖ်ဝဲကို သုံးစမ်းကြည့်ပါ။ ကိုယ့် prompt ကို ကော်ပီထည့်ပြီး whitespace အက္ခရာများနှင့် အရိပ်အမှောင် အမှတ်များ ဘယ်လို ကိုင်တွယ်နေသည်ဆိုတာ သတိထား၍ မြင်နိုင်ပါလိမ့်မည်။ ဤနမူနာတွင် စက်ယခင် LLM (GPT-3) ကို ပြသထားသဖြင့် နောက်ပိုင်း မော်ဒယ်အသစ်များဖြင့် စမ်းသပ်ပါက ရလဒ်ကွဲပြားနိုင်သည်။  
 
-![Tokenization](../../../translated_images/my/04-tokenizer-example.e71f0a0f70356c5c.webp)
+![Tokenization](../../../translated_images/my/04-tokenizer-example.e71f0a0f70356c5c.webp)  
 
-### Concept: Foundation Models
+### အယူအဆ: အခြေခံ မော်ဒယ်များ  
 
-Prompt ကို tokenize လုပ်ပြီးတဲ့အခါ ["Base LLM"](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) (သို့မဟုတ် Foundation model) ရဲ့ အဓိကလုပ်ဆောင်ချက်က sequence ထဲမှာ token ကို predict လုပ်တာဖြစ်ပါတယ်။ LLMs တွေဟာ text datasets အများကြီးကို သင်ကြားထားပြီး tokens တွေကြားက statistical relationships တွေကို သိရှိထားပါတယ်။ ဒါကြောင့် prediction ကို confidence နဲ့လုပ်နိုင်ပါတယ်။ Prompt သို့မဟုတ် token ရဲ့ _အဓိပ္ပါယ်_ ကို model က နားမလည်ပေမယ့် pattern ကို "complete" လုပ်နိုင်ပါတယ်။ User intervention သို့မဟုတ် pre-established condition တစ်ခုနဲ့ ရပ်တန့်တဲ့အထိ sequence ကို ဆက်လက် predict လုပ်နိုင်ပါတယ်။
+Prompt တစ်ခု tokenize ပြီးပါက ["Base LLM"](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) (သို့) Foundation မော်ဒယ်၏ အဓိက လုပ်ဆောင်ချက်မှာ ချိုင့်စီးတိုကင် ကို ခန့်မှန်းခြေဖြစ်သည်။ LLM များသည် စာသားဒေတာအစုအဝေးကြီးများပေါ် သင်ကြားထားသည့်အတွက် တိုကင်များအကြား စစ်တမ်းဆန်သော ဆက်နွယ်မှုများကို နားလည်ထားနိုင်ပြီး ခန့်မှန်းချက်ကို ယုံကြည်စိတ်ချစွာ ပြုလုပ်နိုင်သည်။ သို့သော် prompt သို့မဟုတ် token အတွင်းတို့၏ _အဓိပ္ပါယ်_ ကို နားလည်ခြင်း မရှိပါဘူး; pattern တစ်ခုသာ မြင်ပြီး ထို pattern ကို နောက်ထပ် ခန့်မှန်းချက်များဖြင့် ထပ်ဆင့် ပြုလုပ်ပါသည်။ အသုံးပြုသူ ပိတ်ပင်မှု သို့မဟုတ် ကြိုတင် သတ်မှတ်ထားသော အခြေအနေတစ်ခု ဖြစ်သည်ဆိုသည့်အချိန်တွင်မှ ဆက်လျှောက်ခန့်မှန်းမှုများကို နောက်ဆုံး ထိန်းသိမ်းပါသည်။  
 
-Prompt-based completion လုပ်ပုံကို မြင်ချင်ပါသလား? အထက်ပါ prompt ကို Azure OpenAI Studio [_Chat Playground_](https://oai.azure.com/playground?WT.mc_id=academic-105485-koreyst) မှာ default settings နဲ့ ထည့်ပါ။ System က prompts တွေကို information requests အဖြစ်ကိုင်တွယ်ထားပြီး - ဒီ context ကို ဖြည့်ဆည်းတဲ့ completion ကို မြင်ရပါမယ်။
+Prompt-based Completion မည်သို့လဲဆိုတာ ကြည့်လိုပါသလား? အထက်ပါ prompt ကို [Microsoft Foundry playground](https://ai.azure.com?WT.mc_id=academic-105485-koreyst) တွင် အသုံးပြုပြီး default စက်တင်များဖြင့် အသုံးပြုပါ။ စနစ်သည် prompt များကို သတင်းအချက်အလက် တောင်းဆိုမှု အဖြစ် ကုသထားသည်။ ထို့ကြောင့် သင့်အနေဖြင့် အဲဒီ context ကို ဖြည့်ဆည်းသော completion တစ်ခု ရွေ့လျားမှု့နိုင်ပါလိမ့်မည်။  
 
-ဒါပေမယ့် user က criteria သို့မဟုတ် task objective တစ်ခုကို ဖြည့်ဆည်းတဲ့ အထူးတိကျတဲ့အရာကို မြင်ချင်တယ်ဆိုရင်တော့ _instruction-tuned_ LLMs တွေက အရေးပါတဲ့အခန်းကဏ္ဍကို ထည့်သွင်းပေးနိုင်ပါတယ်။
+ဒါပေမယ့် အသုံးပြုသူက တိကျသော ရည်မှန်းချက် သို့မဟုတ် တာဝန်အတွက် တုံ့ပြန်မှု များ လိုချင်သည်ဆိုရင်လည်း ဘာဖြစ်မလဲ? ဒီနေရာမှာ _instruction-tuned_ LLM များ ပေါ်လာပါသည်။  
 
-![Base LLM Chat Completion](../../../translated_images/my/04-playground-chat-base.65b76fcfde0caa67.webp)
+![Base LLM Chat Completion](../../../translated_images/my/04-playground-chat-base.65b76fcfde0caa67.webp)  
 
-### Concept: Instruction Tuned LLMs
+### အယူအဆ: Instruction Tuned LLM များ  
 
-[Instruction Tuned LLM](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) ဟာ foundation model ကို အခြေခံပြီး examples သို့မဟုတ် input/output pairs (ဥပမာ - multi-turn "messages") တွေကို အသုံးပြုပြီး fine-tune လုပ်ထားပါတယ်။ ဒီမှာ instructions တွေကို ထည့်သွင်းထားပြီး AI response က instruction ကို လိုက်နာဖို့ ကြိုးစားပါတယ်။
+[Instruction Tuned LLM](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) သည် foundation မော်ဒယ်ဖြစ်ပြီး နမူနာများ သို့မဟုတ် input/output အချက်များ (ဥပမာ multi-turn "messages") ဖြင့် fine-tune လုပ်ထားပြီး အညွှန်းများ ပါဝင်သည်။  
 
-Reinforcement Learning with Human Feedback (RLHF) လို techniques တွေကို အသုံးပြုပြီး model ကို _instructions_ တွေကို လိုက်နာဖို့ သင်ကြားပြီး _feedback_ ကနေ သင်ယူနိုင်စေပါတယ်။ ဒီလိုနည်းလမ်းတွေက practical applications တွေမှာ အသုံးဝင်တဲ့ response တွေကို ထုတ်ပေးနိုင်စေပြီး user objectives တွေကို ပိုမိုသက်ဆိုင်အောင်လုပ်နိုင်ပါတယ်။
+AI၏ တုံ့ပြန်မှုသည် အဆိုပါ အညွှန်းကို နားလည်လိုက်နာကြိုးစားမှု ဖြစ်သည်။  
 
-စမ်းကြည့်လိုက်ရအောင် - အထက်ပါ prompt ကို ပြန်သွားကြည့်ပြီး _system message_ ကို အောက်ပါ instruction အဖြစ် context အနေနဲ့ ပြောင်းပါ -
+လေ့လာကြည့်ပါ - အထက်ပါ prompt ပြန်သွားပြီး ယခု _system message_ ကို အောက်ပါ အညွှန်းဖြင့် အခြေခံအဖြစ် ပြောင်းလဲပေးပါ -  
 
-> _သင်ပေးတဲ့ content ကို second-grade ကျောင်းသားအတွက် အကျဉ်းချုပ်ပေးပါ။ Result ကို paragraph တစ်ခုနဲ့ 3-5 bullet points ထဲမှာ ထားပါ။_
+> _သင်ပေးသည့် အကြောင်းအရာကို ဒုတိယတန်းကျောင်းသားတစ်ဦးအတွက် အကျဉ်းချုပ်ရေးပါ။ ရလဒ်သည် ၃-၅ ခုသော bullet points ဖြင့် တစ်ပိုဒ်တည်း အနည်းငယ်သာ ဖြစ်ရပါမည်။_  
 
-Result က ရည်ရွယ်ချက်နဲ့ format ကို ကိုက်ညီတဲ့အတိုင်း ပြောင်းလဲလာတာကို မြင်ရပါမယ်။ Educator တစ်ယောက်က ဒီ response ကို class အတွက် slides တွေမှာ တိုက်ရိုက်အသုံးပြုနိုင်ပါပြီ။
+အခုရလဒ်သည် ရည်မှန်းချက်နှင့် ပုံစံ လိုက်ဖက်စွာ တုံ့ပြန်နေသည်။ ဆရာ/ဆရာမသည် အဆင်ပြေနည်းဖြင့် အဆိုပါတုံ့ပြန်မှုကို ပါဝင်ပုံစာများတွင် တိုက်ရိုက် အသုံးချနိုင်သည်။  
 
-![Instruction Tuned LLM Chat Completion](../../../translated_images/my/04-playground-chat-instructions.b30bbfbdf92f2d05.webp)
+![Instruction Tuned LLM Chat Completion](../../../translated_images/my/04-playground-chat-instructions.b30bbfbdf92f2d05.webp)  
 
-## Prompt Engineering ဘာကြောင့်လိုအပ်လဲ?
+## ဘာကြောင့် Prompt Engineering လိုအပ်သနည်း?  
 
-Prompt တွေကို LLMs တွေက ဘယ်လို process လုပ်တယ်ဆိုတာကို သိပြီးတဲ့အခါ - _ဘာကြောင့်_ prompt engineering လိုအပ်လဲဆိုတာကို ပြောကြမယ်။ အဖြေက LLMs တွေဟာ _reliable နဲ့ consistent completions_ ကို ရရှိဖို့ prompt construction နဲ့ optimization မှာ ကြိုးစားမှုမရှိရင် အခက်အခဲတွေရှိနိုင်တဲ့ challenges တွေကို ရှိနေတဲ့အတွက် ဖြစ်ပါတယ်။ ဥပမာ -
+အခုဆို prompt များကို LLM များက ဘယ်လို စီမံဆုံးဖြတ်သလဲဆိုတာ လေ့လာပြီးပါပြီ။ Prompt engineering လိုအပ်ရခြင်းရဲ့အကြောင်းကို စဉ်းစားကြည့်ရအောင်။ မြင်သာသည့်အချက်မှာ ယနေ့ LLM များမှာ တုံ့ပြန်မှု _ယုံကြည်စိတ်ချရမှု နှင့် တူညီမှု_ များရရှိရန်အတွက် prompt တည်ဆောက်ခြင်းနှင့် တိုးတက် အောင် ပြင်ဆင်ခြင်း မရှိမဖြစ် လိုအပ်မှုရှိသည့် စိန်ခေါ်မှုများရှိခြင်းဖြစ်ပါသည်။ ဥပမာ -  
 
-1. **Model responses ဟာ stochastic ဖြစ်ပါတယ်။** _prompt တစ်ခု_ က မတူတဲ့ models သို့မဟုတ် model versions တွေမှာ response မတူနိုင်ပါတယ်။ တစ်ချို့အချိန်မှာ _တူညီတဲ့ model_ မှာ response မတူနိုင်ပါတယ်။ _Prompt engineering techniques တွေက guardrails တွေကို ပိုမိုကောင်းမွန်စေဖို့ ကူညီနိုင်ပါတယ်_။
+1. **မော်ဒယ်များ၏ တုံ့ပြန်မှုသည် stochastic ဖြစ်သည်။** _တူညီသော prompt_ သည် မော်ဒယ် အမျိုးအစားများ သို့မဟုတ် မော်ဒယ်ဗားရှင်း များတွင် မတူညီသော တုံ့ပြန်မှုများ ထုတ်ပေးနိုင်သည်။ အချိန်အလိုက် တူညီသော မော်ဒယ်ဖြင့်ပါ မတူညီသော ရလဒ်ထွက်နိုင်သည်။ _Prompt engineering နည်းပညာများက ဒီကွာခြားမှုများကို လျော့နည်းစေပြီး ကာကွယ်မှု လမ်းညွှန် ဖြည့်စွက်နိုင်ပါတယ်_။  
 
-1. **Models တွေဟာ response တွေကို ဖန်တီးနိုင်ပါတယ်။** Models တွေဟာ _ကြီးမား
-အင်တာနက်ရှာဖွေမှုတစ်ခုက မားစ်ဂြိုဟ်ပေါ်မှာဖြစ်ပွားခဲ့တဲ့စစ်ပွဲများ (ဥပမာ-ရုပ်သံဇာတ်လမ်းတွဲများ သို့မဟုတ် စာအုပ်များ) အကြောင်းကို ဖော်ပြပေးခဲ့ပေမယ့် ၂၀၇၆ ခုနှစ်မှာတော့ မရှိပါဘူး။ သဘာဝကျကျတွေးလျှင် ၂၀၇၆ ခုနှစ်ဟာ _အနာဂတ်_ ဖြစ်ပြီး အမှန်တကယ်ဖြစ်ပွားခဲ့တဲ့ အဖြစ်အပျက်တစ်ခုနဲ့ ဆက်စပ်မှုမရှိနိုင်ပါ။
+1. **မော်ဒယ်များသည် တုံ့ပြန်မှုများကို စုပုံထုတ်လုပ်နိုင်သည်။** မော်ဒယ်များကို _ကြီးမားပြီး သတ်မှတ်ထားသော_ ဒေတာများဖြင့် ကြိုတင်သင်ကြားထားသဖြင့် သင်ကြားမှု နယ်ပယ်အပြင် အကြောင်းအရာများမှာ နည်းပါးသွားကြသည်။ ထို့ကြောင့် တုံ့ပြန်မှုများအနက် မှားယွင်းမှု၊ စိတ်ကူးယဉ် သို့မဟုတ် သိရှိထားသော အချက်အလက်များနှင့် ဆန့်ကျင်ဘက်သော အဖြေများ ဖြစ်ပေါ်နိုင်သည်။ _Prompt engineering နည်းလမ်းများက အသုံးပြုသူများအား အမိန့်ရယူခြင်း သို့မဟုတ် ရှင်းလင်းချက်တောင်းခံခြင်းဖြင့် ထို fabrications များကို ဖော်ထုတ် လျော့နည်းစေပါသည်_။  
 
-ဒါဆိုရင် ဒီ prompt ကို LLM ပံ့ပိုးသူများနှင့်အတူ run လုပ်လိုက်ရင် ဘာဖြစ်မလဲ?
+1. **မော်ဒယ်စွမ်းရည်များ ကွဲပြားနိုင်သည်။** မော်ဒယ်အသစ်များ သို့မဟုတ် မော်ဒယ်ပေါင်း အဆင့်မြှင့်များသည် စွမ်းဆောင်ရည် မြင့်မားသည်နှင့်အပြင် အသေးစား အပိုင်းများနှင့် ကုန်ကျစရိတ်၊ ရှုပ်ထွေးမှုတို့တွင် ထူးခြားမှုများ ရှိနိုင်ပါသည်။ _Prompt engineering က ကျွန်ုပ်တို့အား အကောင်းဆုံး လုပ်ထုံးလုပ်နည်းနှင့် workflow များ ဖန်တီး၍ မော်ဒယ်အလိုက် လိုအပ်ချက်များကို ထိရောက်စွာ တပ်ဆင်အသုံးပြုနိုင်ပါသည်_။  
 
-> **တုံ့ပြန်မှု ၁**: OpenAI Playground (GPT-35)
+OpenAI သို့မဟုတ် Azure OpenAI Playground တွင် ဒီအကြောင်းရင်းကို ကြည့်ရှုကြရအောင် -  
+
+- အမျိုးမျိုးသော LLM deployment များ (ဥပမာ OpenAI, Azure OpenAI, Hugging Face) ဖြင့် တူညီသော prompt ကို အသုံးပြုကြည့်ပါ - ကွာခြားချက် တွေတွေ့ပါသလား?  
+- တူညီသော LLM deployment (ဥပမာ Azure OpenAI Playground) ဖြင့် ထပ်မံ တူညီသော prompt ကို အသုံးပြုပါ - ကွာခြားမှုများ ဘယ်လိုကွဲပြားခဲ့သလဲ?  
+
+### Fabrications ဥပမာ  
+
+ဒီသင်တန်းတွင် **"fabrication"** ဆိုသော စကားလုံးကို LLM များသည် သင်ကြားမှုကန့်သတ်ချက်များကြောင့် တို့ မှားယွင်းသော အချက်အလက်များ ထုတ်ပေးရခြင်းဖြစ်စဉ် တွင် အဓိပ္ပါယ်ရပါသည်။ လူသိများသော ဆောင်းပါးများ သို့မဟုတ် သုတေသနစာတမ်း များတွင် _"hallucinations"_ ဟူ၍လည်း သုံးကြသည်။ သို့သော် ဤစကားလုံးကို _"fabrication"_ ဟူ၍ သုံးရန်အားကောင်းစွာ ထောက်ခံပါသည်။ ၎င်းသည် လူတစ်ဦးလို အကျင့်တရားထည့်သွင်းခြင်းမှကင်းစင်စေပြီး [Responsible AI များလမ်းညွှန်ချက်များ](https://www.microsoft.com/ai/responsible-ai?WT.mc_id=academic-105485-koreyst) နှင့် ကိုက်ညီသော အသုံးအနှုန်းဖြစ်ပါသည်။  
+
+Fabrications များ ဘယ်လိုဖြစ်ပေါ်သလဲဆိုတာ နားလည်လိုပါသလား? AI ကို မရှိသေးသည့် ခေါင်းစဉ်အတွက် အကြောင်းအရာ ဖန်တီးရန် အမိန့်တစ်ခု ဦးစားပေးရန် စဉ်းစားပါ။ ဥပမာ - ကျွန်တော်က ဒီ prompt ကို စမ်းခဲ့တယ် -  
+
+> **Prompt:** 2076 ခုနှစ် မြေပြင်စစ်ပွဲအကြောင်း သင်ခန်းစာအစီအစဉ်ကို ဖန်တီးပါ။  
+
+ဝဘ်ရှာဖွေမှုက စစ်ပွဲ အကြောင်း ဇာတ်လမ်းများ (ဥပမာ ရုပ်သံစီးရီး သို့မဟုတ် စာအုပ်များ) ရှိခဲ့သည်ကို ပြသပေမယ့် 2076 ခုနှစ်အတွက် ရှာမတွေ့ပါ။ ယုံကြည်မှုတွင် 2076 သည် _အနာဂတ်_ ဖြစ်သဖြင့် ဖြစ်ရပ် တစ်ခုနှင့် ဆက်စပ်၍ မရပါ။  
+
+
+ဒီ prompt ကို LLM ပံ့ပိုးသူတွေ အမျိုးမျိုးနဲ့ run လုပ်တဲ့အခါ ဘာတွေဖြစ်ပေါ်မလဲ?
+
+> **Response 1**: OpenAI Playground (GPT-35)
 
 ![Response 1](../../../translated_images/my/04-fabrication-oai.5818c4e0b2a2678c.webp)
 
-> **တုံ့ပြန်မှု ၂**: Azure OpenAI Playground (GPT-35)
+> **Response 2**: Azure OpenAI Playground (GPT-35)
 
 ![Response 2](../../../translated_images/my/04-fabrication-aoai.b14268e9ecf25caf.webp)
 
-> **တုံ့ပြန်မှု ၃**: Hugging Face Chat Playground (LLama-2)
+> **Response 3**: : Hugging Face Chat Playground (LLama-2)
 
 ![Response 3](../../../translated_images/my/04-fabrication-huggingchat.faf82a0a51278956.webp)
 
-မျှော်လင့်ထားသလိုပဲ၊ မော်ဒယ် (သို့မဟုတ် မော်ဒယ်ဗားရှင်း) တစ်ခုစီက stochastic အပြုအမူနဲ့ မော်ဒယ်စွမ်းရည်ကွဲပြားမှုကြောင့် response များက အနည်းငယ်ကွဲပြားမှုရှိပါတယ်။ ဥပမာအားဖြင့် မော်ဒယ်တစ်ခုက ၈ တန်းကျောင်းသားများကို ပစ်မှတ်ထားပြီး၊ တစ်ခုက အထက်တန်းကျောင်းသားများကို ပစ်မှတ်ထားပါတယ်။ ဒါပေမယ့် မော်ဒယ်သုံးခုလုံးက အမှန်တကယ်မသိတဲ့ အသုံးပြုသူကို အဖြစ်အပျက်ဟာ အမှန်တကယ်ဖြစ်ပွားခဲ့တယ်လို့ ယုံကြည်စေမယ့် တုံ့ပြန်မှုများကို ဖန်တီးနိုင်ခဲ့ပါတယ်။
+မျှော်မှန်းထားသလို မော်ဒယ်တိုင်း (သို့မဟုတ် မော်ဒယ်ဗားရှင်းတိုင်း) က stochastic အပြုအမူနဲ့ မော်ဒယ်စွမ်းရည်ဖွဲ့စည်းမှု မတူညီမှုများကြောင့် နည်းနည်းကွဲလွဲတဲ့ဖြေကြားချက်တွေ ထုတ်ပြန်တယ်။ ဥပမာအားဖြင့် တစ်ခုသော မော်ဒယ်သည် ၈ ကြိမ်မြောက်တန်းကျောင်းသား သို့မဟုတ် များက တစ်ခုလုံးမှာ အထက်တန်းကျောင်းသားကို ပစ်မှတ်ထားတယ်။ ဒါပေမဲ့ မော်ဒယ်သုံးခုလုံးတွင် ဖြစ်ရပ်မှန်ဖြစ်သည်ဟု အသိမရှိသူအသုံးပြုသူကို အတည်ပြုနိုင်သော ဖြေကြားချက်များ ထုတ်ပေးခဲ့သည်။
 
-_prompt engineering_ နည်းလမ်းများဖြစ်တဲ့ _metaprompting_ နဲ့ _temperature configuration_ တို့က မော်ဒယ်မှားယွင်းမှုများကို တစ်စိတ်တစ်ပိုင်းလျှော့ချနိုင်ပါတယ်။ _prompt engineering_ အဆောက်အအုံအသစ်များကလည်း prompt flow ထဲမှာ seamlessly tools အသစ်များနဲ့ နည်းလမ်းအသစ်များကို ပေါင်းစပ်ထည့်သွင်းပြီး ဒီအကျိုးဆက်များကို လျှော့ချရန် သို့မဟုတ် လျှော့ချရန် အထောက်အကူပြုပါတယ်။
+_metaprompting_ နှင့် _temperature configuration_ ကဲ့သို့သော prompt ထွက်နည်းများသည် မော်ဒယ်မှ ပြုလုပ်သော ဖန်တီးမှုများကို တစ်စိတ်တစ်ပိုင်းလျော့နည်းစေနိုင်သည်။ prompt engineering ၏ အဆောက်အအုံအသစ်များကလည်း စက်ရုပ်လုပ်ငန်းစဉ်ထဲသို့ အသစ်သော ကိရိယာများနှင့် နည်းဗျူဟာများကို လွယ်ကူစွာ ပေါင်းစပ် ထည့်သွင်းနိုင်ပြီး ဒီသက်ရောက်မှုများကို လျော့နည်းစေနိုင်သည်။
 
-## ကိစ္စလေ့လာမှု: GitHub Copilot
+## အမှုလေ့လာမှု: GitHub Copilot
 
-ဒီအပိုင်းကို အမှီအခိုကောင်းတဲ့ prompt engineering ကို အမှန်တကယ်အသုံးချတဲ့ နည်းလမ်းများကို GitHub Copilot အပေါ်မှာ လေ့လာခြင်းဖြင့် အဆုံးသတ်ကြမယ်။
+Case Study တစ်ခုအနေဖြင့် အဲဒီအပိုင်းကို ကန့်သတ်ပြီး prompt engineering ကို လက်တွေ့ကမ္ဘာတွင် မည်သို့ အသုံးပြုနေပါသည်ဆိုတာ ကို သိရှိဖို့ [GitHub Copilot](https://github.com/features/copilot?WT.mc_id=academic-105485-koreyst) ကို ကြည့်ကြရအောင်။
 
-GitHub Copilot ဟာ "AI Pair Programmer" ဖြစ်ပြီး - text prompt များကို code completions အဖြစ် ပြောင်းလဲပေးပြီး သင့်ရဲ့ development environment (ဥပမာ-Visual Studio Code) ထဲမှာ seamless user experience ရရှိစေပါတယ်။ အောက်ပါ blog series တွေမှာ documentation လုပ်ထားသလို၊ အစောပိုင်းဗားရှင်းဟာ OpenAI Codex မော်ဒယ်ကို အခြေခံထားပြီး - အင်ဂျင်နီယာများက မော်ဒယ်ကို fine-tune လုပ်ရန်အတွက် prompt engineering နည်းလမ်းများကို တိုးတက်အောင်လုပ်ရမယ်ဆိုတာ မြန်မြန်သိရှိခဲ့ပါတယ်။ ဇူလိုင်လမှာတော့ [Codex ထက်ပိုမိုတိုးတက်တဲ့ AI မော်ဒယ်ကို စတင်မိတ်ဆက်ခဲ့ပါတယ်](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst) အမြန်ဆုံးအကြံပေးမှုများအတွက်။
+GitHub Copilot သည် သင့် "AI တွဲဖက် ပြန်လည်စီမံရေးဆွဲသူ" ဖြစ်ပြီး စာသား prompt များကို ကုတ်ဖြည့်စွက်ချက်များအဖြစ် ပြောင်းလဲပေးပြီး သင့် ဖွံ့ဖြိုးတည်ဆောက်မှု ပတ်ဝန်းကျင် (ဥပမာ၊ Visual Studio Code) ထဲတွင် ပေါင်းစပ်ထားသည်။ အောက်ပါ ဘလော့ ကြိုးများတွင် မှတ်တမ်းတင်ထားသလို အစပိုင်းဗားရှင်းသည် OpenAI Codex မော်ဒယ်အပေါ် အခြေခံပြီး ပညာရှင်များသည် မော်ဒယ်ကို သွင်းယူပြီး မောင်းနှင်နိုင်စေရေးနှင့် ပိုမိုကောင်းမွန်သော prompt engineering နည်းဗျူဟာများ တီထွင်ဖန်တီးရောင်း တှက်လိုအပ်ချက်ရှိမှုကို မြန်မြန်ဆန်ဆန် တွေ့ရှိခဲ့ကြသည်။ ဇူလိုင်တွင် [Codex ကျော်ဖြတ်သည့် မြန်မြတ်ထိရောက်သော AI မော်ဒယ်တစ်ခု ကို မိတ်ဆက်ခဲ့သည်](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)။
 
-သူတို့ရဲ့ လေ့လာမှုခရီးကိုနားလည်ဖို့ အောက်ပါ post များကို အစဉ်လိုက်ဖတ်ပါ။
+၎င်းတို့၏ သင်ယူမှု ခရီးစဉ်ကို ထပ်တလဲလဲ အတန်းလိုက် ဖတ်ရှူနိုင်ပါသည်။
 
-- **2023 မေ** | [GitHub Copilot ဟာ သင့် code ကို ပိုမိုနားလည်နိုင်ဖို့ တိုးတက်လာနေပါတယ်](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst)
-- **2023 မေ** | [GitHub အတွင်း: GitHub Copilot အတွက် LLMs တွေနဲ့ အလုပ်လုပ်ခြင်း](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst).
-- **2023 ဇွန်** | [GitHub Copilot အတွက် prompt များကို ပိုမိုကောင်းမွန်စွာရေးသားနည်း](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst).
-- **2023 ဇူလိုင်** | [GitHub Copilot ဟာ Codex ထက်ပိုမိုတိုးတက်တဲ့ AI မော်ဒယ်နဲ့ ရောက်ရှိလာပြီ](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)
-- **2023 ဇူလိုင်** | [Developer များအတွက် Prompt Engineering နဲ့ LLMs လမ်းညွှန်](https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst)
-- **2023 စက်တင်ဘာ** | [Enterprise LLM app တစ်ခုကို ဘယ်လိုတည်ဆောက်မလဲ: GitHub Copilot မှ သင်ခန်းစာများ](https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst)
+- **May 2023** | [GitHub Copilot သည် သင့်ကုတ်ကို နားလည်နိုင်လာနေသည်](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst)
+- **May 2023** | [GitHub ၏အတွင်းရေးရာ - GitHub Copilot အောက်မှ LLM များနှင့် လုပ်ဆောင်ခြင်း](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst).
+- **Jun 2023** | [GitHub Copilot အတွက် ပိုကောင်းသော prompt များ ရေးသားနည်း](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst).
+- **Jul 2023** | [.. GitHub Copilot သည် Codex ကျော်လွန်ကာ မြှင့်တင်ထားသော AI မော်ဒယ်ဖြင့် ဆင်းရဲအောင် မလုပ်တော့](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)
+- **Jul 2023** | [Developer များအတွက် prompt engineering နှင့် LLM များ လမ်းညွှန်ချက်](https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst)
+- **Sep 2023** | [ကုမ္ပဏီရဲ့ LLM အက်ပ်တစ်ခုကို တည်ဆောက်နည်း - GitHub Copilot မှ သင်ခန်းစာများ](https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst)
 
-သင့်ရဲ့ [Engineering blog](https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst) ကိုလည်း browse လုပ်ပြီး [ဒီတစ်ခု](https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst) ကဲ့သို့သော post များကို ဖတ်ရှုနိုင်ပါတယ်။ ဒီ post တွေက မော်ဒယ်များနဲ့ နည်းလမ်းများကို အမှန်တကယ် applications တွေမှာ အသုံးချပုံကို ပြသပေးပါတယ်။
+သင်သည် တူညီသည့် နည်းဗျူဟာများနှင့် မော်ဒယ်များကို အသုံးချသည့် လက်တွေ့ အသုံးပြုမှုများကို ပြသသော [ဒီလို blog တစ်ခု](https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst) နှင့် ဆက်စပ် ပိုလ်များအတွက်လည်း [အင်ဂျင်နီယာရေး blog](https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst) ကို လေ့လာနိုင်သည်။
 
 ---
 
+<!--
+သင်ခန်းစာ ပုံစံ:
+ဤယူနစ်သည် အဓိကအယူအဆ #2 ကို ဖုံးကွယ်ပါလိမ့်မည်။
+နားလည်မှုကို ဥပမာများနှင့် ကိုးကားချက်များဖြင့် အတည်ပြုပါ။
+
+အယူအဆ #2:
+Prompt ဒီဇိုင်း။
+ဥပမာများဖြင့် ဖော်ပြထားသည်။
+-->
+
 ## Prompt တည်ဆောက်ခြင်း
 
-_prompt engineering_ အရေးကြီးတဲ့အကြောင်းကို ကြည့်ပြီးပြီ - အခုတော့ prompt များကို _တည်ဆောက်ပုံ_ ကို နားလည်ဖို့ကြိုးစားပြီး prompt design ကို ပိုမိုထိရောက်စေမယ့် နည်းလမ်းများကို သုံးသပ်ကြည့်ရအောင်။
+Prompt engineering အရေးပါမှုကို ကြည့်ရှုဖြစ်ပွားမှုကို မြင်ခဲ့ပြီးနောက် prompt များကို မည်သို့ _တည်ဆောက်ကြောင်း_ နားလည်ကာ အကျိုးရှိကျဆန့် prompt ဒီဇိုင်းနည်းဗျူဟာကို ဖော်ထုတ်လေ့လာနိုင်ကြမည်။
 
-### အခြေခံ Prompt
+### အခြေခံ prompt
 
-အခြေခံ prompt ကတော့ context မပါဘဲ မော်ဒယ်ကို text input ပို့ပေးတဲ့အခါမှာ ဖြစ်ပါတယ်။ ဥပမာ - US အမျိုးသားသီချင်းရဲ့ ပထမဆုံးစကားလုံးများကို OpenAI [Completion API](https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst) ကို ပို့လိုက်တဲ့အခါမှာ _response_ ကို အလျင်အမြန် _ပြီးစီး_ ပေးပြီး အခြေခံအနေနဲ့ အနာဂတ်ကိုခန့်မှန်းပေးတဲ့ အပြုအမူကို ပြသပါတယ်။
+အခြေခံ prompt မှစတင်ကြမယ် - မော်ဒယ်သို့ အခြားအကြောင်းအရာမပါဘဲ စာသား input တစ်ခု ပေးပို့ခြင်းဖြစ်သည်။ ဥပမာတစ်ခုအနေဖြင့် US အမျိုးသားဂီတ သီချင်းစကားလုံး များကို OpenAI [Completion API](https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst) တွင် ပို့ပါက မျှော်လင့်ချက်အတိုင်း နောက်လက်ခံ စာကြောင်းများ အလိုအလျောက် ဖြည့်စွက်ပေးသည်။ ဒါဟာ အခြေခံ ကြိုတင်ခန့်မှန်းမှု ဖြစ်စဉ်ကို ပြသပါသည်။
 
 | Prompt (Input)     | Completion (Output)                                                                                                                        |
 | :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| Oh say can you see | သင်ဟာ "The Star-Spangled Banner" လို့ခေါ်တဲ့ US အမျိုးသားသီချင်းရဲ့ သီချင်းစာသားတွေကို စတင်ရေးသားနေသလိုပဲ။ အပြည့်အစုံစာသားတွေက... |
+| Oh say can you see | သင်သည် "The Star-Spangled Banner," ဆိုသော အမေရိကန်ပြည်ထောင်စု အမျိုးသားဂီတသီချင်း စကားလုံးကို စတင်ဆိုလိုက်သလိုပါ။ သီချင်းစကားလုံး အပြည့်အစုံမှာ ... |
 
-### ရှုပ်ထွေးတဲ့ Prompt
+### ရိုးရှင်း Prompt နှင့် အခက်အခဲရှိ Prompt
 
-အခုတော့ အခြေခံ prompt ကို context နဲ့ အညွှန်းများထည့်ပြီး ရှုပ်ထွေးတဲ့ prompt တစ်ခုအဖြစ် ပြောင်းလဲကြည့်ရအောင်။ [Chat Completion API](https://learn.microsoft.com/azure/ai-services/openai/how-to/chatgpt?WT.mc_id=academic-105485-koreyst) က prompt ကို _messages_ တွေစုစည်းမှုအဖြစ် တည်ဆောက်ခွင့်ပေးပြီး -
+အခု အခြေခံ prompt ကို context နှင့် ညွှန်းချက်များ ပါထည့်လိုက်ရအောင်။ [Chat Completion API](https://learn.microsoft.com/azure/ai-services/openai/how-to/chatgpt?WT.mc_id=academic-105485-koreyst) သည် _messages_ များအဖြစ် ကုလဒ်များကို စုစည်းပြီး ရှုပ်ထွေးသော prompt တစ်ခုကို တည်ဆောက်နိုင်သည်၊ 
 
-- _user_ input နဲ့ _assistant_ response ကို ပြန်လည်ထင်ဟပ်တဲ့ input/output တွဲများ။
-- assistant ရဲ့ အပြုအမူ သို့မဟုတ် ပုဂ္ဂိုလ်ရေးအတွက် context ကို သတ်မှတ်ပေးတဲ့ system message။
+- _user_ input နှင့် _assistant_ response ကိုဖော်ပြသည့် input/output စုံများ။
+- assistant ၏ အပြုအမူ သို့မဟုတ် ကိုယ်ရည်ကိုယ်သွေး ကို အကြောင်းပြုသည့် system message။
 
-request ဟာ အောက်ပါပုံစံဖြင့် ဖြစ်လာပြီး၊ _tokenization_ က context နဲ့ စကားဝိုင်းထဲက သက်ဆိုင်တဲ့ အချက်အလက်များကို ထိရောက်စွာ ဖမ်းယူနိုင်ပါတယ်။ အခုတော့ system context ကို ပြောင်းလဲခြင်းဟာ user input တွေထက် response quality အပေါ် ပိုမိုအကျိုးသက်ရောက်နိုင်ပါတယ်။
+အဆိုပါ တောင်းဆိုမှုသည် အောက်ပါ ပုံစံဖြစ်ပြီး အဓိကပါဝင်သော _tokenization_ သည် context နှင့် ဆွေးနွေးမှုမှ သက်ဆိုင်သော သတင်းအချက်အလက်များကို ထိရောက်စွာ ဖမ်းယူထားသည်။ ယခု system context များပြောင်းလဲခြင်းသည် user input များပေးခြင်းနှင့် အတိုင်း တူတန်ဖိုးရှိသည်။
 
 ```python
-response = openai.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=[
+response = client.responses.create(
+    model="gpt-4o-mini",
+    input=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Who won the world series in 2020?"},
         {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
@@ -199,156 +217,196 @@ response = openai.chat.completions.create(
 )
 ```
 
-### Instruction Prompt
+### ညွှန်းချက် prompt
 
-အထက်မှာပါတဲ့ ဥပမာတွေမှာ user prompt က သတင်းအချက်အလက်တောင်းဆိုမှုအတွက် ရိုးရိုး text query ဖြစ်ပါတယ်။ _instruction_ prompts တွေကို အသုံးပြုရင်တော့ AI ကို ပိုမိုကောင်းမွန်တဲ့ လမ်းညွှန်မှုတွေ ပေးနိုင်ပြီး task ကို ပိုမိုအသေးစိတ်ဖော်ပြနိုင်ပါတယ်။ ဥပမာ -
+အထက်ပါ ဥပမာများတွင် user prompt သည် အချက်အလက် ရယူရန် ရိုးရှင်းသော စာသား မေးခွန်းတစ်ခုဖြစ်သည်။ _instruction_ prompts တွင် အဆိုပါ စာသားကို ပိုမိုအသေးစိတ်အလုပ်ပေးမှု ရှင်းပြချက်အဖြစ်အသုံးပြုပြီး AI ၏ အတိအကျ ညွှန်ကြားမှု ပြုလုပ်နိုင်သည်။ ဥပမာ:
 
 | Prompt (Input)                                                                                                                                                                                                                         | Completion (Output)                                                                                                        | Instruction Type    |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------ |
-| Write a description of the Civil War                                                                                                                                                                                                   | _ရိုးရိုးစာပိုဒ်တစ်ခုကို ပြန်ပေးခဲ့သည်_                                                                                  | ရိုးရိုး              |
-| Write a description of the Civil War. Provide key dates and events and describe their significance                                                                                                                                     | _အဓိကဖြစ်ရပ်ရက်စွဲများနဲ့ ဖော်ပြချက်များပါဝင်တဲ့စာပိုဒ်ကို ပြန်ပေးခဲ့သည်_                                              | ရှုပ်ထွေး            |
-| Write a description of the Civil War in 1 paragraph. Provide 3 bullet points with key dates and their significance. Provide 3 more bullet points with key historical figures and their contributions. Return the output as a JSON file | _ပိုမိုအသေးစိတ်ဖော်ပြချက်များကို JSON format နဲ့ ပြန်ပေးခဲ့သည်၊ file ထဲကို copy-paste လုပ်ပြီး validate လုပ်နိုင်သည်_         | ရှုပ်ထွေး။ format ပါ။ |
+| Write a description of the Civil War                                                                                                                                                                                                   | _ရိုးရှင်းသောစာပိုဒ်တစ်ပိုဒ် ပြန်ပေးလိုက်သည်_                                                                                  | ရိုးရှင်း             |
+| Write a description of the Civil War. Provide key dates and events and describe their significance                                                                                                                                     | _စာပိုဒ် တစ်ပိုဒ်နောက်လိုက်၍ အဓိကဖြစ်ရပ်များနှင့် ပြည့်စုံသောရှင်းလင်းချက်များပါသော စာရင်းထုတ်ပေးသည်_                            | ရှုပ်ထွေး             |
+| Write a description of the Civil War in 1 paragraph. Provide 3 bullet points with key dates and their significance. Provide 3 more bullet points with key historical figures and their contributions. Return the output as a JSON file | _ပုံစံထား JSON အဖြစ် ထုတ်ပေးပြီး ဖိုင်သို့ ကူးယူသိမ်းဆည်း၍ အသုံးပြုနိုင်စေရန် အသေးစိတ်စာသားများ ထပ်မံထုတ်ပေးသည်_                 | ရှုပ်ထွေး၊ ပုံစံဖော်ပြမှု |
 
-## Primary Content
+## အဓိက အကြောင်းအရာ
 
-အထက်မှာပါတဲ့ ဥပမာတွေမှာ prompt က အလွတ်တန်းဖြစ်ပြီး၊ LLM ဟာ pre-trained dataset ထဲက သက်ဆိုင်ရာကို ဆုံးဖြတ်နိုင်ပါတယ်။ _primary content_ design pattern နဲ့တော့ input text ကို အပိုင်းနှစ်ခုအဖြစ် ခွဲခြားထားပါတယ် -
+အထက်ပါ ဥပမာများတွင် prompt သည် များစွာဖွင့်ထားသောကြောင့် LLM သည် ၎င်း၏ မှတ်မိသည့် dataset မှ သက်ဆိုင်ရာ အပိုင်းကို ဆုံးဖြတ်နိုင်ခဲ့သည်။ _primary content_ ဒီဇိုင်း ပုံစံဖြင့် input စာသားကို အပိုင်းနှစ်ပိုင်းခွဲခြားသည်။
 
-- instruction (လုပ်ဆောင်မှု)
-- သက်ဆိုင်ရာ content (လုပ်ဆောင်မှုကို သက်ရောက်စေသော)
+- ညွှန်းချက် (လုပ်ဆောင်ရန်)
+- လုပ်ဆောင်ချက် ကို အကျိုးသက်ရောက်မှုရှိစေသော သက်ဆိုင်ရာ အကြောင်းအရာ
 
-ဥပမာ - instruction က "ဒီကို ၂ စာကြောင်းနဲ့ အကျဉ်းချုပ်ရေးပါ" ဖြစ်ပါတယ်။
+ဥပမာအားဖြင့် "ဒီကို ၂ ပုဒ်စာအဖြစ် အကျဉ်းချုပ်ပါ" ဆိုသော instruction ပါရှိသည်။
 
 | Prompt (Input)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Completion (Output)                                                                                                                                                                                                                                                                             |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. It is named after the Roman god Jupiter.[19] When viewed from Earth, Jupiter can be bright enough for its reflected light to cast visible shadows,[20] and is on average the third-brightest natural object in the night sky after the Moon and Venus. <br/> **Summarize this in 2 short sentences** | Jupiter, the fifth planet from the Sun, is the largest in the Solar System and is known for being one of the brightest objects in the night sky. Named after the Roman god Jupiter, it's a gas giant whose mass is two-and-a-half times that of all other planets in the Solar System combined. |
+| Jupiter သည် နေထိပ်မှ ငါးမြောက်စွန်းဖြစ်ပြီး နေ့တစ်ခု၌ အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ဂြိုဟ် ဖြစ်ပြီး နေ၏ အလေးချိန်၏ တစ်သိန်းတစ်ထောင်ပိုင်းသာရှိသော်လည်း အခြားဂြိုဟ်များ အားလုံးရဲ့ အလေးချိန် ပေါင်းစပ်မှု၏ တစ်နှစ်ပိုင်းထက် နှစ် ပေါင်း တစ်ဝက်ပို လေးသည်။ Jupiter သည် ညမိုင်းတွင် မျက်နှာကြီးနဲ့ မြင်နိုင်သော အလင်းတောက်ပဆုံး အရာတစ်ခုဖြစ်ပြီး သမိုင်းမှတ်တမ်းမမွတ်မိမီကကတည်းက အဟောင်းလူမျိုးများ သိရှိခဲ့သည်။ ၎င်းဟာ ရောမဒေဝတော် Jupiter ၏ နာမည်ဖြင့် ခေါ်ဆိုသည်။[19] မြေမြင်ရသောအခါတွင် Jupiter သည် လင်းသောအလင်းမှ မြင်သာသော မောင်ရိုက်များ ထုတ်ပေးနိုင်ပြီး[20] ညမိုင်းတွင် လသော လနှင့် စကြဝဠာကြယ်ကြားတွင် တတိယအလင်းထွန်းဆုံး သဘာဝအရာဝတ္ထု ဖြစ်သည်။ <br/> **ဒီကို ၂ ပုဒ်စာအဖြစ် အကျဉ်းချုပ်ပါ** | Jupiter သည် နေရဲ့ ငါးမြောက်ဂြိုဟ်ဖြစ်ပြီး နေ့စနစ်တွင် အကြီးဆုံးနှင့် ညမိုင်းတွင် အလင်းတောက်ပဆုံး အရာများအနက် တစ်ခုဖြစ်သည်။ ရောမဒေဝတော် Jupiter ၏ နာမည်ဖြင့် ခေါ်ဆိုပြီး ဓာတ်ငွေ့ဂြိုဟ်ဖြစ်သည်။ ၎င်း၏ အလေးချိန်သည် နေ့စနစ်ရှိ အခြားဂြိုဟ်များ စုပေါင်း အလေးချိန်ထက် နှစ်ပေါင်း တစ်ဝက်ပိုများသည်။ |
 
-_primary content_ segment ကို ပိုမိုထိရောက်တဲ့ instructions များကို ဖန်တီးရန် အမျိုးမျိုးအသုံးပြုနိုင်ပါတယ် -
+အဓိက အကြောင်းအရာ ကို သုံး၍ အဓိက instruction များကို ထိရောက်စွာ စီမံနိုင်သည်။
 
-- **Examples** - မော်ဒယ်ကို explicit instruction မပေးဘဲ၊ output အတွက် ဥပမာများပေးပြီး pattern ကို သုံးစွဲစေခြင်း။
-- **Cues** - instruction အပြီးမှာ "cue" တစ်ခုထည့်ပြီး completion ကို guide လုပ်ခြင်း။
-- **Templates** - prompt များအတွက် placeholders (variables) ပါဝင်တဲ့ repeatable 'recipes' များဖြင့် data ကို customize လုပ်နိုင်ခြင်း။
+- **ဥပမာများ** - explicit instruction ထည့်မပြောဘဲ မော်ဒယ်ကို ဘာလုပ်ရမည်ဆိုတာ ပြပါက မော်ဒယ်သည် အဲဒီပုံစံကို လေ့လာအကောက်ခွဲသည်။
+- **ကုဒ်များ** - instruction အပြီးတွင် ကုဒ် (cue) ထည့်သွင်းပေး၍ မော်ဒယ်ကို သက်ဆိုင်ရာဖြေကြားချက်ထံ ဦးတည်စေသည်။
+- **ပုံစံများ** - ဒါတွေက prompt များအတွက် ထပ်ခေါ်အသုံးပြုနိုင်သော ‘ချက်ပြုတ်နည်း’ ဖြစ်ပြီး အသုံးပြုမှုအလိုက် ဒေတာများဖြင့် ပြောင်းလဲနိုင်သော placeholder များပါရှိသည်။
 
-အခုတော့ ဒီနည်းလမ်းတွေကို လေ့လာကြည့်ရအောင်။
+ဒီအကြောင်းတွေကို လက်တွေ့ သုံးသပ်ကြမယ်။
 
-### Examples အသုံးပြုခြင်း
+### ဥပမာသုံးခြင်း
 
-ဒီနည်းလမ်းကတော့ primary content ကို "မော်ဒယ်ကို" _desired output_ အတွက် ဥပမာများပေးပြီး၊ output pattern ကို သုံးစွဲစေခြင်းဖြစ်ပါတယ်။ ပေးထားတဲ့ ဥပမာအရေအတွက်ပေါ်မူတည်ပြီး၊ zero-shot prompting, one-shot prompting, few-shot prompting စသည်ဖြင့် ရှိနိုင်ပါတယ်။
+primary content ကို အထောက်အထားအဖြစ် အသုံးပြုပြီး ပေးလိုသော အဖြေ၏ pattern ကို အခွင့်ပြု၍ နယ်ပယ်တစ်ခုအတွက် အကောင်းဆုံး output ကို ခန့်မှန်းဖို့ လေ့လာသုံးသပ်နည်းဖြစ်သည်။ ပေးသည့် ဥပမာအရေအတွက်အပေါ်မူတည်၍ zero-shot, one-shot, few-shot prompting များ ရှိနိုင်သည်။
 
-prompt ဟာ အခုတော့ အစိတ်အပိုင်းသုံးခုပါဝင်ပါတယ် -
+ယခု prompt တွင် အစိတ်အပိုင်းသုံးခု ပါဝင်သည်။
 
-- Task ဖော်ပြချက်
-- Desired output အတွက် ဥပမာများ
-- New example ရဲ့ opening (implicit task ဖော်ပြချက်ဖြစ်လာသည်)
+- တာဝန်ဖော်ပြချက်
+- လိုလားသော output အတွက် ဥပမာအနည်းငယ်
+- ဥပမာသစ်တစ်ခု၏ စတင်ချက် (implicit task description ဖြစ်လာ)
 
-| Learning Type | Prompt (Input)                                                                                                                                        | Completion (Output)         |
+| သင်ယူမှု အမျိုးအစား | Prompt (Input)                                                                                                                                        | Completion (Output)         |
 | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------- |
 | Zero-shot     | "The Sun is Shining". Translate to Spanish                                                                                                            | "El Sol está brillando".    |
 | One-shot      | "The Sun is Shining" => ""El Sol está brillando". <br> "It's a Cold and Windy Day" =>                                                                 | "Es un día frío y ventoso". |
 | Few-shot      | The player ran the bases => Baseball <br/> The player hit an ace => Tennis <br/> The player hit a six => Cricket <br/> The player made a slam-dunk => | Basketball                  |
 |               |                                                                                                                                                       |                             |
 
-Zero-shot prompting မှာ explicit instruction ("Translate to Spanish") ကို ပေးရတာကို သတိထားပါ၊ ဒါပေမယ့် One-shot prompting ဥပမာမှာတော့ အဲဒီ instruction ကို infer လုပ်နိုင်ပါတယ်။ Few-shot ဥပမာကတော့ ဥပမာများ ပိုမိုပေးခြင်းက မော်ဒယ်များကို ပိုမိုတိကျတဲ့ inference လုပ်နိုင်စေတဲ့အပေါ် သက်ရောက်မှုရှိတာကို ပြသပါတယ်။
+zero-shot prompting တွင် explicit instruction ("Translate to Spanish") ကို ပေးရပြီး one-shot prompting တွင် မျက်နှာဖုံးအနေနှင့် ထည့်သွင်းသည်ကို စိုက်ထူ အတည်ပြုသည်။ few-shot example တွင် ဥပမာများ ပိုမိုထည့်သွင်းခြင်းကြောင့် မော်ဒယ်များသည် သတိထားရှင်းလင်းသော သတ်မှတ်ချက်များကို ထိရောက်စွာ ခန့်မှန်းနိုင်သည်ဟု ပြသသည်။
 
-### Prompt Cues
+### Prompt ကုဒ်များ (Cues)
 
-_primary content_ ကို အသုံးပြုတဲ့ နည်းလမ်းတစ်ခုကတော့ _cues_ ပေးခြင်းဖြစ်ပါတယ်။ ဒီအခါမှာတော့ _desired response format_ ကို ပြသတဲ့ snippet တစ်ခုကို _start off_ အနေနဲ့ ပေးပြီး၊ မော်ဒယ်ကို အဲဒီ format နဲ့ ဆက်လက်လုပ်ဆောင်စေခြင်းဖြစ်ပါတယ်။
+primary content ကို အသုံးပြုနည်းအခြားတစ်ခုမှာ ဥပမာမဖြစ်ပဲ _cue_ များပေးသည့်နည်းဖြစ်သည်။ ဒီနည်းမှာ မော်ဒယ်ကို တောင်းဆိုလိုသည့် format နှင့် ဝါကျတစ်ပိုင်း သိုလှောင်ပေးကာ ဤအတိုင်း ဆက်လက်လုပ်ဆောင်ရန် ညှို့အားပေးခြင်းဖြစ်သည်။
 
-| Number of Cues | Prompt (Input)                                                                                                                                                                                                                                                                                                                                                                                                                                               | Completion (Output)                                                                                                                                                                                                                                                                                       |
+| ကုဒ်အရေအတွက် | Prompt (Input)                                                                                                                                                                                                                                                                                                                                                                                                                                               | Completion (Output)                                                                                                                                                                                                                                                                                       |
 | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0              | Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. <br/>**Summarize This**                                       | Jupiter is the largest planet in our Solar System and the fifth one from the Sun. It is a gas giant with a mass 1/1000th of the Sun's, but it is heavier than all the other planets combined. Ancient civilizations have known about Jupiter for a long time, and it is easily visible in the night sky.. |
-| 1              | ဂျူပီတာသည် နေမှ ငါးခုမြောက်ဂြိုဟ်ဖြစ်ပြီး နေစကြာဝဠာတွင် အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ကြီးဂြိုဟ်တစ်ခုဖြစ်ပြီး ၎င်း၏အလေးချိန်သည် နေ၏တစ်ထောင်ပုံတစ်ပုံသာရှိသော်လည်း နေစကြာဝဠာရှိ အခြားဂြိုဟ်အားလုံး၏အလေးချိန်ထက် နှစ်ဆခွဲကျော်များသည်။ ဂျူပီတာသည် ညဉ့်ကောင်းကင်တွင် မျက်လုံးဖြင့်မြင်နိုင်သော အလင်းအတောက်ဆုံးအရာများထဲမှ တစ်ခုဖြစ်ပြီး မှတ်တမ်းတင်သမိုင်းမတိုင်မီကတည်းက အဟောင်းအကျွမ်းရှိသော လူ့အဖွဲ့အစည်းများမှ သိရှိခဲ့သည်။ <br/>**အကျဉ်းချုပ်ရေးပါ** <br/> ကျွန်ုပ်တို့သိရှိခဲ့သည်မှာ ဂျူပီတာ | သည် နေမှ ငါးခုမြောက်ဂြိုဟ်ဖြစ်ပြီး နေစကြာဝဠာတွင် အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ကြီးဂြိုဟ်တစ်ခုဖြစ်ပြီး ၎င်း၏အလေးချိန်သည် နေ၏တစ်ထောင်ပုံတစ်ပုံသာရှိသော်လည်း နေစကြာဝဠာရှိ အခြားဂြိုဟ်အားလုံး၏အလေးချိန်ထက် နှစ်ဆခွဲကျော်များသည်။ ၎င်းသည် မျက်လုံးဖြင့် အလွယ်တကူမြင်နိုင်ပြီး အဟောင်းအကျွမ်းရှိသောအချိန်ကတည်းက သိရှိခဲ့သည်။                        |
-| 2              | ဂျူပီတာသည် နေမှ ငါးခုမြောက်ဂြိုဟ်ဖြစ်ပြီး နေစကြာဝဠာတွင် အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ကြီးဂြိုဟ်တစ်ခုဖြစ်ပြီး ၎င်း၏အလေးချိန်သည် နေ၏တစ်ထောင်ပုံတစ်ပုံသာရှိသော်လည်း နေစကြာဝဠာရှိ အခြားဂြိုဟ်အားလုံး၏အလေးချိန်ထက် နှစ်ဆခွဲကျော်များသည်။ ဂျူပီတာသည် ညဉ့်ကောင်းကင်တွင် မျက်လုံးဖြင့်မြင်နိုင်သော အလင်းအတောက်ဆုံးအရာများထဲမှ တစ်ခုဖြစ်ပြီး မှတ်တမ်းတင်သမိုင်းမတိုင်မီကတည်းက အဟောင်းအကျွမ်းရှိသော လူ့အဖွဲ့အစည်းများမှ သိရှိခဲ့သည်။ <br/>**အကျဉ်းချုပ်ရေးပါ** <br/> ကျွန်ုပ်တို့သိရှိခဲ့သော အချက် ၃ ခု:         | ၁။ ဂျူပီတာသည် နေမှ ငါးခုမြောက်ဂြိုဟ်ဖြစ်ပြီး နေစကြာဝဠာတွင် အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ <br/> ၂။ ၎င်းသည် ဓာတ်ငွေ့ကြီးဂြိုဟ်တစ်ခုဖြစ်ပြီး ၎င်း၏အလေးချိန်သည် နေ၏တစ်ထောင်ပုံတစ်ပုံသာရှိသည်...<br/> ၃။ ဂျူပီတာသည် အဟောင်းအကျွမ်းရှိသောအချိန်ကတည်းက မျက်လုံးဖြင့်မြင်နိုင်ခဲ့သည်...                                                                       |
+| 0              | Jupiter သည် နေထိပ်မှ ငါးမြောက်စွန်းဖြစ်ပြီး နေ့တစ်ခု၌ အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ဂြိုဟ် ဖြစ်ပြီး နေ၏ အလေးချိန်၏ တစ်သိန်းတစ်ထောင်ပိုင်းသာရှိသော်လည်း အခြားဂြိုဟ်များ အားလုံးရဲ့ အလေးချိန် ပေါင်းစပ်မှု၏ တစ်နှစ်ပိုင်းထက် နှစ် ပေါင်း တစ်ဝက်ပို လေးသည်။ Jupiter သည် ညမိုင်းတွင် မျက်နှာကြီးနဲ့ မြင်နိုင်သော အလင်းတောက်ပဆုံး အရာတစ်ခုဖြစ်ပြီး သမိုင်းမှတ်တမ်းမမွတ်မိမီကကတည်းက အဟောင်းလူမျိုးများ သိရှိခဲ့သည်။ <br/>**ဒီကို အကျဉ်းချုပ်ပါ**                                       | Jupiter သည် နေ့စနစ်တွင် အကြီးဆုံးဂြိုဟ်ဖြစ်ပြီး နေထိပ်မှ ငါးမြောက်ဂြိုဟ်ဖြစ်ပါသည်။ ၎င်းသည် နေ၏ တစ်ထောင် ၁ ပိုင်းအလေးချိန်ရှိသော်လည်း အခြားဂြိုဟ်များ စုပေါင်းထက် ပိုမိုထူသည်။ အဟောင်းသူမျိုးများသည် Jupiter ကို ကြာရှည်ကြာ သိရှိခဲ့ပြီး ညမိုင်းတွင်လည်း မြင်ကွင်းရှင်းလင်းသည်။ |
+| 1              | Jupiter သည် နေထိပ်မှ ငါးမြောက်စွန်းဖြစ်ပြီး နေ့တစ်ခု၌ အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ဂြိုဟ် ဖြစ်ပြီး နေ၏ အလေးချိန်၏ တစ်သိန်းတစ်ထောင်ပိုင်းသာရှိသော်လည်း အခြားဂြိုဟ်များ အားလုံးရဲ့ အလေးချိန် ပေါင်းစပ်မှု၏ တစ်နှစ်ပိုင်းထက် နှစ် ပေါင်း တစ်ဝက်ပို လေးသည်။ Jupiter သည် ညမိုင်းတွင် မျက်နှာကြီးနဲ့ မြင်နိုင်သော အလင်းတောက်ပဆုံး အရာတစ်ခုဖြစ်ပြီး သမိုင်းမှတ်တမ်းမမွတ်မိမီကကတည်းက အဟောင်းလူမျိုးများ သိရှိခဲ့သည်။ <br/>**ဒီကို အကျဉ်းချုပ်ပါ** <br/> ကျွန်တော်တို့ သိရှိသည်မှာ Jupiter | သည် နေထိပ်မှ ငါးမြောက်စွန်းဖြစ်ပြီး နေ့စနစ်တွင် အကြီးဆုံးဂြိုဟ်ဖြစ်သည်။ ဓာတ်ငွေ့ဂြိုဟ်ဖြစ်ပြီး နေ၏ တစ်ထောင်ပိုင်းအလေးချိန်ရှိသော်လည်း အခြားဂြိုဟ်များ စုပေါင်းထက် နှစ် ပေါင်း တစ်ဝက်ပို များသည်။ ၎င်းသည် မျက်နှာကြီးနဲ့ မြင်နိုင်ပြီး သမိုင်းမှတ်တမ်း မမွတ်မိမီကတည်းက သတင်းရှိသည်။                      |
+
+| 2              | ဇူပီတာသည် နေထွက်ကြယ်မှ ငါးလေးမြောက်ဂြိုဟ်ဖြစ်ပြီး နေမလိုက်စနစ်တွင် အကြီးဆုံးဖြစ်သည်။ ၎င်းသည် ဓာတ်ငွေ့ကြီးတစ်ခုဖြစ်ပြီး နေ၏ အစုရှင်းတစ်ပုံပစ်ရှိသည်၊ သို့သော် နေမလိုက်စနစ်ရှိ အခြားဂြိုဟ်အားလုံး၏ ပေါင်းစုပမာဏထက် နှစ်ဆနှစ်ပွါးပိုသည်။ ဇူပီတာသည် ညဘက်ကောင်းကင်တွင် မြင်နိုင်သော အလင်းမြင့်ဆုံးအရာများထဲမှ တစ်ခုဖြစ်ပြီး စာရေးမှတ်တမ်းမမီသော ယဉ်ကျေးမှုကာလများကစ၍ သိရှိခဲ့ကြသည်။ <br/>**အကျဉ်းချုပ်ပါ** <br/> ကျွန်တော်တို့ သင်ယူ သိခဲ့ရသော အထိမ်းအမှတ် ထိပ်ဆုံး ၃ ချက်:         | 1. ဇူပီတာသည် နေထွက်ကြယ်မှ ငါးလေးမြောက်ဂြိုဟ်ဖြစ်ပြီး နေမလိုက်စနစ်တွင် အကြီးဆုံးဖြစ်သည်။ <br/> 2. ၎င်းသည် ဓာတ်ငွေ့ကြီးတစ်ခုဖြစ်ပြီး နေ၏ အစုရှင်းတစ်ပုံပစ်ရှိသည်...<br/> 3. ဇူပီတာသည် ဗြဟ္မာအမြင်မှ မြင်နေရသောအဖြစ် လူစဉ်ဟောင်းကစ၍ သိရှိခဲ့သည် ...                                                                       |
 |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                           |
 
-### Prompt Templates
+### မြှုပ်နှံမှု အစမ်းတမ်းများ
 
-Prompt Template ဆိုသည်မှာ _prompt ရေးသားရန်အတွက် ကြိုတင်ပြင်ဆင်ထားသော နည်းလမ်း_ တစ်ခုဖြစ်ပြီး အသုံးပြုသူများအတွက် ပိုမိုတိကျသော အတွေ့အကြုံများကို အကျိုးရှိစွာ အသုံးချနိုင်ရန် သိမ်းဆည်းထားပြီး လိုအပ်သလို အသုံးပြုနိုင်သော အရာတစ်ခုဖြစ်သည်။ အလွယ်ဆုံးပုံစံတွင် [OpenAI မှ](https://platform.openai.com/examples?WT.mc_id=academic-105485-koreyst) ပေးထားသော ဥပမာတစ်ခုကဲ့သို့ prompt အပိုင်းအစများ (အသုံးပြုသူနှင့် စနစ်မက်ဆေ့) နှင့် API-driven request format ကို ပေးထားပြီး - အကျိုးရှိစွာ အသုံးပြုနိုင်ရန် အထောက်အကူပြုသည်။
+မြှုပ်နှံမှု အစမ်းတမ်းတစ်ခုသည် _မြှုပ်နှံမှုအတွက် ကြိုတင်သတ်မှတ်ထားသော အသုံးပြုမှု စာရင်း_ ဖြစ်ပြီး လိုအပ်သလို သိမ်းဆည်းထားပြီး ထပ်မံအသုံးပြုနိုင်ရန်၊ အဆင့်မြင့်သော အသုံးပြုသူ အတွေ့အကြုံများကို အတိုင်းအတာပေါ်၌ မောင်းနှင်ပေးနိုင်သည်။ ၎င်း၏ ရိုးရှင်းဆုံး ပုံစံမှာ [OpenAI မှ ဤဥပမာ](https://cookbook.openai.com/examples/gpt4-1_prompting_guide?WT.mc_id=academic-105485-koreyst) ကဲ့သို့ လက်တွေ့ မြှုပ်နှံမှုအစိတ်အပိုင်းများ (အသုံးပြုသူနှင့် စနစ်សာ) နှင့် API ဖြင့်မောင်းနှင်သော တောင်းဆိုမှုပုံစံတို့ ပါဝင်သော မြှုပ်နှံမှု ဥပမာများစုစည်းမှုဖြစ်သည် - ထပ်မံအသုံးပြုနိုင်ရေး ထောက်ပံ့သည်။
 
-ပိုမိုရှုပ်ထွေးသောပုံစံတွင် [LangChain မှ ဥပမာ](https://python.langchain.com/docs/concepts/prompt_templates/?WT.mc_id=academic-105485-koreyst) ကဲ့သို့ _placeholder_ များပါဝင်ပြီး အသုံးပြုသူ၏ input, စနစ် context, အပြင်ပလွှာမှ ဒေတာများစသည်ဖြင့် prompt ကို dynamic အဖြစ် ဖန်တီးရန် အသုံးပြုနိုင်သည်။ ၎င်းသည် prompt များကို library အဖြစ် ဖန်တီးပြီး **programmatically** အကျိုးရှိစွာ အသုံးပြုနိုင်ရန် အထောက်အကူပြုသည်။
+[LangChain မှ ဤဥပမာ](https://python.langchain.com/docs/concepts/prompt_templates/?WT.mc_id=academic-105485-koreyst) ကဲ့သို့ ပိုမိုရှုပ်ထွေးသော ပုံစံတွင် _နေရာထိုးများ_ ပါဝင်ပြီး ဒေတာအမျိုးမျိုး (အသုံးပြုသူအင်ပွတ်၊ စနစ်အခြေအနေ၊ ပြင်ပဒေတာ အရင်းအမြစ်များ စသည်) မှ အစားထိုးနိုင်သည်။ ၎င်းတို့ဖြင့် အသုံးပြုသူ အတွေ့အကြုံများကို **အစီအစဉ်အလိုက်** စနစ်တကျ မောင်းနှင်နိုင်သော ရှင်းလင်းသော မြှုပ်နှံမှု စုစည်းမှုတစ်ခု တည်ဆောက်ကာ အသုံးပြုနိုင်သည်။
 
-နောက်ဆုံးတွင် template များ၏ တန်ဖိုးသည် vertical application domains အတွက် _prompt libraries_ ဖန်တီးပြီး - prompt template ကို application-specific context သို့မဟုတ် ဥပမာများနှင့်အတူ _optimized_ လုပ်ပြီး targeted user audience အတွက် ပိုမိုသက်ဆိုင်သော output များကို ဖန်တီးနိုင်စေခြင်းဖြစ်သည်။ [Prompts For Edu](https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst) repository သည် ဤနည်းလမ်းကို အသုံးပြုထားသော ဥပမာကောင်းတစ်ခုဖြစ်ပြီး သင်ကြားရေးနယ်ပယ်အတွက် prompt များကို စုစည်းထားပြီး သင်ခန်းစာအစီအစဉ်ရေးဆွဲခြင်း၊ သင်ရိုးညွှန်းတမ်းဒီဇိုင်း၊ ကျောင်းသားများကို သင်ကြားခြင်းစသည်တို့ကို အဓိကထားသည်။
+နောက်ဆုံးတွင် မြှုပ်နှံမှုအကြောင်းအရာများ၏ တန်ဖိုးမှာ ထူးခြား application domain များအတွက် _မြှုပ်နှံမှု စုစည်းမှု_ များ ဖန်တီးထုတ်ဝေခြင်းဖြစ်သည် - ဤနေရာတွင် မြှုပ်နှံမှုအပုံစံကို application-specific အခြေအနေများ သို့မဟုတ် အဓိကအကြောင်းအရာများနှင့် ကိုက်ညီအောင် _အကောင်းဆုံး လုပ်ဆောင်_ ပြုလုပ်ထားသည်။ [Prompts For Edu](https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst) စာကြည့်တိုက်သည် ပညာရေးနယ်ပယ်အတွက် အဓိကရည်ရွယ်ချက်များဖြစ်သည့် သင်ခန်းစာအစီအစဉ်များ၊ သင်ရိုးညွှန်းတမ်းဒီဇိုင်း၊ ကျောင်းသား ခေါင်းဆောင်မှု စသည်တို့ကို အာရုံစိုက်၍ မြှုပ်နှံမှုစာကြည့်တိုက်တခု ဖန်တီးထားသဖြင့် ဥပမာကောင်းတစ်ခုဖြစ်သည်။
 
-## Supporting Content
+## ထောက်ပံ့ပေးသော အကြောင်းအရာများ
 
-Prompt ကို တည်ဆောက်ခြင်းကို instruction (task) နှင့် target (primary content) ရှိသည်ဟု တွေးလျှင် _secondary content_ သည် output ကို **တစ်နည်းနည်းဖြင့် အကျိုးသက်ရောက်မှုရှိစေခြင်း** အတွက် ပေးသော အပို context တစ်ခုဖြစ်သည်။ ၎င်းသည် tuning parameters, formatting instructions, topic taxonomies စသည်တို့ဖြစ်နိုင်ပြီး model ကို _desired user objectives_ သို့မဟုတ် _expectations_ နှင့် ကိုက်ညီစေရန် response ကို _tailor_ လုပ်နိုင်စေသည်။
+မြှုပ်နှံမှု ဖန်တီးခြင်းကို အားပေးချက် (တာဝန်) တစ်ခုနှင့် ရည်မှန်းချက် (အဓိက အကြောင်းအရာ) တို့ အဖြစ် တွေးပါက _ဒုတိယ အကြောင်းအရာ_ သည် ထွက်ရှိမှုကို **သက်ရောက်မှု များ သည် မည်သို့ သွားပါစေ** ဟူ၍ ပံ့ပိုးပေးသော ပိုမိုနည်းနည်းသော အခြေအနေများအဖြစ်ဖြစ်နိုင်သည်။ ၎င်းတွင် ဟန်ချက်ညီမှု ပြောင်းလဲမှုများ၊ ပုံစံညွှန်းချက်များ၊ ခေါင်းစဉ် taxonomies စသဖြင့် ပါဝင်နိုင်ပြီး ၎င်းသည် အချို့သော အသုံးပြုသူရည်ရွယ်ချက်များ သို့မဟုတ် မျှော်လင့်ချက်များနှင့် ကိုက်ညီစေရန် မှော်စဉ်အသွင်ပြောင်းမှုပေးနိုင်သည်။
 
-ဥပမာ: Fall 2023 သင်ရိုးညွှန်းတမ်းကို အကျဉ်းချုပ်ရေးရန် instruction တစ်ခု သတ်မှတ်ပြီး သင်ရိုးညွှန်းတမ်းတွင် ပါဝင်သော course catalog metadata (name, description, level, metadata tags, instructor စသည်တို့) ကို အသုံးပြုပါ။
+ဥပမာအားဖြင့် - သင်တန်းအတန်းလိုက် (နာမည်၊ ဖေါ်ပြချက်၊ အဆင့်၊ metadata အမှတ်အသားများ၊ ဆရာများစသည်ဖြင့်) သတင်းအချက်အလက်များ ပါရှိသော သင်တန်းစာရင်းတစ်ခု ရှိခဲ့ပါက -
 
-- instruction ကို "Fall 2023 သင်ရိုးညွှန်းတမ်းကို အကျဉ်းချုပ်ရေးပါ" ဟု သတ်မှတ်နိုင်သည်။
-- primary content ကို output format ကို ဥပမာများဖြင့် ပေးနိုင်သည်။
-- secondary content ကို အဓိက tag ၅ ခုကို သတ်မှတ်နိုင်သည်။
+- “2023 ရာသီဆောင်းသင်တန်းစာရင်းကို အကျဉ်းချုပ်ပေးရန်” ဟူသော ထောက်ပြချက်ရေးနိုင်သည်။
+- ရည်မှန်းထားသော ထွက်ရှိမှု အနည်းငယ်ကို အဓိက အကြောင်းအရာအဖြစ် ဥပမာအနည်းငယ် ထည့်သွင်းနိုင်သည်။
+- လူကြိုက်များသည့် ထိပ်ဆုံး “tag” ၅ ခုကို ဒုတိယ အကြောင်းအရာအဖြစ်သတ်မှတ်နိုင်သည်။
 
-model သည် ဥပမာများတွင် ဖော်ပြထားသော format အတိုင်း အကျဉ်းချုပ်ပေးနိုင်ပြီး result တွင် tag များစွာပါဝင်ပါက secondary content တွင် သတ်မှတ်ထားသော tag ၅ ခုကို ဦးစားပေးနိုင်သည်။
+ယခု သင်စနစ်သည် ဥပမာအနည်းငယ်ဖြင့် ပြသသည့် ပုံစံအတိုင်း အကျဉ်းချုပ်တောင်းဆိုမှုတစ်ခု ပေးနိုင်မည်။ သို့သော် ထွက်ရှိမှုတစ်ခုတွင် tag တွေ များပါက ဒုတိယ အကြောင်းအရာတွင် သတ်မှတ်ထားသော tag ၅ ခုကို ဦးစားပေးသတ်မှတ်မည်။
 
 ---
 
 <!--
-LESSON TEMPLATE:
-ဤ unit သည် core concept #1 ကို ဖော်ပြသင့်သည်။
-ဥပမာများနှင့် ရင်းမြစ်များဖြင့် concept ကို အတည်ပြုပါ။
+သင်ခန်းစာ ပုံစံ:
+ဤယူနစ်သည် အဓိက သဘောတရား #1 ကို ဖုံးလွှမ်းသင့်သည်။
+သဘောတရားကို ဥပမာများနှင့် ရည်ညွှန်းချက်များဖြင့် ပြန်လည်အားကောင်းစေရန်။
 
-CONCEPT #3:
-Prompt Engineering Techniques.
-Prompt engineering အတွက် အခြေခံနည်းလမ်းများကော ရှိပါသလား။
-အတန်းလေ့ကျင့်ခန်းများဖြင့် ဖော်ပြပါ။
+အကြောင်းအရာ #3:
+မြှုပ်နှံမှု အင်ဂျင်နီယရင်းနည်းလမ်းများ။
+မြှုပ်နှံမှု အင်ဂျင်နီယရင်းအတွက် မူလနည်းလမ်းများက ဘာတွေဖြစ်ပါသလဲ?
+တတ်မြောက်စေရန် လေ့ကျင့်ခန်းများဖြင့် ရှင်းပြပါ။
 -->
 
-## Prompting Best Practices
+## မြှုပ်နှံမှု အကောင်းဆုံး လုပ်ထုံးလုပ်နည်းများ
 
-Prompt များကို _တည်ဆောက်_ နည်းလမ်းကို သိရှိပြီးနောက် _design_ လုပ်ရန်အတွက် အကောင်းဆုံးနည်းလမ်းများကို တွေးဆနိုင်ပါပြီ။ ၎င်းကို _mindset_ မှန်ကန်မှုနှင့် _techniques_ မှန်ကန်မှုတို့အပေါ် အခြေခံ၍ တွေးဆနိုင်သည်။
+ယခု ကျွန်တော်တို့ သိရှိထားသော မြှုပ်နှံမှုများကို _ဖန်တီးမှု_ အနေဖြင့်ကတည်းက အကောင်းဆုံး လုပ်ထုံးလုပ်နည်းများ ကို ပြောစရာ ရှိသည်။ ဤကို နှစ်ပိုင်းဖြစ်သော - သင့်တော်သော _စိတ်နေစိတ်ထား_ နှင့် သင့်တော်သော _နည်းပညာများ_ အသုံးပြုရန် စဉ်းစားနိုင်သည်။
 
-### Prompt Engineering Mindset
+### မြှုပ်နှံမှု အင်ဂျင်နီယရင်း စိတ်နေစိတ်ထား
 
-Prompt Engineering သည် အမှားအမှန်များကို စမ်းသပ်ခြင်းဖြစ်သောကြောင့် အောက်ပါ အချက် ၃ ချက်ကို အဓိကထားသင့်သည်-
+မြှုပ်နှံမှု အင်ဂျင်နီယရင်းသည် စမ်းသပ်ပြန်သုံးခြင်း ဖြစ်သောကြောင့် အုပ်စုသုံးချက် သုံးချက်ကို ဦးဆောင် ထည့်သွင်းစဉ်းစားပါ -
 
-1. **နယ်ပယ်ကို နားလည်မှု အရေးကြီးသည်။** Response အတိအကျမှုနှင့် သက်ဆိုင်မှုသည် application သို့မဟုတ် user ၏ _domain_ အပေါ် မူတည်သည်။ သင်၏ intuition နှင့် domain expertise ကို အသုံးပြု၍ **နည်းလမ်းများကို အထူးပြုလုပ်ပါ**။ ဥပမာအားဖြင့် စနစ် prompt များတွင် _domain-specific personalities_ ကို သတ်မှတ်ပါ၊ သို့မဟုတ် အသုံးပြုသူ prompt များတွင် _domain-specific templates_ ကို အသုံးပြုပါ။ domain-specific contexts ကို ဖော်ပြသော secondary content ကို ပေးပါ၊ သို့မဟုတ် _domain-specific cues နှင့် ဥပမာများ_ ကို အသုံးပြု၍ model ကို ရင်းနှီးသော အသုံးပြုမှုပုံစံများသို့ ဦးတည်စေပါ။
+1. **နယ်ပယ်နားလည်မှု အရေးကြီးသည်။** ပြန်လည်ဖြေဆိုမှု တိကျမှန်ကန်မှု နှင့် သက်ဆိုင်မှုသည် အသုံးပြုသူ သို့မဟုတ် application ပတ်ဝန်းကျင်ထားရှိသည့် _နယ်ပယ်_ အပေါ်တွင် မူတည်သည်။ သင့်intuition နှင့် နယ်ပယ်ကျွမ်းကျင်မှုဖြင့် **နည်းစနစ်များ ကို ကိုယ်ပိုင်စိတ်နှလုံးဖြင့် ထပ်မံ ချိန်ညှိပါ**။ ဥပမာအားဖြင့် သင့်စနစ်မြှုပ်နှံမှုများတွင် _နယ်ပယ်-အထူး ပုဂ္ဂိုလ်ရေး_ သတ်မှတ်ပါ၊ သို့မဟုတ် အသုံးပြုသူမြှုပ်နှံမှုများတွင် _နယ်ပယ်-အထူး ပုံစံ_ အသုံးပြုပါ။ နယ်ပယ်-အထူး အခြေအနေများကို ထည့်သွင်းထားသော ဒုတိယအကြောင်းအရာများပေးပါ၊ သို့မဟုတ် _နယ်ပယ်-အထူး သင်္ကေတများ နှင့် ဥပမာများ_ ဖြင့် စနစ်အား မိတ်ဆက်သုံးနည်းသို့ ဦးတည်စေပါ။
 
-2. **Model ကို နားလည်မှု အရေးကြီးသည်။** Model များသည် သဘာဝအားဖြင့် stochastic ဖြစ်သည်ကို ကျွန်ုပ်တို့သိသည်။ သို့သော် model implementation များသည် ၎င်းတို့အသုံးပြုသော training dataset (pre-trained knowledge), ၎င်းတို့ပေးသော capabilities (ဥပမာ API သို့မဟုတ် SDK) နှင့် optimized လုပ်ထားသော content အမျိုးအစား (ဥပမာ code vs. images vs. text) အပေါ် မူတည်၍ ကွဲပြားနိုင်သည်။ သင်အသုံးပြုနေသော model ၏ အားသာချက်များနှင့် အားနည်းချက်များကို နားလည်ပြီး _tasks_ များကို ဦးစားပေးရန် သို့မဟုတ် model ၏ capabilities အပေါ် မူတည်၍ _customized templates_ များကို တည်ဆောက်ရန် အသုံးပြုပါ။
+2. **မော်ဒယ်နားလည်မှုအရေးကြီးသည်။** မော်ဒယ်များသည် သဘာဝအတိုင်း မတည်ငြိမ်မှုရှိကြောင်း သိသည်။ သို့သော် မော်ဒယ်တည်ဆောက်မှုများသည် သင်ကြားမှု ဒေတာအစုအဝေး (အကြိုသိသော အရင်းအမြစ်များ), ပံ့ပိုးမှုများ (ဥပမာ API သို့မဟုတ် SDK ဖြင့်) နှင့် တွေ့ရှိမှုအမျိုးအစား (ဥပမာ ကုဒ်၊ ပုံများ၊ စာသားများ) တို့အပေါ် မတူကွဲပြားမှုရှိနိုင်သည်။ သင်အသုံးပြုနေသော မော်ဒယ်၏ အားသာချက်များနှင့် ကန့်သတ်ချက်များကို နားလည်ပြီး ထိုအချက်များအား အသုံးချ၍ _တာဝန်များအား ဦးစားပေး_ သို့မဟုတ် မော်ဒယ်၏ စွမ်းရည်နှင့် ကိုက်ညီသည့် _ပုံစံများ_ ဖန်တီးပါ။
 
-3. **Iteration & Validation အရေးကြီးသည်။** Model များသည် အလျင်အမြန် တိုးတက်နေပြီး prompt engineering အတွက် နည်းလမ်းများလည်း တိုးတက်နေသည်။ Domain expert အနေဖြင့် သင်၏ application အတွက် သက်ဆိုင်သော context သို့မဟုတ် criteria များရှိနိုင်ပြီး ၎င်းသည် broader community အတွက် မသက်ဆိုင်နိုင်ပါ။ Prompt engineering tools & techniques များကို အသုံးပြု၍ prompt တည်ဆောက်မှုကို "jump start" လုပ်ပြီး သင်၏ intuition နှင့် domain expertise ကို အသုံးပြု၍ result များကို iterate နှင့် validate လုပ်ပါ။ သင်၏ insights များကို မှတ်တမ်းတင်ပြီး prompt libraries ကဲ့သို့သော **knowledge base** ကို ဖန်တီးပါ။ ၎င်းသည် အနာဂတ်တွင် prompt engineering process ကို မြန်ဆန်စေပြီး response quality ကို မြှင့်တင်ရန် အသစ်သော baseline အဖြစ် အသုံးပြုနိုင်သည်။
+3. **ပြန်လည်မြှင့်တင်ခြင်းနှင့် အတည်ပြုမှုအရေးကြီးသည်။** မော်ဒယ်များသည် မြန်ဆန်စွာ တိုးတက်နေပြီး မြှုပ်နှံမှုနည်းနှင့် ကိရိယာအသစ်များလည်း ဖြစ်လာနေသည်။ နယ်ပယ်ကျွမ်းကျင်သူအနေနှင့် သင်၏ အသီးသီး application အတွက် အခြားcontext များ သို့မဟုတ် ချိုးချက်များ ရှိနိုင်သည်။ မြှုပ်နှံမှု အင်ဂျင်နီယာကိရိယာများနှင့် နည်းလမ်းများကို သုံးပြီး မြှုပ်နှံမှု ဖန်တီးမှုကို စတင်တိုးတက်စေပြီး အခြားတိုးတက်မှုများအတွက် သင့်၏intuition နှင့် နယ်ပယ်ကျွမ်းကျင်မှုဖြင့် ပြန်လည်အတည်ပြုပါ။ သင်၏သော်ရှိချက်များကို မှတ်တမ်းတင်၍ **အသိပညာ မူလတန်းစာစောင်** (ဥပမာ မြှုပ်နှံမှု စာကြည့်တိုက်များ) ဖန်တီးပါ၊ ၎င်းအား အခြားသူများအတွက် အချိန်တိုအတွင်း နောက်ထပ်တိုးတက်မှုများအတွက် အသစ်ဖြစ်သောအခြေခံမူအဖြစ် အသုံးပြုနိုင်သည်။
 
-## Best Practices
+## အကောင်းဆုံး လုပ်ငန်းစဉ်များ
 
-[OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst) နှင့် [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst) မှ အကြံပြုထားသော prompt engineering အတွက် အကောင်းဆုံးနည်းလမ်းများကို အောက်တွင် ဖော်ပြထားသည်-
+အခု မှာ ကျွန်တော်တို့အား [OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst) နှင့် [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst) လုပ်ငန်းသုံးများက အကြံပြုထားသော လုပ်ငန်းစဉ်များကို ကြည့်ကြမည်။
 
-| အရာ                              | အကြောင်းအရာ                                                                                                                                                                                                                                               |
+| ဘာကို                              | ဘာကြောင့်                                                                                                                                                                                                                                               |
 | :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| နောက်ဆုံး model များကို သုံးသပ်ပါ။       | Model အသစ်များသည် feature များနှင့် အရည်အသွေးပိုမိုကောင်းမွန်လာနိုင်သော်လည်း ကုန်ကျစရိတ်များ ပိုမိုများလာနိုင်သည်။ ၎င်းတို့၏ သက်ရောက်မှုကို သုံးသပ်ပြီး migration ဆုံးဖြတ်ချက်များကို ပြုလုပ်ပါ။                                                                                |
-| Instruction နှင့် context ကို ခွဲခြားပါ   | Model/provider သည် instruction, primary နှင့် secondary content များကို ပိုမိုရှင်းလင်းစွာ ခွဲခြားရန် _delimiters_ ကို သတ်မှတ်ထားသည်ကို စစ်ဆေးပါ။ ၎င်းသည် model များကို token များကို ပိုမိုတိကျစွာ အလေးပေးစေပါသည်။                                                         |
-| တိကျပြီးရှင်းလင်းစေပါ             | သင်လိုချင်သော context, outcome, length, format, style စသည်တို့ကို ပိုမိုအသေးစိတ်ဖော်ပြပါ။ ၎င်းသည် response များ၏ အရည်အသွေးနှင့် တိကျမှုကို တိုးတက်စေပါသည်။ Recipe များကို reusable templates တွင် သိမ်းဆည်းပါ။                                                          |
-| ဖော်ပြပြီး ဥပမာများကို အသုံးပြုပါ      | Model များသည် "show and tell" နည်းလမ်းကို ပိုမိုကောင်းမွန်စွာ တုံ့ပြန်နိုင်သည်။ `zero-shot` နည်းလမ်းဖြင့် စတင်ပြီး instruction ကိုပေးပါ (ဥပမာမပါဘဲ)၊ ထို့နောက် `few-shot` နည်းလမ်းဖြင့် output format ကို ဥပမာများဖြင့် refine လုပ်ပါ။ Analogy များကို အသုံးပြုပါ။ |
-| Cues ကို အသုံးပြု၍ completions ကို စတင်ပါ | Response ကို စတင်ရန် model ကို အစစီရင်ဆိုင်စေသော စကားလုံးများ သို့မဟုတ် စကားစုများကို ပေးပါ။                                                                                                               |
-| Double Down                       | တစ်ခါတစ်ရံ model ကို ထပ်ခါတလဲလဲ ပြောရန် လိုအပ်နိုင်သည်။ Primary content မတိုင်မီနှင့်ပြီးနောက် instruction များကို ပေးပါ၊ instruction နှင့် cue ကို အသုံးပြုပါ၊ စမ်းသပ်ပြီး အကောင်းဆုံးနည်းလမ်းကို ရှာပါ။                                                         |
-| Order Matters                     | Model သည် recency bias ကြောင့် သင်ဖော်ပြသော အချက်အလက်များ၏ အစီအစဉ်အပေါ် response ကို သက်ရောက်မှုရှိနိုင်သည်။ အကောင်းဆုံးနည်းလမ်းကို ရှာဖွေရန် အခြားရွေးချယ်မှုများကို စမ်းသပ်ပါ။                                                               |
-| Model ကို "out" ပေးပါ           | Model သည် task ကို ပြီးမြောက်စေရန် မဖြစ်နိုင်ပါက _fallback_ completion response ကို ပေးပါ။ ၎င်းသည် model များမှ အမှားများ သို့မဟုတ် ဖန်တီးထားသော response များကို လျော့နည်းစေပါသည်။                                                         |
+| မော်ဒယ်အသစ်များကို သုံးသပ်ပါ       | မော်ဒယ်အဆင့်သစ်များတွင် အင်္ဂါရပ်များနှင့် အရည်အသွေး တိုးတက်မှုရှိနိုင်သည် - သို့သော် ကုန်ကျစရိတ်များ ပိုမြင့်တက်နိုင်သည်။ ၎င်းတို့ကို သုံးသပ်၍ သက်ရောက်မှု ကြည့်ရှုကာ ပြောင်းရွှေ့မှု ဆုံးဖြတ်ချက် လုပ်ပါ။                                                                                |
+| ညွှန်ကြားချက်များနှင့် အခြေအနေများ ခွဲခြားပါ   | မော်ဒယ် သို့မဟုတ် ပံ့ပိုးသူက _အကန့်အသတ်များ_ သုံး၍ ညွှန်ကြားချက်များ၊ အဓိက နှင့် ဒုတိယ အကြောင်းအရာများကို ပိုကွဲပြားစေပါက စစ်ဆေးပါ။ ၎င်းသည် မော်ဒယ်များအား tokens များကို ပိုမှန်ကန်စွာ ဆုံးဖြတ်ရန် ကူညီနိုင်သည်။                                                         |
+| သတ်မှတ်ချက် ပိုမို သေချာပြတ်သားစေပါ             | လိုအပ်သော အခြေအနေ၊ ထွက်ရှိမှု၊ အရှည်၊ ပုံစံ၊ စတိုင် စသည့် အချက်အလက်များ ပိုမို အတိအကျပေးပါ။ ၎င်းသည် ပြန်လည်ဖြေဆိုမှု အရည်အသွေးနှင့် ဇိမ်ခံမှု နှစ်ခုစလုံး တိုးတက်စေသည်။ ထပ်မံအသုံးပြုနိုင်သော ပုံစံများတွင် စာအုပ်များဖမ်းဆီးပါ။                                                          |
+| ဖော်ပြချက် အသုံးပြု၍ ဥပမာများ ပါထည့်ပါ      | မော်ဒယ်များသည် “ပြသ ပြောဆိုခြင်း” ချဉ်းကပ်မှုကို ပိုမိုကောင်းစွာ ပြန်လည်ဖြေဆိုနိုင်သည်။ ဦးစားပေးပြီး `zero-shot` ချဉ်းကပ်မှုဖြင့် စတင်ပါ (ညွှန်ကြားချက်ပေး but ဥပမာမပါ) ထို့နောက် `few-shot` ဖြင့် ဖြေရှင်းခြင်း အဖြစ် ဥပမာအနည်းငယ် ပေးပါ။ ဆင်တူနားလည်မှုများ သုံးပါ။ |
+| အစွမ်းသတ္တိရှာရန် စကားလုံးများ ကြိုတင်ထည့်ပါ | အဖြေ ရလဒ်ကို စတင်ရန် အစပျိုးစကားများ သို့မဟုတ် စကားစုများ ပေး၍ လမ်းပြပါ။                                                                                                               |
+| ပြန်လည်လုပ်ဆောင်ပါ                       | မော်ဒယ်အား တဖန်ထပ်ခါ ဆက်ပြောရန် လိုအပ်နိုင်သည်။ ဦးစားပေးချက်များကို အဓိက အကြောင်းအရာမတိုင်မီနှင့်နောက်တွင် ပေးပါ၊ ဦးစားပေးချက်နှင့် လမ်းပြချက် တို့ကို အသုံးပြုပါ။ ဆက်တိုက် ပြန်လည်အတည်ပြု၍ ဘာလုပ်ဆောင်သည်ကို ကြည့်ရှုပါ။                                                         |
+| အစီအစဉ်သည် အရေးကြီးပါ                     | မော်ဒယ်ကို သတင်းရစဉ်အလားအလာကြောင့်၊ သင်တန်း ဥပမာများတွင်ပါ မြင့်မားသော အာရုံစိုက်မှုကြောင့် အချက်အလက်ကို တင်ပြမှု သည် ထွက်ရှိမှုကို ထိခိုက်နိုင်သည်။ ဘယ်လို လုပ်ရမည်ကို စမ်းသပ်ကြည့်ပါ။                                                               |
+| မော်ဒယ်အား “ထွက်မရ” များပေးပါ           | မော်ဒယ်သည် ဘာကြောင့်မဆို တာဝန်ကို ပြီးစီးနိုင်ခြင်း မရှိပါက ပေးနိုင်သော _fallback_ ဖြေဆိုမှု တစ်ခု ပေးပါ။ ၎င်းသည် မော်ဒယ်များမှ မှားယွင်းသော သို့မဟုတ် ဖန်တီးထားသော ဖြေဆိုမှု ဖြစ်ပေါ်မှုကို လျော့နည်းစေသည်။                                                         |
 |                                   |                                                                                                                                                                                                                                                   |
 
-Best practice များနှင့်အတူ model, task နှင့် domain အပေါ် မူတည်၍ _your mileage may vary_ ဖြစ်နိုင်သည်ကို မှတ်သားပါ။ ၎င်းတို့ကို စတင်ရန်အနေဖြင့် အသုံးပြုပြီး သင်အတွက် အကောင်းဆုံးနည်းလမ်းကို ရှာဖွေပါ။ Model နှင့် tools အသစ်များရရှိလာသည်နှင့်အမျှ prompt engineering process ကို အမြဲပြန်လည်သုံးသပ်ပါ၊ process scalability နှင့် response quality ကို အဓိကထားပါ။
+မည်သည့် အကောင်းဆုံး လုပ်ငန်းစဉ် ဖြစ်စေ၊ မော်ဒယ်၊ တာဝန်နှင့် နယ်ပယ်အပေါ် မူတည်၍ ကိုယ်ပိုင် အတွေ့အကြုံကွာခြားနိုင်သည်။ ဤများကို စတင်ချက်အဖြစ် သုံးပြီး၊ သင်၏အတွက် အကောင်းဆုံး ဖြစ်ခြင်းကို ရှာဖွေဖို့ ဆက်လုပ်ပါ။ အသစ်သော မော်ဒယ်များနှင့် ကိရိယာများ ထွက်ရှိလာသည့်အခါ မြှုပ်နှံမှု အင်ဂျင်နီယာလုပ်ငန်းစဉ်ကို အမြဲ ပြန်လည်သုံးသပ်၍ လုပ်ငန်းစဉ်တိုးချဲ့မှုနှင့် ဖြေကြားမှုအရည်အသွေးကို ဦးစားပေးပါ။
 
 <!--
-LESSON TEMPLATE:
-ဤ unit သည် code challenge ကို ပေးသင့်သည်။
+သင်ခန်းစာ ပုံစံ:
+၎င်းယူနစ်သည် ကိုယ်တိုင်းပြုနိုင်သော ကုဒ် စိန်ခေါ်မှုတစ်ခု ပေးသင့်သည်။
 
-CHALLENGE:
-Code section များကို အလွတ်ထားပြီး code comments ကိုသာ instructions အဖြစ် Jupyter Notebook တွင် link ပေးပါ။
+စိန်ခေါ်မှု:
+ညွှန်ချက်များတွင် ကုဒ် မှုဒိုင်းပြောသည်သာဖြင့် Jupyter Notebook မှာ လင့်ခ်ထားပါ။
 
-SOLUTION:
-Prompt များကို ဖြည့်ပြီး run လုပ်ထားသော Notebook ကို link ပေးပါ၊ ဥပမာ output ကို ဖော်ပြထားသည်။
+ဖြေရှင်းချက်:
+ဆက်ဖတ်သည့် Notebook ကို prompts ဖြည့်ပြီး ဆောင်ရွက်ထားသော ဥပမာတစ်ခု လင့်ခ်ပါ။
 -->
 
-## Assignment
+## တာဝန်
 
-ဂုဏ်ယူပါတယ်! သင်သည် သင်ခန်းစာ၏ အဆုံးသို့ ရောက်ရှိခဲ့ပါပြီ! အမှန်တကယ်သော ဥပမာများနှင့်အတူ concepts နှင့် techniques များကို စမ်းသပ်ရန် အချိန်ရောက်ပါပြီ!
+အောင်မြင်ပါသည်! သင်ခန်းစာ အဆုံးသတ်အနားသို့ ရောက်ရှိပါပြီ! ယခုအခါ ၎င်းသဘောတရားများနှင့် နည်းလမ်းများကို လက်တွေ့ ဥပမာများဖြင့် စိန်ခေါ်မှုကျင်းပစေချိန် ဖြစ်သည်!
 
-ဤ assignment အတွက် Jupyter Notebook ကို အသုံးပြု၍ interactively လေ့ကျင့်ခန်းများကို ပြီးမြောက်နိုင်ပါသည်။ သင်၏ကိုယ်ပိုင် Markdown နှင့် Code cells များကို အသုံးပြု၍ idea များနှင့် techniques များကို explore လုပ်နိုင်ပါသည်။
+ကျွန်တော်တို့၏ တာဝန်အတွက် သင်နယ်ကို အပြန်အလှန်ဖြည့်သော လေ့ကျင့်ခန်းများ ပါသော Jupyter Notebook ကို အသုံးပြုမည်ဖြစ်သည်။ သင်လည်း သင်၏ ကိုယ်ပိုင် Markdown နှင့် ကုဒ် cell များ ဖြင့် Notebook ကို တိုးချဲ့၍ စိတ်ကူးများနှင့် နည်းလမ်းများ ကိုယ်တိုင် ရှာဖွေနိုင်သည်။
 
-### စတင်ရန်အတွက် repo ကို fork လုပ်ပါ၊ ထို့နောက်
+### စတင်ရန်အတွက် အောက်ပါအတိုင်း လုပ်ဆောင်ပါ၊
 
-- (အကြံပြုသည်) GitHub Codespaces ကို ဖွင့်ပါ
-- (အခြားရွေးချယ်မှု) Repo ကို သင်၏ local device သို့ clone လုပ်ပြီး Docker Desktop ဖြင့် အသုံးပြုပါ
-- (အခြားရွေးချယ်မှု) Notebook
+- (အကြံပြုသည်) GitHub Codespaces ကို စတင်ပါ
+- (နောက်တစ်ရွေ့) တစ်ကိုယ်ရည်စက်ပစ္စည်းတွင် repo ကို မြှပ်ယူပြီး Docker Desktop နဲ့ အသုံးပြုပါ
+- (နောက်တစ်ရွေ့) ကြိုက်နှစ်သက်ရာ Notebook runtime ပတ်ဝန်းကျင်နဲ့ Notebook ဖွင့်ပါ
+
+### နောက်တစ်ခုအနေနှင့် ပတ်ဝန်းကျင် အလောင်းအစားများဆက်သွယ်ပါ
+
+- repo မူရင်းတွင် `.env.copy` ဖိုင်ကို `.env` သို့ ကူးယူပြီး `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT` နဲ့ `AZURE_OPENAI_DEPLOYMENT` တို့ကို ဖြည့်ပါ။ ပြန်သွားပြီး [Learning Sandbox အပိုင်း](#သင်ယူမှု-sandbox) တွင် လေ့လာပါ။
+
+### နောက်တစ်ခု အနေနှင့် Jupyter Notebook ကိုဖွင့်ပါ
+
+- runtime kernel ကို ရွေးချယ်ပါ။ အကယ်၍ နံပါတ် 1 သို့မဟုတ် 2 ကို အသုံးပြုလျှင်၊ dev container မှပေးသော ပုံမှန် Python 3.10.x kernel ကို ရွေးချယ်ပါ။
+
+လေ့ကျင့်ခန်းများ အားလုံး ပြေးရန် ပြင်ဆင်ပြီး ဖြစ်သည်။ ဒီမှာ _မှန်ကန်မှားယွင်း_ ဖြေဆိုချက် မရှိပါ - ဤမှာ သင့်တင့်ချက်အရ လေ့လာပြီး မော်ဒယ်နှင့် application domain အတွက် အလုပ်ဖြစ်စေရန် စမ်းသပ်ဖြစ်ပါသည်။
+
+_ဒီအတွက် ဒီသင်ခန်းစာတွင် Code ဖြေရှင်းချက် အပိုင်း မပါပါ။ အစား Notebook တွင် "My Solution:" ဟူသော Markdown cell များ ပါဝင်ကာ ၎င်းတို့တွင် ဥပမာ output တစ်ခု ကို ပြသပါမည်။_
+
+ <!--
+သင်ခန်းစာ ပုံစံ:
+ကိုယ်တိုင် လေ့လာနိုင်စေရန် ထောက်ခံချက်နှင့် အရင်းအမြစ်များဖြင့် တစ်သက်လုံး ဖုံးလွှမ်းပါ။
+-->
+
+## အသိပညာ စစ်ဆေးမှု
+
+အောက်ပါ မှတ်ချက်များအနက် မည်သည်သည် အကောင်းဆုံး မြှုပ်နှံမှုဖြစ်မည်နည်း။
+
+1. ကျွန်တော်အား အနီရောင်ကားပုံကို ပြပါ
+2. ကျွန်တော်အား cliff လမ်းဘေးတွင် နေကျနေစဉ် Volvo make နှင့် XC90 model ရှိ အနီရောင်ကားပုံ ပြပါ
+3. ကျွန်တော်အား Volvo make နှင့် XC90 model ရှိ အနီရောင်ကားပုံ ပြပါ
+
+တုန့်ပြန်ချက်: 2 ပါ၊ အကောင်းဆုံးမြှုပ်နှံမှုဖြစ်သည် ၎င်းသည် “ဘာ” ကို ဖော်ပြပြီး အကြောင်းအရာ အကျယ်သဝဏ်ညာင္ (ကားမဟုတ်ပါ၊ အိယဲ Volvo နှင့် model XC90 ကိုသာ လူသိ) နှင့် အခြေအနေကို ဖော်ပြသည်။ 3 သည် နောက်ထပ် အကောင်းဆုံးဖြစ်ပြီး ဖော်ပြချက်များ များစွာ ပါဝင်သည်။
+
+## 🚀 စိန်ခေါ်မှု
+
+"cue" နည်းလမ်းကို အသုံးပြု၍ မြှုပ်နှံမှုအား စမ်းသပ်ပါ: "Show me an image of red car of make Volvo and " စာကြောင်းကို ပြီးစီးပါ။ ၎င်း ဘာဖြေဆိုမည်နည်း၊ ထပ်မံမြှင့်တင်ရန် မည်သို့ ပြုလုပ်မည်နည်း?
+
+## ကောင်းမွန်သော လုပ်ငန်း! သင့်ပညာရေးကို ဆက်လက်လုပ်ဆောင်ပါ
+
+မြှုပ်နှံမှု အင်ဂျင်နီယာ အကြောင်းများ သင်ယူလိုပါသလား? ယနေ့ ဤနယ်ပယ်နှင့် ပတ်သက်သည့် အကောင်းဆုံး အရင်းအမြစ်များ ရှာဖွေနိုင်ရန် [တိုးတက်သင်ယူရေး စာမျက်နှာ](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) သို့သွားပါ။
+
+ကျွန်တော်တို့ သင်ခန်းစာ ၅ သို့ သွားလိုက်၊ ဤနေရာ၌ [တိုးတက်သော မြှုပ်နှံမှု နည်းလမ်းများ](../05-advanced-prompts/README.md?WT.mc_id=academic-105485-koreyst) ကို ကြည့်ရှုမည်။
 
 ---
 
-**အကြောင်းကြားချက်**:  
-ဤစာရွက်စာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှု [Co-op Translator](https://github.com/Azure/co-op-translator) ကို အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ ကျွန်ုပ်တို့သည် တိကျမှုအတွက် ကြိုးစားနေသော်လည်း အလိုအလျောက် ဘာသာပြန်မှုများတွင် အမှားများ သို့မဟုတ် မတိကျမှုများ ပါဝင်နိုင်သည်ကို သတိပြုပါ။ မူရင်းဘာသာစကားဖြင့် ရေးသားထားသော စာရွက်စာတမ်းကို အာဏာတရ အရင်းအမြစ်အဖြစ် သတ်မှတ်သင့်ပါသည်။ အရေးကြီးသော အချက်အလက်များအတွက် လူ့ဘာသာပြန်ပညာရှင်များကို အသုံးပြုရန် အကြံပြုပါသည်။ ဤဘာသာပြန်မှုကို အသုံးပြုခြင်းမှ ဖြစ်ပေါ်လာသော အလွဲအမှားများ သို့မဟုတ် အနားယူမှုများအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**ပြောကြားချက်**
+ဤစာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှု [Co-op Translator](https://github.com/Azure/co-op-translator) အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ ကျွန်ုပ်တို့သည် တိကျမှန်ကန်မှုအတွက် ကြိုးပမ်းနေသော်လည်း၊ စက်ကိရိယာဘာသာပြန်ခြင်းများတွင် အမှားများ သို့မဟုတ် မှားယွင်းချက်များ ပါဝင်နိုင်ကြောင်း သတိပြုပါရန် လိုအပ်ပါသည်။ မူလစာတမ်းကို မူရင်းဘာသာဖြင့်သာ ယုံကြည်စိတ်ချရသော အချက်အလက်အဖြစ် သတ်မှတ်သင့်သည်။ အရေးကြီးသည့် သတင်းအချက်အလက်များအတွက် ပရော်ဖက်ရှင်နယ် လူသားဘာသာပြန်သူဝန်ဆောင်မှုကို အကြံပြုပါသည်။ ဤဘာသာပြန်ချက်ကို အသုံးပြုခြင်းမှ ဖြစ်ပေါ်လာသော နားလည်မှုကွာခြားမှုများ သို့မဟုတ် မမှန်ကန်သော အသုံးပြုမှုများအတွက် ကျွန်ုပ်တို့ တာဝန်မခံပါ။
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

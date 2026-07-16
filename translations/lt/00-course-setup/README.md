@@ -1,57 +1,49 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "578a2d20d79cbe5a33eac32d4eabb9b0",
-  "translation_date": "2025-10-18T02:25:16+00:00",
-  "source_file": "00-course-setup/README.md",
-  "language_code": "lt"
-}
--->
-# Pradžia su šiuo kursu
+# Kursų pradžia
 
-Labai džiaugiamės, kad pradedate šį kursą ir nekantraujame pamatyti, ką sukursite naudodami generatyvinį dirbtinį intelektą!
+Labai džiaugiamės, kad pradedate šį kursą ir pamatysite, ką jus įkvėps kurti su Generatyviąja AI!
 
-Kad užtikrintume jūsų sėkmę, šiame puslapyje pateikiami nustatymo žingsniai, techniniai reikalavimai ir informacija, kur kreiptis pagalbos, jei prireiktų.
+Norėdami užtikrinti jūsų sėkmę, šiame puslapyje aprašomi nustatymo veiksmai, techniniai reikalavimai ir kur kreiptis pagalbos, jei reikia.
 
-## Nustatymo žingsniai
+## Nustatymo veiksmai
 
 Norėdami pradėti šį kursą, turite atlikti šiuos veiksmus.
 
-### 1. Fork'inkite šį repo
+### 1. Padarykite šios saugyklos šaką (fork)
 
-[Padarykite šio repo fork'ą](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) savo GitHub paskyroje, kad galėtumėte keisti kodą ir atlikti užduotis. Taip pat galite [pažymėti šį repo žvaigždute (🌟)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst), kad lengviau rastumėte jį ir susijusius repo.
+[Padarykite šaką visai šiai saugyklai](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) savo GitHub paskyroje, kad galėtumėte keisti bet kokį kodą ir įvykdyti užduotis. Taip pat galite [uždėti žvaigždutę (🌟) šiai saugyklai](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst), kad ją ir susijusias saugyklas rastumėte lengviau.
 
-### 2. Sukurkite Codespace
+### 2. Sukurkite codespace aplinką
 
-Kad išvengtumėte priklausomybių problemų vykdydami kodą, rekomenduojame šį kursą vykdyti [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
+Kad išvengtumėte priklausomybių problemų vykdydami kodą, rekomenduojame naudoti šį kursą [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
 
-Savo fork'e: **Code -> Codespaces -> New on main**
+Jūsų šakoje: **Code -> Codespaces -> New on main**
 
-![Dialogo langas su mygtukais, leidžiančiais sukurti Codespace](../../../00-course-setup/images/who-will-pay.webp)
+![Dialogas, rodantis mygtukus codespace kūrimui](../../../translated_images/lt/who-will-pay.4c0609b1c7780f44.webp)
 
 #### 2.1 Pridėkite slaptą raktą
 
-1. ⚙️ Pavaros piktograma -> Command Pallete -> Codespaces : Manage user secret -> Add a new secret.
+1. ⚙️ Pavaros piktograma -> Komandų paletė -> Codespaces : Valdyti naudotojo slaptą raktą -> Pridėti naują slaptą raktą.
 2. Pavadinkite OPENAI_API_KEY, įklijuokite savo raktą, išsaugokite.
 
 ### 3. Kas toliau?
 
-| Noriu…              | Eiti į…                                                                 |
-|---------------------|-------------------------------------------------------------------------|
-| Pradėti 1 pamoką    | [`01-introduction-to-genai`](../01-introduction-to-genai/README.md)     |
-| Dirbti neprisijungus | [`setup-local.md`](02-setup-local.md)                                   |
-| Nustatyti LLM tiekėją | [`providers.md`](03-providers.md)                                        |
+| Noriu…             | Eiti į…                                                               |
+|---------------------|-----------------------------------------------------------------------|
+| Pradėti 1-ąją pamoką | [`01-introduction-to-genai`](../01-introduction-to-genai/README.md)     |
+| Dirbti neprisijungus | [`setup-local.md`](02-setup-local.md)                                 |
+| Nustatyti LLM tiekėją | [`providers.md`](03-providers.md)                                      |
 | Susipažinti su kitais mokiniais | [Prisijunkite prie mūsų Discord](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)   |
 
-## Problemų sprendimas
+## Gedimų šalinimas
 
-| Simptomas                                | Sprendimas                                                      |
-|------------------------------------------|-----------------------------------------------------------------|
-| Konteinerio kūrimas užtruko > 10 min     | **Codespaces ➜ “Rebuild Container”**                            |
-| `python: command not found`              | Terminalas neprisijungė; spustelėkite **+** ➜ *bash*            |
-| `401 Unauthorized` iš OpenAI             | Neteisingas / pasibaigęs `OPENAI_API_KEY`                       |
-| VS Code rodo “Dev container mounting…”   | Atnaujinkite naršyklės skirtuką—Codespaces kartais praranda ryšį |
-| Trūksta Notebook branduolio              | Notebook meniu ➜ **Kernel ▸ Select Kernel ▸ Python 3**          |
+
+| Simptomas                                    | Sprendimas                                                      |
+|---------------------------------------------|----------------------------------------------------------------|
+| Konstravimo talpyklos trunka > 10 minučių   | **Codespaces ➜ „Rebuild Container“**                          |
+| `python: command not found`                   | Terminalas neprisijungė; spustelėkite **+** ➜ *bash*           |
+| `401 Unauthorized` iš OpenAI                  | Netinkamas / pasibaigęs `OPENAI_API_KEY`                        |
+| VS Code rodo „Dev container mounting…“       | Atnaujinkite naršyklės skirtuką—Codespaces kartais praranda ryšį |
+| Trūksta užrašų knygutės branduolio          | Užrašų knygutės meniu ➜ **Kernel ▸ Select Kernel ▸ Python 3**   |
 
    Unix pagrindu veikiančios sistemos:
 
@@ -65,64 +57,68 @@ Savo fork'e: **Code -> Codespaces -> New on main**
    echo . > .env
    ```
 
-3. **Redaguokite `.env` failą**: Atidarykite `.env` failą teksto redaktoriuje (pvz., VS Code, Notepad++ ar kitame). Pridėkite šią eilutę į failą, pakeisdami `your_github_token_here` savo tikruoju GitHub token'u:
+3. **Redaguokite `.env` failiuką**: Atidarykite `.env` failą teksto redaktoriuje (pvz., VS Code, Notepad++ ar bet kuriame kitame redaktoriuje). Pridėkite šias eilutes, pakeisdami vietas savo tikru Microsoft Foundry Models galiniu tašku ir raktu (žr. [`providers.md`](03-providers.md), kaip tai gauti):
+
+   > **Pastaba:** GitHub Modeliai (su `GITHUB_TOKEN` kintamuoju) pasitrauks 2026 m. liepos pabaigoje. Naudokite [Microsoft Foundry Models](https://ai.azure.com/catalog/models?WT.mc_id=academic-105485-koreyst).
 
    ```env
-   GITHUB_TOKEN=your_github_token_here
+   AZURE_INFERENCE_ENDPOINT=your_foundry_endpoint_here
+   AZURE_INFERENCE_CREDENTIAL=your_foundry_api_key_here
    ```
 
 4. **Išsaugokite failą**: Išsaugokite pakeitimus ir uždarykite teksto redaktorių.
 
-5. **Įdiekite `python-dotenv`**: Jei dar to nepadarėte, turėsite įdiegti `python-dotenv` paketą, kad galėtumėte įkelti aplinkos kintamuosius iš `.env` failo į savo Python programą. Galite jį įdiegti naudodami `pip`:
+5. **Įdiekite `python-dotenv`**: Jei dar to nepadarėte, reikės įdiegti `python-dotenv` paketą, kad aplinkos kintamieji iš `.env` failo būtų įkelti į jūsų Python programą. Tai galite padaryti naudodami `pip`:
 
    ```bash
    pip install python-dotenv
    ```
 
-6. **Įkelkite aplinkos kintamuosius į savo Python skriptą**: Savo Python skripte naudokite `python-dotenv` paketą, kad įkeltumėte aplinkos kintamuosius iš `.env` failo:
+6. **Įkelkite aplinkos kintamuosius į savo Python skriptą**: Naudokite `python-dotenv` paketą savo Python skripte, kad įkeltumėte aplinkos kintamuosius iš `.env` failo:
 
    ```python
    from dotenv import load_dotenv
    import os
 
-   # Load environment variables from .env file
+   # Įkelti aplinkos kintamuosius iš .env failo
    load_dotenv()
 
-   # Access the GITHUB_TOKEN variable
-   github_token = os.getenv("GITHUB_TOKEN")
+   # Prieiti prie Microsoft Foundry modelių kintamųjų
+   endpoint = os.getenv("AZURE_INFERENCE_ENDPOINT")
+   token = os.getenv("AZURE_INFERENCE_CREDENTIAL")
 
-   print(github_token)
+   print(endpoint)
    ```
 
-Viskas! Jūs sėkmingai sukūrėte `.env` failą, pridėjote savo GitHub token'ą ir įkėlėte jį į savo Python programą.
+Viskas! Jūs sukūrėte `.env` failą, pridėjote savo Microsoft Foundry Models kredencialus ir įkėlėte juos į Python programą.
 
 ## Kaip paleisti lokaliai savo kompiuteryje
 
 Norėdami paleisti kodą lokaliai savo kompiuteryje, turite turėti įdiegtą [Python versiją](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
 
-Norėdami naudoti saugyklą, turite ją nukopijuoti:
+Tada naudodami repozitoriją turite ją nuklonuoti:
 
 ```shell
 git clone https://github.com/microsoft/generative-ai-for-beginners
 cd generative-ai-for-beginners
 ```
 
-Kai viskas bus paruošta, galėsite pradėti!
+Kai viskas paruošta, galite pradėti!
 
-## Papildomi žingsniai
+## Pasirenkami žingsniai
 
-### Miniconda diegimas
+### Miniconda įdiegimas
 
-[Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) yra lengvas įrankis, skirtas įdiegti [Conda](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Python ir keletą paketų.
-Conda yra paketų valdymo įrankis, kuris leidžia lengvai nustatyti ir keisti skirtingas Python [**virtualias aplinkas**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) ir paketus. Jis taip pat naudingas diegiant paketus, kurių nėra `pip`.
+[Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) yra lengvas įdiegėjas skirta įdiegti [Condą](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Python ir keletą paketų.
+Conda yra paketų tvarkyklė, leidžianti lengvai kurti ir keisti skirtingas Python [**virtualias aplinkas**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) ir paketus. Taip pat ji naudinga diegiant paketus, kurių nėra `pip`.
 
-Galite sekti [MiniConda diegimo vadovą](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst), kad jį įdiegtumėte.
+Galite sekti [MiniConda diegimo gidą](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst).
 
-Įdiegę Miniconda, turite nukopijuoti [saugyklą](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (jei dar to nepadarėte).
+Įdiegus Miniconda, reikia nuklonuoti [repozitoriją](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (jei dar to nepadarėte)
 
-Tada turite sukurti virtualią aplinką. Norėdami tai padaryti su Conda, sukurkite naują aplinkos failą (_environment.yml_). Jei dirbate su Codespaces, sukurkite jį `.devcontainer` kataloge, taigi `.devcontainer/environment.yml`.
+Tada sukurkite virtualią aplinką. Su Conda tai padarysite sukurdami naują aplinkos failą (_environment.yml_). Jei naudojatės Codespaces, sukurkite jį `.devcontainer` kataloge, taigi `.devcontainer/environment.yml`.
 
-Užpildykite savo aplinkos failą šiuo fragmentu:
+Užpildykite aplinkos failą pateiktu fragmentu:
 
 ```yml
 name: <environment-name>
@@ -138,38 +134,38 @@ dependencies:
       - azure-ai-ml
 ```
 
-Jei susiduriate su klaidomis naudodami conda, galite rankiniu būdu įdiegti Microsoft AI bibliotekas naudodami šią komandą terminale.
+Jei gaunate klaidų naudodami conda, galite rankiniu būdu įdiegti Microsoft AI bibliotekas vykdydami šią komandą terminale.
 
 ```
 conda install -c microsoft azure-ai-ml
 ```
 
-Aplinkos failas nurodo mums reikalingas priklausomybes. `<environment-name>` reiškia pavadinimą, kurį norėtumėte naudoti savo Conda aplinkai, o `<python-version>` yra Python versija, kurią norėtumėte naudoti, pavyzdžiui, `3` yra naujausia pagrindinė Python versija.
+Aplinkos faile nurodomos reikalingos priklausomybės. `<environment-name>` yra Conda aplinkos pavadinimas, o `<python-version>` - Python versija, pavyzdžiui, `3` - naujausia pagrindinė versija.
 
-Kai tai atliksite, galite sukurti savo Conda aplinką vykdydami šias komandas komandinėje eilutėje/terminale:
+Baigus, sukurkite Conda aplinką paleisdami žemiau pateiktas komandas komandinėje eilutėje/terminale
 
 ```bash
-conda env create --name ai4beg --file .devcontainer/environment.yml # .devcontainer sub path applies to only Codespace setups
+conda env create --name ai4beg --file .devcontainer/environment.yml # .devcontainer poskelis taikomas tik Codespace sąrankoms
 conda activate ai4beg
 ```
 
-Jei susiduriate su problemomis, kreipkitės į [Conda aplinkų vadovą](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst).
+Prireikus pagalbos žiūrėkite [Conda aplinkų gidą](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst).
 
-### Visual Studio Code naudojimas su Python palaikymo plėtiniu
+### Naudojant Visual Studio Code su Python palaikymo priedu
 
-Rekomenduojame naudoti [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) redaktorių su įdiegtu [Python palaikymo plėtiniu](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) šiam kursui. Tačiau tai yra tik rekomendacija, o ne būtinybė.
+Šiam kursui rekomenduojame naudoti [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) redaktorių su įdiegtu [Python palaikymo priedu](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst). Tačiau tai tik rekomendacija, o ne privalomas reikalavimas.
 
-> **Pastaba**: Atidarę kurso saugyklą VS Code, turėsite galimybę nustatyti projektą konteineryje. Tai įmanoma dėl [specialaus `.devcontainer`](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) katalogo, esančio kurso saugykloje. Apie tai daugiau vėliau.
+> **Pastaba**: Atidarius šio kurso saugyklą VS Code, turite galimybę nustatyti projektą konteineryje. Tai įmanoma dėka specialaus `.devcontainer` katalogo esant savyje kurso saugykloje. Apie tai sužinosite vėliau.
 
-> **Pastaba**: Kai nukopijuosite ir atidarysite katalogą VS Code, jis automatiškai pasiūlys įdiegti Python palaikymo plėtinį.
+> **Pastaba**: Nuklonavus ir atidarius katalogą VS Code automatiškai pasiūlys įdiegti Python palaikymo priedą.
 
-> **Pastaba**: Jei VS Code pasiūlys iš naujo atidaryti saugyklą konteineryje, atsisakykite šio pasiūlymo, kad galėtumėte naudoti lokaliai įdiegtą Python versiją.
+> **Pastaba**: Jei VS Code siūlo iš naujo atidaryti saugyklą konteineryje, atminkite šį kvietimą, jei norite naudoti jūsų kompiuteryje įdiegtą Python.
 
-### Jupyter naudojimas naršyklėje
+### Naudojant Jupyter naršyklėje
 
-Taip pat galite dirbti su projektu naudodami [Jupyter aplinką](https://jupyter.org?WT.mc_id=academic-105485-koreyst) tiesiai naršyklėje. Tiek klasikinis Jupyter, tiek [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) suteikia malonią kūrimo aplinką su tokiomis funkcijomis kaip automatinis užbaigimas, kodo paryškinimas ir kt.
+Taip pat galite dirbti su projektu naudodami [Jupyter aplinką](https://jupyter.org?WT.mc_id=academic-105485-koreyst) tiesiai naršyklėje. Tiek klasikinis Jupyter, tiek [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) suteikia malonią plėtros aplinką su funkcijomis, tokiomis kaip automatinis užpildymas, kodo paryškinimas ir kt.
 
-Norėdami paleisti Jupyter lokaliai, eikite į terminalą/komandinę eilutę, pereikite į kurso katalogą ir vykdykite:
+Norėdami paleisti Jupyter lokaliai, eikite į terminalą/komandinę eilutę, nueikite į kurso katalogą ir paleiskite:
 
 ```bash
 jupyter notebook
@@ -181,56 +177,63 @@ arba
 jupyterhub
 ```
 
-Tai paleis Jupyter instanciją, o URL, per kurį galima ją pasiekti, bus rodomas komandinės eilutės lange.
+Tai paleis Jupyter egzempliorių, kurio prieigos URL bus parodytas komandinės eilutės lange.
 
-Kai pasieksite URL, turėtumėte matyti kurso planą ir galėsite naršyti po bet kurį `*.ipynb` failą. Pavyzdžiui, `08-building-search-applications/python/oai-solution.ipynb`.
+Atidarius URL, turėtumėte matyti kurso planą ir galėti naviguoti į bet kurį `*.ipynb` failą. Pavyzdžiui, `08-building-search-applications/python/oai-solution.ipynb`.
 
 ### Paleidimas konteineryje
 
-Alternatyva viską nustatyti savo kompiuteryje ar Codespace yra naudoti [konteinerį](../../../00-course-setup/<https:/en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst>). Specialus `.devcontainer` aplankas kurso saugykloje leidžia VS Code nustatyti projektą konteineryje. Už Codespaces ribų tai reikalaus Docker įdiegimo, ir iš esmės tai reikalauja šiek tiek darbo, todėl rekomenduojame tai tik tiems, kurie turi patirties dirbant su konteineriais.
+Alternatyva viską dėlioti savo kompiuteryje ar Codespace yra naudoti [konteinerį](../../../00-course-setup/<https:/en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst>). Specialus `.devcontainer` katalogas kurso saugykloje leidžia VS Code nustatyti projektą konteineryje. Ne Codespaces atveju reikės įdiegti Docker. Tai gana sudėtinga, tad rekomenduojame tai tiems, kurie turi patirties dirbant su konteineriais.
 
-Vienas geriausių būdų apsaugoti savo API raktus naudojant GitHub Codespaces yra naudoti Codespace Secrets. Prašome sekti [Codespaces secrets valdymo](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) vadovą, kad sužinotumėte daugiau apie tai.
+Vienas geriausių būdų apsaugoti savo API raktus naudojant GitHub Codespaces yra naudoti Codespace Secrets. Prašome susipažinti su vadovu apie [Codespaces slaptų raktų valdymą](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst).
+
 
 ## Pamokos ir techniniai reikalavimai
 
 Kursą sudaro 6 koncepcinės pamokos ir 6 programavimo pamokos.
 
-Programavimo pamokoms naudojame Azure OpenAI Service. Jums reikės prieigos prie Azure OpenAI paslaugos ir API rakto, kad galėtumėte vykdyti šį kodą. Prieigai gauti galite [užpildyti šią paraišką](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
+Programavimo pamokoms naudojame Azure OpenAI paslaugą. Jums reikės prieigos prie Azure OpenAI paslaugos ir API rakto, norint vykdyti šį kodą. Galite kreiptis dėl prieigos užpildę [šią paraišką](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
 
-Kol jūsų paraiška bus apdorojama, kiekvienoje programavimo pamokoje taip pat yra `README.md` failas, kuriame galite peržiūrėti kodą ir rezultatus.
+Laukdami paraiškos patvirtinimo, kiekvienoje programavimo pamokoje rasite `README.md` failą, kuriame galite peržiūrėti kodą ir rezultatus.
 
-## Pirmą kartą naudojant Azure OpenAI Service
+## Naudojantis Azure OpenAI paslauga pirmą kartą
 
-Jei pirmą kartą dirbate su Azure OpenAI paslauga, prašome sekti šį vadovą, kaip [sukurti ir įdiegti Azure OpenAI Service resursą.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
+Jei tai jūsų pirmas kartas dirbant su Azure OpenAI paslauga, prašome vadovautis šia instrukcija, kaip [sukurti ir diegti Azure OpenAI išteklį](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst).
 
-## Pirmą kartą naudojant OpenAI API
+## Naudojantis OpenAI API pirmą kartą
 
-Jei pirmą kartą dirbate su OpenAI API, prašome sekti vadovą, kaip [sukurti ir naudoti sąsają.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
+Jei tai jūsų pirmas kartas dirbant su OpenAI API, skaitykite [gairę, kaip sukurti ir naudoti sąsają](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst).
 
 ## Susipažinkite su kitais mokiniais
 
-Mes sukūrėme kanalus mūsų oficialiame [AI bendruomenės Discord serveryje](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst), kad galėtumėte susipažinti su kitais mokiniais. Tai puikus būdas užmegzti ryšius su kitais panašiai mąstančiais verslininkais, kūrėjais, studentais ir visais, kurie nori tobulėti generatyvinio dirbtinio intelekto srityje.
+Mes sukūrėme kanalus mūsų oficialiame [AI bendruomenės Discord serveryje](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst), skirtus susipažinti su kitais mokiniais. Tai puikus būdas susitikti su panašaus mąstymo verslininkais, kūrėjais, studentais ir visais, siekiančiais tobulėti Generatyviojoje AI srityje.
 
-[![Prisijunkite prie Discord kanalo](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
+[![Prisijunkite prie discord kanalo](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
 
 Projekto komanda taip pat bus šiame Discord serveryje, kad padėtų mokiniams.
 
 ## Prisidėkite
 
-Šis kursas yra atvirojo kodo iniciatyva. Jei pastebėsite tobulinimo galimybių ar problemų, prašome sukurti [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) arba užregistruoti [GitHub problemą](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
+Šis kursas yra atvirojo kodo iniciatyva. Jei matote, kur galima patobulinti ar radote problemų, prašome sukurti [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) arba užregistruoti [GitHub klaidą](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
 
-Projekto komanda stebės visus indėlius. Prisidėjimas prie atvirojo kodo yra nuostabus būdas kurti savo karjerą generatyvinio dirbtinio intelekto srityje.
+Projekto komanda stebės visus indėlius. Prisidėjimas prie atvirojo kodo yra puikus būdas kurti savo karjerą Generatyvios AI srityje.
 
-Dauguma indėlių reikalauja, kad sutiktumėte su Contributor License Agreement (CLA), kuriame deklaruojate, kad turite teisę ir iš tikrųjų suteikiate mums teisę naudoti jūsų indėlį. Daugiau informacijos rasite [CLA, Contributor License Agreement svetainėje](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
+Daugeliu atvejų prisidėjimas reikalauja sutikti su Kontributoriaus licencijos sutartimi (CLA), kurioje patvirtinate, kad turite teisę ir iš tikrųjų suteikiate teisę naudoti jūsų indėlį. Daugiau informacijos rasite [CLA, Kontributoriaus licencijos sutarties svetainėje](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
 
-Kai pateiksite pull request, CLA-bot automatiškai nustatys, ar jums reikia pateikti CLA, ir atitinkamai pažymės PR (pvz., žyma, komentaras). Tiesiog sekite bot'o pateiktas instrukcijas. Tai reikės padaryti tik vieną kartą visose saugyklose, naudojančiose mūsų CLA.
+Svarbu: Vertinant šiame repozitorijoje pateiktus vertimus, prašome nenaudoti mašininio vertimo. Mes patikrinsime vertimus per bendruomenę, tad prašome savanoriauti tik tomis kalbomis, kuriomis iš tiesų gerai mokate.
 
-Šis projektas priėmė [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Daugiau informacijos rasite Code of Conduct DUK arba susisiekite su [Email opencode](opencode@microsoft.com), jei turite papildomų klausimų ar komentarų.
+Pateikus pull requestą, CLA roboto veiksmas automatiškai nustatys, ar jums reikia pateikti CLA ir tinkamai pažymės PR (pvz., etikete, komentaru). Tiesiog sekite roboto pateiktas instrukcijas. Tai darysite tik vieną kartą visuose repozitorijuose, naudojančiuose mūsų CLA.
 
-## Pradėkime!
-Dabar, kai atlikote reikalingus žingsnius, kad užbaigtumėte šį kursą, pradėkime nuo [įvado į generatyvinį dirbtinį intelektą ir LLM](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
+
+Šis projektas priėmė [„Microsoft Open Source elgesio kodeksą“](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Daugiau informacijos rasite elgesio kodekso DUK arba susisiekite su [El. paštu opencode](opencode@microsoft.com) dėl papildomų klausimų ar komentarų.
+
+## Pradėkime
+
+Dabar, kai atlikote reikalingus žingsnius šiam kursui baigti, pradėkime nuo [generatyviosios DI ir LLM pagrindų įvado](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
 
 ---
 
-**Atsakomybės apribojimas**:  
-Šis dokumentas buvo išverstas naudojant AI vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Kritinei informacijai rekomenduojama profesionali žmogaus vertimo paslauga. Mes neprisiimame atsakomybės už nesusipratimus ar neteisingus interpretavimus, atsiradusius naudojant šį vertimą.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Atsakomybės apribojimas**:
+Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba laikomas autoritetingu šaltiniu. Svarbiai informacijai rekomenduojama naudoti profesionalų žmogiškąjį vertimą. Mes neatsakome už jokius nesusipratimus ar neteisingą interpretaciją, kilusią naudojantis šiuo vertimu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,111 +1,107 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "807f0d9fc1747e796433534e1be6a98a",
-  "translation_date": "2025-10-18T02:54:52+00:00",
-  "source_file": "18-fine-tuning/README.md",
-  "language_code": "et"
-}
--->
 [![Avatud lähtekoodiga mudelid](../../../translated_images/et/18-lesson-banner.f30176815b1a5074.webp)](https://youtu.be/6UAwhL9Q-TQ?si=5jJd8yeQsCfJ97em)
 
-# LLM-i peenhäälestamine
+# Oma LLM-i peenhäälestamine
 
-Generatiivse tehisintellekti rakenduste loomine suurte keelemudelite abil toob kaasa uusi väljakutseid. Oluline probleem on tagada mudeli poolt genereeritud sisu kvaliteet (täpsus ja asjakohasus) vastavalt kasutaja päringule. Eelnevates tundides arutasime tehnikaid nagu promptide kujundamine ja otsinguga täiendatud genereerimine, mis püüavad probleemi lahendada _muutes olemasoleva mudeli sisendit_.
+Suurte keelemudelite kasutamine generatiivsete tehisintellekti rakenduste loomiseks toob kaasa uusi väljakutseid. Peamine küsimus on tagada mudeli poolt kasutajapäringu põhjal loodava sisu vastuste kvaliteet (täpsus ja asjakohasus). Eelnevates õppetundides rääkisime tehnikaid nagu promptide inseneriteadus ja päringupõhine generatsioon, mis püüavad probleemi lahendada, _muutes sisendprompti_ olemasolevale mudelile.
 
-Tänases tunnis arutame kolmandat tehnikat, **peenhäälestamist**, mis püüab väljakutset lahendada _mudeli enda ümberõpetamisega_ täiendavate andmetega. Sukeldume detailidesse.
+Tänases õppetükis käsitleme kolmandat tehnikat, **peenhäälestamist**, mis püüab väljakutsega toime tulla, _muddeli enda täiendkoolitusega_ lisanduvate andmete abil. Sukeldume üksikasjadesse.
 
 ## Õpieesmärgid
 
-See tund tutvustab peenhäälestamise kontseptsiooni eelnevalt treenitud keelemudelite jaoks, uurib selle lähenemisviisi eeliseid ja väljakutseid ning annab juhiseid, millal ja kuidas kasutada peenhäälestamist, et parandada generatiivse tehisintellekti mudelite jõudlust.
+See õppetund tutvustab peenhäälestamise kontseptsiooni eelõpetatud keelemudelite jaoks, uurib selle lähenemise eeliseid ja väljakutseid ning annab juhiseid, millal ja kuidas peenhäälestust kasutada generatiivsete tehisintellekti mudelite jõudluse parandamiseks.
 
-Tunni lõpuks peaksid sa olema võimeline vastama järgmistele küsimustele:
+Selle õppetunni lõpuks peaksid olema võimelised vastama järgmistele küsimustele:
 
-- Mis on keelemudelite peenhäälestamine?
-- Millal ja miks on peenhäälestamine kasulik?
-- Kuidas saab eelnevalt treenitud mudelit peenhäälestada?
-- Millised on peenhäälestamise piirangud?
+- Mis on peenhäälestus keelemudelite jaoks?
+- Millal ja miks on peenhäälestus kasulik?
+- Kuidas ma saan eelõpetatud mudelit peenhäälestada?
+- Millised on peenhäälestuse piirangud?
 
-Valmis? Alustame.
+Oled valmis? Alustame.
 
-## Illustreeritud juhend
+## Joonistatud juhend
 
-Kas tahad enne süvitsi minemist saada ülevaate, mida me käsitleme? Vaata seda illustreeritud juhendit, mis kirjeldab õpiteekonda selle tunni jaoks - alates peenhäälestamise põhikontseptsioonide ja motivatsiooni õppimisest kuni protsessi ja parimate praktikate mõistmiseni peenhäälestamise ülesande täitmiseks. See on põnev teema uurimiseks, nii et ära unusta vaadata [Ressursid](./RESOURCES.md?WT.mc_id=academic-105485-koreyst) lehte, et leida lisamaterjale iseseisvaks õppimiseks!
+Tahad saada ülevaadet, mida me käsitleme enne süvenemist? Vaata seda joonistatud juhendit, mis kirjeldab õppeprotsessi selle õppetunni jaoks – alates põhikontseptsioonide ja motivatsiooni õppimisest peenhäälestuse jaoks kuni protsessi ja parimate tavade mõistmiseni peenhäälestust teostades. See on põnev uurimisteema, nii et ära unusta vaadata [ressursse](./RESOURCES.md?WT.mc_id=academic-105485-koreyst) täiendavate linkide saamiseks iseseisva õppimise toetamiseks!
 
-![Illustreeritud juhend keelemudelite peenhäälestamiseks](../../../translated_images/et/18-fine-tuning-sketchnote.11b21f9ec8a70346.webp)
+![Illustratsioon peenhäälestusest keelemudelitele](../../../translated_images/et/18-fine-tuning-sketchnote.11b21f9ec8a70346.webp)
 
-## Mis on keelemudelite peenhäälestamine?
+## Mis on peenhäälestus keelemudelite jaoks?
 
-Definitsiooni järgi on suured keelemudelid _eelnevalt treenitud_ suurel hulgal tekstidel, mis pärinevad mitmesugustest allikatest, sealhulgas internetist. Nagu oleme õppinud eelnevates tundides, vajame selliseid tehnikaid nagu _promptide kujundamine_ ja _otsinguga täiendatud genereerimine_, et parandada mudeli vastuste kvaliteeti kasutaja küsimustele ("promptidele").
+Definitsiooni kohaselt on suured keelemudelid _eelõpetatud_ suurtes tekstikogustes, mis pärinevad mitmekesistest allikatest, sealhulgas internetist. Nagu oleme eelnevates õppetundides õppinud, vajame tehnikaid nagu _promptide inseneriteadus_ ja _päringupõhine generatsioon_, et parandada mudeli vastuste kvaliteeti kasutajate küsimustele ("promptidele").
 
-Populaarne promptide kujundamise tehnika hõlmab mudelile täiendava juhise andmist, mis selgitab, mida vastuses oodatakse, kas _instruktsioonide_ (otsene juhendamine) või _mõne näite andmise_ (kaudne juhendamine) kaudu. Seda nimetatakse _few-shot õppimiseks_, kuid sellel on kaks piirangut:
+Populaarne promptide inseneriteaduse tehnika hõlmab mudelile rohkem juhiseid selle kohta, mida vastuses oodatakse, kas siis pakkudes _juhiseid_ (selged juhendid) või _andmata mõned näited_ (kaudsed juhised). Seda nimetatakse _vähese proovi õppimiseks_ (few-shot learning), kuid sel on kaks piirangut:
 
-- Mudeli tokenite piirangud võivad piirata näidete arvu, mida saab anda, ja vähendada tõhusust.
-- Mudeli tokenite kulud võivad muuta kalliks näidete lisamise igale promptile ja piirata paindlikkust.
+- Mudeli tokeni piirangud võivad piirata antavate näidete arvu ja mõjuvust.
+- Mudeli tokenite maksumus võib muuta iga prompti jaoks näidete lisamise kulukaks ja piirata paindlikkust.
 
-Peenhäälestamine on masinõppe süsteemides levinud praktika, kus võtame eelnevalt treenitud mudeli ja treenime seda uuesti uute andmetega, et parandada selle jõudlust konkreetse ülesande täitmisel. Keelemudelite kontekstis saame eelnevalt treenitud mudelit peenhäälestada _hoolikalt valitud näidete kogumiga konkreetse ülesande või rakenduse valdkonna jaoks_, et luua **kohandatud mudel**, mis võib olla täpsem ja asjakohasem just selle konkreetse ülesande või valdkonna jaoks. Peenhäälestamise kõrvalmõju on see, et see võib vähendada näidete arvu, mida on vaja few-shot õppimiseks - vähendades tokenite kasutust ja sellega seotud kulusid.
+Peenhäälestus on masinõppes levinud praktika, kus me võtame eelõpetatud mudeli ja koolitame seda uute andmetega uuesti, et parandada selle jõudlust konkreetsel ülesandel. Keelemudelite kontekstis saame eelõpetatud mudelit peenhäälestada _valiku näidetega antud ülesande või rakenduse domeeni jaoks_, et luua **kohandatud mudel**, mis võib olla täpsem ja asjakohasem nende konkreetsete ülesannete või domeenide jaoks. Peenhäälestuse kõrvaltootena võib see vähendada ka vajadust vähese proovi õppimise jaoks vajalike näidete arvu järele – vähendades tokeni kasutust ja sellega seotud kulusid.
 
 ## Millal ja miks peaksime mudeleid peenhäälestama?
 
-Selles kontekstis, kui räägime peenhäälestamisest, viitame **juhendatud** peenhäälestamisele, kus ümberõpe toimub **uute andmete lisamisega**, mis ei olnud osa algsest treeningandmestikust. See erineb juhendamata peenhäälestamise lähenemisest, kus mudelit treenitakse uuesti algsete andmetega, kuid erinevate hüperparameetritega.
+_Selles_ kontekstis, kui räägime peenhäälestusest, siis peame silmas **juhendatud** peenhäälestust, kus koolitus toimub, lisades **uusandmeid**, mis ei olnud algses koolitusandmestikus. See erineb juhendamata peenhäälestusest, kus mudel koolitatakse ümber algandmete põhjal, kuid erinevate hüperparameetritega.
 
-Oluline on meeles pidada, et peenhäälestamine on keerukas tehnika, mis nõuab teatud tasemel asjatundlikkust, et saavutada soovitud tulemusi. Kui seda tehakse valesti, ei pruugi see anda oodatud parandusi ja võib isegi halvendada mudeli jõudlust sihitud valdkonnas.
+Peamine asi, mida meeles pidada, on see, et peenhäälestus on täiustatud tehnika, mis nõuab teatud tasemel ekspertiisi soovitud tulemuste saavutamiseks. Kui seda tehakse valesti, ei pruugi see tuua oodatud paranemisi ja võib isegi mudeli jõudlust teie suunatud domeenis halvendada.
 
-Seega, enne kui õpid, "kuidas" keelemudeleid peenhäälestada, pead teadma "miks" peaksid seda teed minema ja "millal" alustada peenhäälestamise protsessi. Alusta endale järgmiste küsimuste esitamisest:
+Nii et enne kui õpid "kuidas" peenhäälestada keelemudeleid, pead teadma "miks" valida see tee ja "millal" alustada peenhäälestusprotsessi. Alusta nendest küsimustest:
 
-- **Kasutusjuht**: Mis on sinu _kasutusjuht_ peenhäälestamiseks? Millist aspekti praegusest eelnevalt treenitud mudelist tahad parandada?
-- **Alternatiivid**: Kas oled proovinud _teisi tehnikaid_, et saavutada soovitud tulemusi? Kasuta neid võrdlusalusena.
-  - Promptide kujundamine: Proovi tehnikaid nagu few-shot promptimine asjakohaste vastuste näidetega. Hinda vastuste kvaliteeti.
-  - Otsinguga täiendatud genereerimine: Proovi täiendada promte otsingutulemustega, mis on saadud sinu andmete otsingust. Hinda vastuste kvaliteeti.
-- **Kulud**: Kas oled tuvastanud peenhäälestamise kulud?
-  - Häälestatavus - kas eelnevalt treenitud mudel on peenhäälestamiseks saadaval?
-  - Pingutus - treeningandmete ettevalmistamiseks, mudeli hindamiseks ja täiendamiseks.
-  - Arvutusvõimsus - peenhäälestamise tööde käivitamiseks ja peenhäälestatud mudeli juurutamiseks.
-  - Andmed - piisava kvaliteediga näidete kättesaadavus peenhäälestamise mõju jaoks.
-- **Eelised**: Kas oled kinnitanud peenhäälestamise eelised?
-  - Kvaliteet - kas peenhäälestatud mudel ületas võrdlusaluse?
-  - Kulud - kas see vähendab tokenite kasutust, lihtsustades promte?
-  - Laiendatavus - kas saad baasmudelit uute valdkondade jaoks uuesti kasutada?
+- **Kasutusjuhtum**: Mis on sinu _kasutusjuhtum_ peenhäälestamiseks? Millist aspekti olemasolevast eelõpetatud mudelist soovid parandada?
+- **Alternatiivid**: Kas oled katsetanud _teisi tehnikaid_, et saavutada soovitud tulemusi? Kasuta neid võrdlusbaasina.
+  - Promptide inseneriteadus: Proovi tehnikaid nagu vähese proovi prompting koos vastavate promptivastuste näidetega. Hinda vastuste kvaliteeti.
+  - Päringu põhine genereerimine: Proovi täiendada prompti päringu tulemustega, mida sa leidud oma andmetest. Hinda vastuste kvaliteeti.
+- **Kulud**: Kas oled kindlaks teinud peenhäälestuse kulud?
+  - Kohandatavus - kas eelõpetatud mudel on peenhäälestamiseks saadaval?
+  - Pingutus - koolitusandmete ettevalmistamise, mudeli hindamise ja täiendamise pingutus.
+  - Arvutusressursid - peenhäälestustööde käivitamiseks ja peenhäälestatud mudeli juurutamiseks vajalik ressursikasutus.
+  - Andmed - juurdepääs piisava kvaliteediga näidetele peenhäälestuse mõju jaoks.
+- **Eelised**: Kas oled kinnitanud peenhäälestuse eelised?
+  - Kvaliteet - kas peenhäälestatud mudel ületas baasmudeli?
+  - Kulu - kas see vähendab tokeni kasutust, lihtsustades prompti?
+  - Laiendatavus - kas saad alusmudelit kasutada uutes domeenides?
 
-Neile küsimustele vastates peaksid sa suutma otsustada, kas peenhäälestamine on sinu kasutusjuhtumi jaoks õige lähenemine. Ideaalis on lähenemine õigustatud ainult siis, kui eelised kaaluvad üles kulud. Kui otsustad jätkata, on aeg mõelda, _kuidas_ saad eelnevalt treenitud mudelit peenhäälestada.
+Nendele küsimustele vastates peaksid suutma otsustada, kas peenhäälestus on sinu kasutusjuhtumi jaoks õige lähenemine. Ideaalis on lähenemine kehtiv ainult siis, kui eelised kaaluvad üles kulud. Kui otsustad jätkata, on aeg mõelda, _kuidas_ saad eelõpetatud mudelit peenhäälestada.
 
-Tahad rohkem teavet otsustusprotsessi kohta? Vaata [Kas peenhäälestada või mitte peenhäälestada](https://www.youtube.com/watch?v=0Jo-z-MFxJs)
+Kas soovid saada rohkem ülevaadet otsustusprotsessist? Vaata videot [Fine-häälestada või mitte fine-häälestada](https://www.youtube.com/watch?v=0Jo-z-MFxJs)
 
-## Kuidas saame eelnevalt treenitud mudelit peenhäälestada?
+## Kuidas saab eelõpetatud mudelit peenhäälestada?
 
-Eelnevalt treenitud mudeli peenhäälestamiseks on sul vaja:
+Eelõpetatud mudeli peenhäälestamiseks vajad:
 
-- eelnevalt treenitud mudelit, mida peenhäälestada
-- andmestikku, mida kasutada peenhäälestamiseks
-- treeningkeskkonda peenhäälestamise töö käivitamiseks
-- hostimiskeskkonda peenhäälestatud mudeli juurutamiseks
+- peenhäälestamiseks eelõpetatud mudelit
+- peenhäälestuseks kasutatavat andmestikku
+- koolituskeskkonda peenhäälestuse töö käivitamiseks
+- majutuskeskkonda peenhäälestatud mudeli juurutamiseks
 
-## Peenhäälestamine praktikas
+## Peenhäälestus praktikas
 
-Järgnevad ressursid pakuvad samm-sammult juhendeid, et viia läbi reaalne näide valitud mudeli ja hoolikalt valitud andmestikuga. Nende juhendite läbimiseks on sul vaja konto konkreetse teenusepakkuja juures, samuti juurdepääsu vastavale mudelile ja andmestikele.
+> **Märkus:** `gpt-35-turbo` / `gpt-3.5-turbo`, mida mõnedes allpool toodud õpetustes viidatakse, on nii päringu tegemiseks kui peenhäälestamiseks pensionile saadetud. Kui alustad täna uut peenhäälestustööd, sihi mõnele praegusel ajal toetatavale mudelile – näiteks `gpt-4o-mini` või `gpt-4.1-mini`. Vaata [Peenhäälestatavate mudelite nimekirja](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?WT.mc_id=academic-105485-koreyst#fine-tuning-models) praeguse toetatud mudelite komplekti kohta. Nendes õpetustes toodud kontseptsioonid ja sammud kehtivad endiselt.
 
-| Teenusepakkuja | Juhend                                                                                                                                                                       | Kirjeldus                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OpenAI         | [Kuidas peenhäälestada vestlusmudeleid](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_finetune_chat_models.ipynb?WT.mc_id=academic-105485-koreyst)     | Õpi peenhäälestama `gpt-35-turbo` konkreetse valdkonna jaoks ("retsepti assistent") treeningandmete ettevalmistamise, peenhäälestamise töö käivitamise ja peenhäälestatud mudeli kasutamise kaudu.                                                                                                                                                                                                                              |
-| Azure OpenAI   | [GPT 3.5 Turbo peenhäälestamise juhend](https://learn.microsoft.com/azure/ai-services/openai/tutorials/fine-tune?tabs=python-new%2Ccommand-line?WT.mc_id=academic-105485-koreyst) | Õpi peenhäälestama `gpt-35-turbo-0613` mudelit **Azure'is**, tehes samme treeningandmete loomiseks ja üleslaadimiseks, peenhäälestamise töö käivitamiseks. Juuruta ja kasuta uut mudelit.                                                                                                                                                                                                                                       |
-| Hugging Face   | [LLM-ide peenhäälestamine Hugging Face'iga](https://www.philschmid.de/fine-tune-llms-in-2024-with-trl?WT.mc_id=academic-105485-koreyst)                                       | See blogipostitus juhendab sind peenhäälestama _avatud LLM-i_ (nt `CodeLlama 7B`) kasutades [transformers](https://huggingface.co/docs/transformers/index?WT.mc_id=academic-105485-koreyst) teeki ja [Transformer Reinforcement Learning (TRL)](https://huggingface.co/docs/trl/index?WT.mc_id=academic-105485-koreyst]) koos avatud [andmestikega](https://huggingface.co/docs/datasets/index?WT.mc_id=academic-105485-koreyst) Hugging Face'is. |
-|                |                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 🤗 AutoTrain   | [LLM-ide peenhäälestamine AutoTrain'iga](https://github.com/huggingface/autotrain-advanced/?WT.mc_id=academic-105485-koreyst)                                                 | AutoTrain (või AutoTrain Advanced) on Hugging Face'i poolt välja töötatud Python teek, mis võimaldab peenhäälestamist paljude erinevate ülesannete jaoks, sealhulgas LLM-i peenhäälestamine. AutoTrain on koodivaba lahendus ja peenhäälestamist saab teha oma pilves, Hugging Face Spaces'is või lokaalselt. See toetab nii veebipõhist GUI-d, CLI-d kui ka treenimist yaml-konfiguratsioonifailide kaudu.                           |
-|                |                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+Järgmised ressursid pakuvad samm-sammult õpetusi, mis juhendavad sind läbi reaalse näite, kasutades valitud mudelit kureeritud andmestikuga. Nende õpetuste läbimiseks on sul vaja konkreetse teenusepakkuja kontot, koos juurdepääsuga vastavale mudelile ja andmestikule.
 
-## Ülesanne
+| Teenusepakkuja | Õpetus                                                                                                                                                                       | Kirjeldus                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OpenAI       | [Kuidas peenhäälestada vestluse mudeleid](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_finetune_chat_models.ipynb?WT.mc_id=academic-105485-koreyst)                | Õpi peenhäälestama `gpt-35-turbo` mudelit kindla domeeni (“retsepti assistent”) jaoks, valmistades ette koolitusandmestiku, käivitades peenhäälestuse töö ja kasutades peenhäälestatud mudelit päringutes.                                                                                                                                                                                                                                             |
+| Azure OpenAI | [GPT 3.5 Turbo peenhäälestuse õpetus](https://learn.microsoft.com/azure/ai-services/openai/tutorials/fine-tune?tabs=python-new%2Ccommand-line&WT.mc_id=academic-105485-koreyst) | Õpi peenhäälestama `gpt-35-turbo-0613` mudelit **Azure’is**, võttes samme koolitusandmete loomiseks & üleslaadimiseks, peenhäälestuse töö käivitamiseks. Juurutamiseks & uue mudeli kasutamiseks.                                                                                                                                                                                                                                                                 |
+| Hugging Face | [Peenhäälestamine LLM-idega Hugging Face abil](https://www.philschmid.de/fine-tune-llms-in-2024-with-trl?WT.mc_id=academic-105485-koreyst)                                               | See blogipostitus juhendab sind avatud LLM-i (näiteks `CodeLlama 7B`) peenhäälestamises kasutades [transformers](https://huggingface.co/docs/transformers/index?WT.mc_id=academic-105485-koreyst) teeki ja [Transformer Reinforcement Learning (TRL)](https://huggingface.co/docs/trl/index?WT.mc_id=academic-105485-koreyst) koos avatud [andmestikega](https://huggingface.co/docs/datasets/index?WT.mc_id=academic-105485-koreyst) Hugging Face'is. |
+|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 🤗 AutoTrain | [Peenhäälestamine LLM-idega AutoTrain’iga](https://github.com/huggingface/autotrain-advanced/?WT.mc_id=academic-105485-koreyst)                                                         | AutoTrain (või AutoTrain Advanced) on Hugging Face’i poolt arendatud Pythoni teek, mis võimaldab peenhäälestust mitmetel erinevatel ülesannetel, sealhulgas LLM-i peenhäälestust. AutoTrain on mittetöötluslahendus ja peenhäälestust saab teha oma pilves, Hugging Face Spaces’is või kohapeal. Toetab veebipõhist GUI-d, CLI-d ja koolitust yaml konfiguratsioonifailide kaudu.                                                                               |
+|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 🦥 Unsloth | [Peenhäälestamine LLM-idega Unsloth’iga](https://github.com/unslothai/unsloth?WT.mc_id=academic-105485-koreyst)                                                         | Unsloth on avatud lähtekoodiga raamistik, mis toetab LLM-i peenhäälestust ja tugevdamisõpet (RL). Unsloth lihtsustab kohalikku treeningut, hindamist ja juurutamist valmis kasutatavate [märkmikega](https://github.com/unslothai/notebooks?WT.mc_id=academic-105485-koreyst). Toetab ka teksti kõneks (TTS), BERT- ja multimodaalseid mudeleid. Alustamiseks loe nende samm-sammult [Peenhäälestamise juhendit](https://docs.unsloth.ai/get-started/fine-tuning-llms-guide).                                                                          |
+|              |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+## Kodune ülesanne
 
-Vali üks ülaltoodud juhenditest ja tee see läbi. _Võime nende juhendite versioone repositooriumis Jupyter Notebookides reprodutseerida ainult viitamiseks. Palun kasuta otse algallikaid, et saada kõige uuemaid versioone_.
+Vali ülaltoodud õpetustest üks ja käi see läbi. _Võime kopeerida mõningaid neist õpetustest Jupyteri märkmikutesse selles repo’s ainult viitamiseks. Palun kasuta originaallinke, et saada uusimad versioonid_.
 
-## Tubli töö! Jätka õppimist.
+## Suurepärane töö! Jätka õppimist.
 
-Pärast selle tunni lõpetamist vaata meie [Generatiivse tehisintellekti õppekollektsiooni](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), et jätkata oma generatiivse tehisintellekti teadmiste arendamist!
+Pärast selle õppetunni lõpetamist vaata meie [Generatiivse tehisintellekti õppematerjalide kogumikku](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst), et oma generatiivse tehisintellekti teadmisi veelgi täiendada!
 
-Palju õnne!! Oled lõpetanud selle kursuse v2 seeria viimase tunni! Ära lõpeta õppimist ja loomist. \*\*Vaata [RESSURSID](RESOURCES.md?WT.mc_id=academic-105485-koreyst) lehte, et leida täiendavaid soovitusi just selle teema kohta.
+Palju õnne!! Sa oled lõpetanud selle kursuse v2 sarja viimase õppetunni! Ära peatu õppimisel ja loomisel. \*\*Vaata [RESSURSSE](RESOURCES.md?WT.mc_id=academic-105485-koreyst) lehte, kus on toodud täiendavaid soovitusi just selle teema kohta.
 
-Meie v1 tundide seeria on samuti uuendatud rohkemate ülesannete ja kontseptsioonidega. Seega võta hetk, et oma teadmisi värskendada - ja palun [jaga oma küsimusi ja tagasisidet](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst), et aidata meil neid tunde kogukonna jaoks paremaks muuta.
+Meie v1 õppetundide sari on samuti uuendatud, lisades rohkem ülesandeid ja kontseptsioone. Võta hetk, et oma teadmisi värskendada – ja palun [jaga oma küsimusi ja tagasisidet](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst), et aidata meil neid õppetunde kogukonnale parandada.
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta arusaamatuste või valesti tõlgenduste eest, mis võivad tekkida selle tõlke kasutamise tõttu.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Lahtiütlus**:
+See dokument on tõlgitud kasutades AI tõlketeenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi me püüdleme täpsuse poole, palun pange tähele, et automatiseeritud tõlgetes võib esineda vigu või ebatäpsusi. Originaaldokument selle emakeeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlkega seotud eksimustest või valesti mõistmistest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

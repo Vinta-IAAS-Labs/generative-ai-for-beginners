@@ -1,59 +1,51 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "578a2d20d79cbe5a33eac32d4eabb9b0",
-  "translation_date": "2025-10-17T21:12:21+00:00",
-  "source_file": "00-course-setup/README.md",
-  "language_code": "sw"
-}
--->
 # Kuanza na kozi hii
 
-Tunafurahi sana kwa wewe kuanza kozi hii na kuona kile unachoweza kuhamasika kujenga kwa kutumia Generative AI!
+Tuna furaha sana kwa wewe kuanza kozi hii na kuona unachovutiwa kujenga kwa kutumia AI ya Kizazi!
 
-Ili kuhakikisha mafanikio yako, ukurasa huu unaelezea hatua za kuanzisha, mahitaji ya kiufundi, na wapi pa kupata msaada ikiwa unahitaji.
+Ili kuhakikisha mafanikio yako, ukurasa huu unaelezea hatua za usanidi, mahitaji ya kiufundi, na wapi pa kupata msaada ikiwa utahitaji.
 
-## Hatua za Kuanzisha
+## Hatua za Usanidi
 
 Ili kuanza kuchukua kozi hii, utahitaji kukamilisha hatua zifuatazo.
 
-### 1. Fork Repo Hii
+### 1. Fanya Fork ya Repo hii
 
-[Fork repo hii yote](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) kwenye akaunti yako ya GitHub ili uweze kubadilisha msimbo wowote na kukamilisha changamoto. Unaweza pia [kuweka nyota (🌟) repo hii](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst) ili kuipata na repo zinazohusiana kwa urahisi.
+[Fanya fork ya repo nzima hii](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) kwenye akaunti yako ya GitHub ili uweze kubadilisha msimbo wowote na kukamilisha changamoto. Pia unaweza [kutoa nyota (🌟) kwenye repo hii](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst) ili kuipata na repos nyingine zinazohusiana kwa urahisi zaidi.
 
-### 2. Unda Codespace
+### 2. Unda codespace
 
-Ili kuepuka masuala ya utegemezi wakati wa kuendesha msimbo, tunapendekeza kuendesha kozi hii katika [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
+Ili kuepuka matatizo yoyote ya utegemezi wakati wa kuendesha msimbo, tunapendekeza kuendesha kozi hii kwenye [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
 
-Katika fork yako: **Code -> Codespaces -> New on main**
+Kwenye fork yako: **Code -> Codespaces -> New on main**
 
-![Dialog inayoonyesha vifungo vya kuunda codespace](../../../00-course-setup/images/who-will-pay.webp)
+![Dialog showing buttons to create a codespace](../../../translated_images/sw/who-will-pay.4c0609b1c7780f44.webp)
 
-#### 2.1 Ongeza Siri
+#### 2.1 Ongeza siri
 
 1. ⚙️ Ikoni ya gia -> Command Pallete-> Codespaces : Manage user secret -> Add a new secret.
-2. Jina OPENAI_API_KEY, weka funguo yako, Hifadhi.
+2. Jina OPENAI_API_KEY, weka ufunguo wako, Hifadhi.
 
-### 3. Nini Kinachofuata?
+### 3. Nini kinafuata?
 
-| Nataka…             | Nenda kwa…                                                              |
+| Nataka…          | Nenda kwa…                                                                  |
 |---------------------|-------------------------------------------------------------------------|
-| Kuanza Somo la 1    | [`01-introduction-to-genai`](../01-introduction-to-genai/README.md)     |
-| Kufanya kazi nje ya mtandao | [`setup-local.md`](02-setup-local.md)                                   |
-| Kuanzisha Mtoa Huduma wa LLM | [`providers.md`](03-providers.md)                                        |
-| Kukutana na wanafunzi wengine | [Jiunge na Discord yetu](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)   |
+| Anza Somo la 1      | [`01-introduction-to-genai`](../01-introduction-to-genai/README.md)     |
+| Fanya kazi bila mtandao        | [`setup-local.md`](02-setup-local.md)                                   |
+| Sanidi Mtoa Huduma wa LLM | [`providers.md`](03-providers.md)                                        |
+| Kutana na washiriki wengine | [Jiunge na Discord yetu](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)   |
 
-## Kutatua Tatizo
+## Kutatua Shida
 
-| Dalili                                   | Suluhisho                                                        |
+
+| Dalili                                   | Suluhisho                                                             |
 |-------------------------------------------|-----------------------------------------------------------------|
-| Ujenzi wa kontena umekwama > dakika 10   | **Codespaces ➜ “Rebuild Container”**                            |
-| `python: command not found`               | Terminal haikuunganishwa; bonyeza **+** ➜ *bash*                |
-| `401 Unauthorized` kutoka OpenAI          | Funguo ya `OPENAI_API_KEY` si sahihi / imeisha muda             |
-| VS Code inaonyesha “Dev container mounting…” | Refresh tab ya kivinjari—Codespaces wakati mwingine hupoteza muunganisho |
-| Kernel ya Notebook haipo                  | Menu ya Notebook ➜ **Kernel ▸ Select Kernel ▸ Python 3**        |
+| Ujenzi wa kontena umezuilika > 10 min            | **Codespaces ➜ “Rebuild Container”**                            |
+| `python: command not found`               | Terminal haikuambatanishwa; bonyeza **+** ➜ *bash*                    |
+| `401 Unauthorized` kutoka OpenAI            | `OPENAI_API_KEY` si sahihi / imeharibika                                |
+| VS Code inaonyesha “Dev container mounting…”   | Reload kipengee cha kivinjari—Codespaces mara nyingine hupoteza muunganisho   |
+| Kernel ya daftari la maelezo haipo                   | Menyu ya daftari ➜ **Kernel ▸ Chagua Kernel ▸ Python 3**           |
 
-   Mfumo wa Unix:
+   Mifumo ya Unix-based:
 
    ```bash
    touch .env
@@ -65,64 +57,68 @@ Katika fork yako: **Code -> Codespaces -> New on main**
    echo . > .env
    ```
 
-3. **Hariri Faili `.env`**: Fungua faili `.env` katika mhariri wa maandishi (mfano, VS Code, Notepad++, au mhariri mwingine wowote). Ongeza mstari ufuatao kwenye faili, ukibadilisha `your_github_token_here` na tokeni yako halisi ya GitHub:
+3. **Hariri Faili la `.env`**: Fungua faili la `.env` kwa mhariri wa maandishi (mfano, VS Code, Notepad++, au mhariri mwingine wowote). Ongeza mistari ifuatayo kwenye faili, ukibadilisha sehemu za mahali na anuani halisi na ufunguo wa Microsoft Foundry Models (tazama [`providers.md`](03-providers.md) jinsi ya kuzipata):
+
+   > **Kumbuka:** GitHub Models (na variable yake `GITHUB_TOKEN`) itasitishwa mwishoni mwa Julai 2026. Badili kutumia [Microsoft Foundry Models](https://ai.azure.com/catalog/models?WT.mc_id=academic-105485-koreyst) badala yake.
 
    ```env
-   GITHUB_TOKEN=your_github_token_here
+   AZURE_INFERENCE_ENDPOINT=your_foundry_endpoint_here
+   AZURE_INFERENCE_CREDENTIAL=your_foundry_api_key_here
    ```
 
-4. **Hifadhi Faili**: Hifadhi mabadiliko na funga mhariri wa maandishi.
+4. **Hifadhi Faili**: Hifadhi mabadiliko na funika mhariri wa maandishi.
 
-5. **Sakinisha `python-dotenv`**: Ikiwa bado hujasakinisha, utahitaji kusakinisha kifurushi cha `python-dotenv` ili kupakia vigezo vya mazingira kutoka faili `.env` kwenye programu yako ya Python. Unaweza kusakinisha kwa kutumia `pip`:
+5. **Sakinisha `python-dotenv`**: Kama bado hujaukiweka, utahitaji kusakinisha kifurushi cha `python-dotenv` ili kupakia maadili ya mazingira kutoka faili la `.env` kwenye programu yako ya Python. Unaweza kusakinisha kwa kutumia `pip`:
 
    ```bash
    pip install python-dotenv
    ```
 
-6. **Pakia Vigezo vya Mazingira katika Script yako ya Python**: Katika script yako ya Python, tumia kifurushi cha `python-dotenv` kupakia vigezo vya mazingira kutoka faili `.env`:
+6. **Pakia Mabadiliko ya Mazingira kwenye Script yako ya Python**: Katika script yako ya Python, tumia kifurushi cha `python-dotenv` kupakia mabadiliko ya mazingira kutoka faili la `.env`:
 
    ```python
    from dotenv import load_dotenv
    import os
 
-   # Load environment variables from .env file
+   # Pakia vigezo vya mazingira kutoka kwa faili la .env
    load_dotenv()
 
-   # Access the GITHUB_TOKEN variable
-   github_token = os.getenv("GITHUB_TOKEN")
+   # Pata vigezo vya Microsoft Foundry Models
+   endpoint = os.getenv("AZURE_INFERENCE_ENDPOINT")
+   token = os.getenv("AZURE_INFERENCE_CREDENTIAL")
 
-   print(github_token)
+   print(endpoint)
    ```
 
-Hayo tu! Umefanikiwa kuunda faili `.env`, kuongeza tokeni yako ya GitHub, na kuipakia kwenye programu yako ya Python.
+Hiyo ni yote! Umeunda faili la `.env` kwa mafanikio, ukaongeza huduma za Microsoft Foundry Models, na kuzipakia kwenye programu yako ya Python.
 
-## Jinsi ya Kuendesha Lokali kwenye Kompyuta Yako
+## Jinsi ya Kuendesha kwa kompyuta yako kwa ndani
 
-Ili kuendesha msimbo lokali kwenye kompyuta yako, utahitaji kuwa na toleo fulani la [Python iliyosakinishwa](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
+Kuendesha msimbo kwa kompyuta yako binafsi, unatakiwa kuwa na toleo la [Python limewekwa](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
 
-Kisha kutumia repo, unahitaji kuiklon:
+Kisha ili kutumia repozitori, unahitaji kuikokota (clone):
 
 ```shell
 git clone https://github.com/microsoft/generative-ai-for-beginners
 cd generative-ai-for-beginners
 ```
 
-Mara baada ya kila kitu kuangaliwa, unaweza kuanza!
+Mara baada ya kuwa na kila kitu, unaweza kuanza kazi!
 
 ## Hatua za Hiari
 
 ### Kusakinisha Miniconda
 
-[Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) ni kisakinishi chepesi cha kusakinisha [Conda](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Python, pamoja na vifurushi vichache.
-Conda yenyewe ni msimamizi wa vifurushi, inayofanya iwe rahisi kuanzisha na kubadilisha kati ya [**mazingira ya virtual ya Python**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) na vifurushi. Pia inasaidia kusakinisha vifurushi ambavyo havipatikani kupitia `pip`.
+[Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) ni kifurushi nyepesi cha kusakinisha [Conda](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Python, pamoja na vifurushi vingine vichache.
+Conda yenyewe ni msimamizi wa vifurushi, ambayo hurahisisha usanidi na kubadilisha kati ya [mazingira ya kweli ya Python](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) na vifurushi. Pia inafaa katika kusakinisha vifurushi ambavyo haviwezi kupatikana kwa njia ya `pip`.
 
-Unaweza kufuata [mwongozo wa usakinishaji wa MiniConda](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst) ili kuisakinisha.
+Unaweza kufuata [mwongozo wa usakinishaji wa MiniConda](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst) kuiseti.
 
-Kwa Miniconda iliyosakinishwa, unahitaji kuklon [repo](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (ikiwa bado hujaklon).
+Ukishaweka Miniconda, unahitaji kukokota [repo](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (kama bado hujafanya hivyo)
 
-Kisha, unahitaji kuunda mazingira ya virtual. Ili kufanya hivyo na Conda, endelea na unda faili mpya ya mazingira (_environment.yml_). Ikiwa unafuata kwa kutumia Codespaces, unda hii ndani ya saraka ya `.devcontainer`, hivyo `.devcontainer/environment.yml`.
+Kisha unahitaji kuunda mazingira ya kidijitali. Kufanya hivi na Conda, unda faili jipya la mazingira (_environment.yml_). Ukifuata kutumia Codespaces, tengeneza hili ndani ya saraka `.devcontainer`, yaani `.devcontainer/environment.yml`.
 
-Endelea na jaza faili yako ya mazingira na kipande cha msimbo hapa chini:
+Endelea na jaza faili la mazingira kwa kipande hiki kilicho chini:
 
 ```yml
 name: <environment-name>
@@ -138,38 +134,38 @@ dependencies:
       - azure-ai-ml
 ```
 
-Ikiwa unapata makosa ukitumia conda unaweza kusakinisha kwa mkono Maktaba za AI za Microsoft kwa kutumia amri ifuatayo kwenye terminal.
+Ikiwa unakumbana na makosa ukitumia conda unaweza kusakinisha maktaba za Microsoft AI kitaalam ukitumia amri ifuatayo kwenye terminal.
 
 ```
 conda install -c microsoft azure-ai-ml
 ```
 
-Faili ya mazingira inaelezea utegemezi tunaohitaji. `<environment-name>` inarejelea jina unalotaka kutumia kwa mazingira yako ya Conda, na `<python-version>` ni toleo la Python unalotaka kutumia, kwa mfano, `3` ni toleo kuu la Python la hivi karibuni.
+Faili la mazingira linaelezea utegemezi tunazohitaji. `<environment-name>` inarejelea jina unalotaka kutumia kwa mazingira yako ya Conda, na `<python-version>` ni toleo la Python unalotaka kutumia, kwa mfano, `3` ni toleo kubwa la hivi karibuni la Python.
 
-Baada ya hayo, unaweza kuendelea na kuunda mazingira yako ya Conda kwa kuendesha amri hapa chini kwenye mstari wa amri/terminal
+Ukimaliza hapo, unaweza kuunda mazingira yako ya Conda kwa kuendesha amri zilizo hapa chini kwenye mstari wa amri/terminal
 
 ```bash
-conda env create --name ai4beg --file .devcontainer/environment.yml # .devcontainer sub path applies to only Codespace setups
+conda env create --name ai4beg --file .devcontainer/environment.yml # Njia ndogo ya .devcontainer inatumika kwa mipangilio ya Codespace pekee
 conda activate ai4beg
 ```
 
-Rejelea [mwongozo wa mazingira ya Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst) ikiwa unakutana na matatizo.
+Rejelea [mwongozo wa mazingira ya Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst) ikiwa unakumbana na matatizo yoyote.
 
-### Kutumia Visual Studio Code na kiendelezi cha Python
+### Kutumia Visual Studio Code na kiendelezi cha msaada wa Python
 
-Tunapendekeza kutumia mhariri wa [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) na [kiendelezi cha Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) kilichosakinishwa kwa kozi hii. Hii, hata hivyo, ni pendekezo tu na si hitaji la lazima.
+Tunapendekeza utumie mhariri [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) pamoja na [kiendelezi cha msaada wa Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) kilichosakinishwa kwa kozi hii. Hii ni mapendekezo zaidi kuliko sharti la lazima
 
-> **Kumbuka**: Kwa kufungua repo ya kozi katika VS Code, una chaguo la kuanzisha mradi ndani ya kontena. Hii ni kwa sababu ya [saraka maalum `.devcontainer`](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) inayopatikana ndani ya repo ya kozi. Zaidi kuhusu hili baadaye.
+> **Kumbuka**: Ukiifungua repo ya kozi hii kwenye VS Code, una chaguo la kusanidi mradi ndani ya kontena. Hii ni kwa sababu ya saraka maalum ya [`.devcontainer`](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) inayopatikana ndani ya repo ya kozi. Tutaenda zaidi kuhusu hili baadaye.
 
-> **Kumbuka**: Mara unapoklon na kufungua saraka katika VS Code, itapendekeza moja kwa moja usakinishe kiendelezi cha Python.
+> **Kumbuka**: Mara tu unapokokota na kufungua saraka kwenye VS Code, moja kwa moja itapendekeza usakinishe kiendelezi cha msaada wa Python.
 
-> **Kumbuka**: Ikiwa VS Code inapendekeza ufungue repo katika kontena, kataa ombi hili ili kutumia toleo la Python lililosakinishwa lokali.
+> **Kumbuka**: Ikiwa VS Code inapendekeza ufungue tena repo ndani ya kontena, kataa ombi hili ili utumie toleo la Python lililosakinishwa mahali hapa.
 
-### Kutumia Jupyter kwenye Kivinjari
+### Kutumia Jupyter katika Kivinjari
 
-Unaweza pia kufanya kazi kwenye mradi kwa kutumia [mazingira ya Jupyter](https://jupyter.org?WT.mc_id=academic-105485-koreyst) moja kwa moja ndani ya kivinjari chako. Jupyter ya kawaida na [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) hutoa mazingira mazuri ya maendeleo yenye vipengele kama vile kukamilisha kiotomatiki, kuonyesha msimbo, nk.
+Pia unaweza kufanya kazi kwenye mradi kutumia [mazingira ya Jupyter](https://jupyter.org?WT.mc_id=academic-105485-koreyst) moja kwa moja ndani ya kivinjari chako. Hii ni pamoja na Jupyter ya kawaida na [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) ambazo hutoa mazingira mazuri ya maendeleo pamoja na sifa kama kukamilisha moja kwa moja, kuangaza msimbo, n.k.
 
-Ili kuanzisha Jupyter lokali, nenda kwenye terminal/mstari wa amri, elekea kwenye saraka ya kozi, na tekeleza:
+Kuanzisha Jupyter kwa ndani, nenda kwenye terminal/mstari wa amri, elekea kwenye saraka ya kozi, kisha endesha:
 
 ```bash
 jupyter notebook
@@ -181,58 +177,63 @@ au
 jupyterhub
 ```
 
-Hii itaanzisha Jupyter na URL ya kuifikia itaonyeshwa ndani ya dirisha la mstari wa amri.
+Hii itaanzisha toleo la Jupyter na URL ya kuifikia itaonyeshwa kwenye dirisha la mstari wa amri.
 
-Mara unapofikia URL, unapaswa kuona muhtasari wa kozi na uweze kuvinjari faili yoyote ya `*.ipynb`. Kwa mfano, `08-building-search-applications/python/oai-solution.ipynb`.
+Ukipata URL hiyo, unapaswa kuona muhtasari wa kozi na kuweza kuvinjari faili yoyote `*.ipynb`. Kwa mfano, `08-building-search-applications/python/oai-solution.ipynb`.
 
 ### Kuendesha ndani ya kontena
 
-Njia mbadala ya kuanzisha kila kitu kwenye kompyuta yako au Codespace ni kutumia [kontena](../../../00-course-setup/<https:/en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst>). Saraka maalum `.devcontainer` ndani ya repo ya kozi inafanya iwezekane kwa VS Code kuanzisha mradi ndani ya kontena. Nje ya Codespaces, hii itahitaji usakinishaji wa Docker, na kwa kweli, inahusisha kazi kidogo, kwa hivyo tunapendekeza hii tu kwa wale wenye uzoefu wa kufanya kazi na kontena.
+Mbali na kuandaa kila kitu kwenye kompyuta yako au Codespace, unaweza pia kutumia [kontena](../../../00-course-setup/<https:/en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst>). Saraka maalum ya `.devcontainer` ndani ya repo ya kozi hufanya iwezekane VS Code kuandaa mradi ndani ya kontena. Nje ya Codespaces, hii itahitaji usakinishaji wa Docker, na ukweli ni kwamba, inahitaji kazi kidogo, hivyo tunapendekeza hii kwa wale tu wenye uzoefu wa kutumia makontena.
 
-Njia bora ya kuweka funguo zako za API salama unapotumia GitHub Codespaces ni kwa kutumia Siri za Codespace. Tafadhali fuata [mwongozo wa usimamizi wa siri za Codespaces](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) ili kujifunza zaidi kuhusu hili.
+Moja ya njia bora za kuhifadhi usalama wa funguo zako za API unapotumia GitHub Codespaces ni kwa kutumia Codespace Secrets. Tafadhali fuata mwongozo wa [kusimamia siri za Codespaces](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) kujifunza zaidi.
+
 
 ## Masomo na Mahitaji ya Kiufundi
 
-Kozi ina masomo 6 ya dhana na masomo 6 ya msimbo.
+Kozi ina masomo 6 ya dhana na masomo 6 ya uandishi wa msimbo.
 
-Kwa masomo ya msimbo, tunatumia Huduma ya Azure OpenAI. Utahitaji ufikiaji wa Huduma ya Azure OpenAI na funguo ya API ili kuendesha msimbo huu. Unaweza kuomba kupata ufikiaji kwa [kukamilisha ombi hili](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
+Kwa masomo ya uandishi wa msimbo, tunatumia Huduma ya Azure OpenAI. Utahitaji kupata huduma ya Azure OpenAI na ufunguo wa API kuendesha msimbo huu. Unaweza kuomba kupata huduma hiyo kwa [kukamilisha maombi haya](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
 
-Wakati unasubiri ombi lako kushughulikiwa, kila somo la msimbo pia linajumuisha faili ya `README.md` ambapo unaweza kuona msimbo na matokeo.
+Wakati unasubiri maombi yako kushughulikiwa, kila somo la uandishi pia lina faili la `README.md` ambapo unaweza kuona msimbo na matokeo.
 
 ## Kutumia Huduma ya Azure OpenAI kwa mara ya kwanza
 
-Ikiwa ni mara yako ya kwanza kufanya kazi na Huduma ya Azure OpenAI, tafadhali fuata mwongozo wa jinsi ya [kuunda na kupeleka rasilimali ya Huduma ya Azure OpenAI.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
+Ikiwa hii ni mara yako ya kwanza kutumia huduma ya Azure OpenAI, tafadhali fuata mwongozo huu jinsi ya [kujenga na kuweka rasilimali ya Azure OpenAI Service.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
 
-## Kutumia API ya OpenAI kwa mara ya kwanza
+## Kutumia OpenAI API kwa mara ya kwanza
 
-Ikiwa ni mara yako ya kwanza kufanya kazi na API ya OpenAI, tafadhali fuata mwongozo wa jinsi ya [kuunda na kutumia Interface.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
+Ikiwa hii ni mara yako ya kwanza kutumia OpenAI API, tafadhali fuata mwongozo wa jinsi ya [kuunda na kutumia Interface.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
 
-## Kukutana na Wanafunzi Wengine
+## Kutana na Washiriki Wengine
 
-Tumetengeneza njia katika [seva rasmi ya Discord ya Jamii ya AI](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) kwa ajili ya kukutana na wanafunzi wengine. Hii ni njia nzuri ya kuunda mtandao na wajasiriamali wengine wenye mawazo sawa, wajenzi, wanafunzi, na yeyote anayetaka kuboresha ujuzi wake katika Generative AI.
+Tumeunda njia mawasiliano katika seva yetu rasmi ya [AI Community Discord](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) kwa ajili ya kukutana na washiriki wengine. Hii ni njia nzuri ya kuungana na wajasiriamali, wajenzi, wanafunzi, na mtu yeyote anayetafuta kufikia kiwango cha juu katika AI ya Kizazi.
 
-[![Jiunge na njia ya discord](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
+[![Jiunge na chaneli ya discord](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
 
-Timu ya mradi pia itakuwa kwenye seva hii ya Discord kusaidia wanafunzi wowote.
+Timu ya mradi pia itakuwepo kwenye seva hii ya Discord kusaidia washiriki wote.
 
-## Kuchangia
+## Changia
 
-Kozi hii ni mpango wa chanzo huria. Ikiwa unaona maeneo ya kuboresha au masuala, tafadhali unda [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) au weka [tatizo la GitHub](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
+Kozi hii ni juhudi ya chanzo huria. Ikiwa unaona sehemu za kuboresha au matatizo, tafadhali tengeneza [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) au fungua tatizo kwenye [GitHub issue](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
 
-Timu ya mradi itakuwa ikifuatilia michango yote. Kuchangia kwenye chanzo huria ni njia nzuri ya kujenga kazi yako katika Generative AI.
+Timu ya mradi itafuatilia michango yote. Kuchangia chanzo huria ni njia nzuri ya kujenga taaluma yako katika AI ya Kizazi.
 
-Michango mingi inahitaji ukubali Mkataba wa Leseni ya Mchangiaji (CLA) unaotangaza kuwa una haki ya na kwa kweli unatoa haki kwetu kutumia mchango wako. Kwa maelezo, tembelea [tovuti ya CLA, Mkataba wa Leseni ya Mchangiaji](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
+Michango mingi inahitaji iweze kukubaliana na Mkataba wa Leseni ya Mchangiaji (CLA) unaosema kwamba una haki na kwa kweli unawapa haki za kutumia mchango wako. Kwa maelezo zaidi, tembelea [CLA, Tovuti ya Mkataba wa Leseni ya Mchangiaji](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
 
-Muhimu: unapotafsiri maandishi katika repo hii, tafadhali hakikisha kuwa hutumii tafsiri ya mashine. Tutathibitisha tafsiri kupitia jamii, kwa hivyo tafadhali jitolee tu kwa tafsiri katika lugha ambazo unazifahamu vizuri.
+Muhimu: unapotafsiri maandishi kwenye repo hii, tafadhali hakikisha hautumii tafsiri ya mashine. Tutathibitisha tafsiri kupitia jumuiya, hivyo tafadhali jitolee kwa tafsiri tu katika lugha unazozifahamu vizuri.
 
-Unapowasilisha ombi la kuvuta, CLA-bot itatambua moja kwa moja ikiwa unahitaji kutoa CLA na kupamba PR ipasavyo (mfano, lebo, maoni). Fuata tu maagizo yaliyotolewa na bot. Utahitaji kufanya hili mara moja tu katika repo zote zinazotumia CLA yetu.
+Unapotuma ombi la pull request, bot wa CLA moja kwa moja atabaini kama unahitaji kutoa CLA na kuweka sifa sawa (mfano, lebo, maoni). Fuata tu maelekezo ya bot. Hii itabidi uifanye mara moja tu kwa repo zote zinazotumia CLA yetu.
 
-Mradi huu umechukua [Kanuni ya Maadili ya Chanzo Huria ya Microsoft](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Kwa maelezo zaidi soma Maswali Yanayoulizwa Mara kwa Mara ya Kanuni ya Maadili au wasiliana na [Barua pepe ya opencode](opencode@microsoft.com) kwa maswali au maoni ya ziada.
 
-## Twende Tukaanze
-Sasa kwa kuwa umekamilisha hatua zinazohitajika kumaliza kozi hii, hebu tuanze kwa kupata [utambulisho wa Generative AI na LLMs](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
+Mradi huu umekubali [Msaada wa Maadili wa Chanzo Huria wa Microsoft](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Kwa taarifa zaidi soma Maswali Yanayoulizwa Mara kwa Mara ya Msaada wa Maadili au wasiliana na [Email opencode](opencode@microsoft.com) kwa maswali au maoni zaidi.
+
+## Hebu Tuanze
+
+Sasa baada ya kumaliza hatua zinazohitajika kukamilisha kozi hii, hebu tuanze kwa kupata [utambulisho wa AI Jeneratibu na LLMs](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
 
 ---
 
-**Kanusho**:  
-Hati hii imetafsiriwa kwa kutumia huduma ya kutafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kwa usahihi, tafadhali fahamu kuwa tafsiri za kiotomatiki zinaweza kuwa na makosa au kutokuwa sahihi. Hati ya asili katika lugha yake ya awali inapaswa kuzingatiwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu ya binadamu inapendekezwa. Hatutawajibika kwa kutoelewana au tafsiri zisizo sahihi zinazotokana na matumizi ya tafsiri hii.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Kionyozo**:
+Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kupata usahihi, tafadhali fahamu kwamba tafsiri za kiotomatiki zinaweza kuwa na makosa au upungufu wa usahihi. Hati ya asili katika lugha yake halisi inapaswa kuchukuliwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu inayofanywa na binadamu inapendekezwa. Hatutojibu kwa kuelewa vibaya au tafsiri potofu zinazotokea kutokana na matumizi ya tafsiri hii.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
